@@ -102,24 +102,30 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             BatTatChucNang(false);
             ClearBinding();
             dgvNhanVien.AutoGenerateColumns = false;
-            List<NhanVien> nv = new List<NhanVien>();
 
-            nv = context.NhanVien.ToList();
+            // 1. Lấy dữ liệu từ context
+            var danhSachNV = context.NhanVien.ToList();
+
+            // 2. Tạo BindingSource và gán dữ liệu (Nên khai báo BindingSource ở mức độ class nếu muốn dùng cho nút Thêm/Sửa/Xóa sau này)
             BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = nv;
+            bindingSource.DataSource = danhSachNV;
 
-            txtHoTen.DataBindings.Add("Text", bindingSource, "HoVaTen", false, DataSourceUpdateMode.Never);
-            txtChuyenMon.DataBindings.Add("Text", bindingSource, "ChuyenMon", false, DataSourceUpdateMode.Never);
-            txtDienThoai.DataBindings.Add("Text", bindingSource, "DienThoai", false, DataSourceUpdateMode.Never);
-            txtDiaChi.DataBindings.Add("Text", bindingSource, "DiaChi", false, DataSourceUpdateMode.Never);
-            txtTenDangNhap.DataBindings.Add("Text", bindingSource, "TenDangNhap", false, DataSourceUpdateMode.Never);
-            txtMatKhau.DataBindings.Add("Text", bindingSource, "MatKhau", false, DataSourceUpdateMode.Never);
-            txtLuongCoBan.DataBindings.Add("Text", bindingSource, "LuongCoBan", false, DataSourceUpdateMode.Never);
-            cboQuyenHan.DataBindings.Add("SelectedIndex", bindingSource, "QuyenHan", false, DataSourceUpdateMode.Never);
-            dgvNhanVien.DataSource = bindingSource;            
-            dgvNhanVien.RowPostPaint += dgvNhanVien_RowPostPaint;
+            // 3. Thực hiện Binding cho các TextBox
+            // Lưu ý: Tên thuộc tính (ví dụ "HoVaTen") phải khớp 100% với thuộc tính trong Class NhanVien của bạn
+            txtHoTen.DataBindings.Add("Text", bindingSource, "HoVaTen", true, DataSourceUpdateMode.Never);
+            txtChuyenMon.DataBindings.Add("Text", bindingSource, "ChuyenMon", true, DataSourceUpdateMode.Never);
+            txtDienThoai.DataBindings.Add("Text", bindingSource, "DienThoai", true, DataSourceUpdateMode.Never);
+            txtDiaChi.DataBindings.Add("Text", bindingSource, "DiaChi", true, DataSourceUpdateMode.Never);
+            txtTenDangNhap.DataBindings.Add("Text", bindingSource, "TenDangNhap", true, DataSourceUpdateMode.Never);
+            txtMatKhau.DataBindings.Add("Text", bindingSource, "MatKhau", true, DataSourceUpdateMode.Never);
+            txtLuongCoBan.DataBindings.Add("Text", bindingSource, "LuongCoBan", true, DataSourceUpdateMode.Never, 0, "#,##0");
 
-            dgvNhanVien.DataSource = context.NhanVien.ToList();
+            // Đối với ComboBox Quyền Hạn: 
+            // Nếu Quyền Hạn là kiểu chuỗi (Kỹ sư, Kế toán...), dùng "Text". Nếu là ID, dùng "SelectedValue"
+            cboQuyenHan.DataBindings.Add("Text", bindingSource, "QuyenHan", true, DataSourceUpdateMode.Never);
+
+            // 4. GÁN BINDINGSOURCE CHO GRID (Quan trọng nhất: chỉ gán cái này thôi)
+            dgvNhanVien.DataSource = bindingSource;
 
         }
 
@@ -197,8 +203,8 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                     }
                 }
                 frmNhanVien_Load(sender, e);
-                ClearBinding();
             }
+            frmNhanVien_Load(sender, e);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -276,7 +282,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
 
         private void btnXuat_Click(object sender, EventArgs e)

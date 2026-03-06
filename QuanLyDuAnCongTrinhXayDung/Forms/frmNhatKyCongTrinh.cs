@@ -56,14 +56,41 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
         {
             BatTatChucNang(false);
             ClearText();
+
+            // 1. Nạp danh sách Dự án vào ComboBox (Giả sử bạn đã có hàm này)
             LayDuAnVaoComboBox();
-            List<NhatKyCongTrinh> nk = new List<NhatKyCongTrinh>();
-            nk = context.NhatKyCongTrinh.ToList();
+
+            // 2. Lấy dữ liệu và "phẳng hóa" bằng Select
+            dataGridView.AutoGenerateColumns = false;
+            var dsNhatKy = context.NhatKyCongTrinh.Select(r => new DanhSachNhatKy
+            {
+                ID = r.ID,
+                DuAnID = r.DuAnID,
+                DuAn = r.DuAn.TenDuAn, // Lấy tên từ bảng DuAn liên kết
+                NgayGhi = r.NgayGhi,
+                NoiDungCongViec = r.NoiDungCongViec,
+                GhiChu = r.GhiChu
+            }).ToList();
+
             BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = nk;
-            txtGhiChu.DataBindings.Add("Text", bindingSource, "GhiChu", false, DataSourceUpdateMode.Never);
-            txtNoiDungCongViec.DataBindings.Add("Text", bindingSource, "NoiDungCongViec", false, DataSourceUpdateMode.Never);
-            dtpNgayGhi.DataBindings.Add("Value", bindingSource, "NgayGhi", false, DataSourceUpdateMode.Never);
+            bindingSource.DataSource = dsNhatKy;
+
+            // 3. Binding ComboBox Dự án
+            cboDuAn.DataBindings.Clear();
+            // Bind SelectedValue vào DuAnID của ViewNhatKy
+            cboDuAn.DataBindings.Add("SelectedValue", bindingSource, "DuAnID", true, DataSourceUpdateMode.Never);
+
+            // 4. Binding các trường còn lại
+            dtpNgayGhi.DataBindings.Clear();
+            dtpNgayGhi.DataBindings.Add("Value", bindingSource, "NgayGhi", true, DataSourceUpdateMode.Never);
+
+            txtNoiDungCongViec.DataBindings.Clear();
+            txtNoiDungCongViec.DataBindings.Add("Text", bindingSource, "NoiDungCongViec", true, DataSourceUpdateMode.Never);
+
+            txtGhiChu.DataBindings.Clear();
+            txtGhiChu.DataBindings.Add("Text", bindingSource, "GhiChu", true, DataSourceUpdateMode.Never);
+
+            // 5. Gán Source cho DataGridView
             dataGridView.DataSource = bindingSource;
         }
 

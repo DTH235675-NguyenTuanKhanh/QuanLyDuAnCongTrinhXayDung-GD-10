@@ -24,8 +24,8 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
         {
             List<NhanVien> dsNhanVien = context.NhanVien.ToList();
             cboNhanVien.DataSource = dsNhanVien;
-            cboNhanVien.DisplayMember = "TenNhanVien";
-            cboNhanVien.ValueMember = "Id";
+            cboNhanVien.DisplayMember = "HoaVaTen";
+            cboNhanVien.ValueMember = "ID";
         }
         public void layLuongCoBan()
         {
@@ -89,16 +89,47 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
         {
             BatTatChucNang(false);
             ClearText();
+
+            // 1. Nạp danh sách NV vào combo
             LayNhanVienVaoComboBox();
-            List<BangLuong> bl = new List<BangLuong>();
-            bl = context.BangLuong.ToList();
+
+            // 2. Lấy dữ liệu phẳng hóa
+            dataGridView.AutoGenerateColumns = false;
+            var dsLuong = context.BangLuong.Select(r => new {
+                id = r.ID,
+                NhanVienID = r.NhanVien.ID,
+                NhanVien = r.NhanVien.HoVaTen, // Lấy từ thuộc tính HoVaTen
+                Thang = r.Thang,
+                Nam = r.Nam,
+                SoNgayCong = r.SoNgayCong,
+                TongPhuCap = r.TongPhuCap,
+                ThucLinh = r.ThucLinh
+            }).ToList();
+
             BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = bl;
-            txtNam.DataBindings.Add("Text", bindingSource, "Nam", false, DataSourceUpdateMode.Never);
-            txtThang.DataBindings.Add("Text", bindingSource, "Thang", false, DataSourceUpdateMode.Never);
-            txtSoNgayCong.DataBindings.Add("Text", bindingSource, "SoNgayCong", false, DataSourceUpdateMode.Never);
-            txtTongPhuCap.DataBindings.Add("Text", bindingSource, "TongPhuCap", false, DataSourceUpdateMode.Never);
-            txtThucLinh.DataBindings.Add("Text", bindingSource, "ThucLinh", false, DataSourceUpdateMode.Never);
+            bindingSource.DataSource = dsLuong;
+
+            // 3. Binding ComboBox (Kết nối ID của bảng lương với ID của combobox)
+            cboNhanVien.DataBindings.Clear();
+            cboNhanVien.DataBindings.Add("SelectedValue", bindingSource, "NhanVienID", true, DataSourceUpdateMode.Never);
+
+            // 4. Binding các TextBox
+            txtThang.DataBindings.Clear();
+            txtThang.DataBindings.Add("Text", bindingSource, "Thang", true, DataSourceUpdateMode.Never);
+
+            txtNam.DataBindings.Clear();
+            txtNam.DataBindings.Add("Text", bindingSource, "Nam", true, DataSourceUpdateMode.Never);
+
+            txtSoNgayCong.DataBindings.Clear();
+            txtSoNgayCong.DataBindings.Add("Text", bindingSource, "SoNgayCong", true, DataSourceUpdateMode.Never);
+
+            txtTongPhuCap.DataBindings.Clear();
+            txtTongPhuCap.DataBindings.Add("Text", bindingSource, "TongPhuCap", true, DataSourceUpdateMode.Never);
+
+            txtThucLinh.DataBindings.Clear();
+            txtThucLinh.DataBindings.Add("Text", bindingSource, "ThucLinh", true, DataSourceUpdateMode.Never);
+
+            // 5. Gán Source cho Grid
             dataGridView.DataSource = bindingSource;
         }
 
@@ -106,14 +137,14 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
         {
             xulyThem = false;
             BatTatChucNang(true);
-            id = Convert.ToInt32(dataGridView.CurrentRow.Cells["Id"].Value.ToString());
+            id = Convert.ToInt32(dataGridView.CurrentRow.Cells["colID"].Value.ToString());
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa lương của nhân viên này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                int id = Convert.ToInt32(dataGridView.CurrentRow.Cells["Id"].Value);
+                int id = Convert.ToInt32(dataGridView.CurrentRow.Cells["colID"].Value);
                 BangLuong bl = context.BangLuong.Find(id);
                 if (bl != null)
                 {

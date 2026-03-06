@@ -18,4 +18,13 @@ namespace QuanLyDuAnCongTrinhXayDung.Data
 
         public virtual DuAn DuAn { get; set; } = null!;
     }
+    public class DanhSachNhatKy
+    {
+        public int ID { get; set; }
+        public int DuAnID { get; set; }
+        public string DuAn { get; set; } // Thuộc tính để hiển thị lên Grid
+        public DateTime NgayGhi { get; set; }
+        public string NoiDungCongViec { get; set; }
+        public string? GhiChu { get; set; }
+    }
 }

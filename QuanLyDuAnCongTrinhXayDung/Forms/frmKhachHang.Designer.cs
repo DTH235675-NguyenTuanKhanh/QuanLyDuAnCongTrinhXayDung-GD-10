@@ -55,12 +55,12 @@
             label1 = new Label();
             groupBox2 = new GroupBox();
             dgvKhachHang = new DataGridView();
-            iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            tenCongTyDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            maSoThueDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            diaChiDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            soDienThoaiDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nguoiDaiDienDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            Idcol = new DataGridViewTextBoxColumn();
+            TenCongTy = new DataGridViewTextBoxColumn();
+            MaSothue = new DataGridViewTextBoxColumn();
+            DiaChi = new DataGridViewTextBoxColumn();
+            SoDienThoai = new DataGridViewTextBoxColumn();
+            NguoiDaiDien = new DataGridViewTextBoxColumn();
             khachHangBindingSource = new BindingSource(components);
             khoiTaoMoiBindingSource = new BindingSource(components);
             groupBox1.SuspendLayout();
@@ -322,6 +322,7 @@
             dgvKhachHang.AllowUserToDeleteRows = false;
             dgvKhachHang.AutoGenerateColumns = false;
             dgvKhachHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvKhachHang.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvKhachHang.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaptionText;
@@ -332,7 +333,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvKhachHang.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvKhachHang.ColumnHeadersHeight = 29;
-            dgvKhachHang.Columns.AddRange(new DataGridViewColumn[] { iDDataGridViewTextBoxColumn, tenCongTyDataGridViewTextBoxColumn, maSoThueDataGridViewTextBoxColumn, diaChiDataGridViewTextBoxColumn, soDienThoaiDataGridViewTextBoxColumn, nguoiDaiDienDataGridViewTextBoxColumn });
+            dgvKhachHang.Columns.AddRange(new DataGridViewColumn[] { Idcol, TenCongTy, MaSothue, DiaChi, SoDienThoai, NguoiDaiDien });
             dgvKhachHang.DataSource = khachHangBindingSource;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.ButtonHighlight;
@@ -348,61 +349,57 @@
             dgvKhachHang.Size = new Size(1259, 435);
             dgvKhachHang.TabIndex = 0;
             // 
-            // iDDataGridViewTextBoxColumn
+            // Idcol
             // 
-            iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            iDDataGridViewTextBoxColumn.FillWeight = 64.17112F;
-            iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            iDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            Idcol.DataPropertyName = "ID";
+            Idcol.FillWeight = 64.17112F;
+            Idcol.HeaderText = "ID";
+            Idcol.MinimumWidth = 6;
+            Idcol.Name = "Idcol";
             // 
-            // tenCongTyDataGridViewTextBoxColumn
+            // TenCongTy
             // 
-            tenCongTyDataGridViewTextBoxColumn.DataPropertyName = "TenCongTy";
-            tenCongTyDataGridViewTextBoxColumn.FillWeight = 107.165771F;
-            tenCongTyDataGridViewTextBoxColumn.HeaderText = "Tên Công Ty";
-            tenCongTyDataGridViewTextBoxColumn.MinimumWidth = 6;
-            tenCongTyDataGridViewTextBoxColumn.Name = "tenCongTyDataGridViewTextBoxColumn";
+            TenCongTy.DataPropertyName = "TenCongTy";
+            TenCongTy.FillWeight = 107.165771F;
+            TenCongTy.HeaderText = "Tên Công Ty";
+            TenCongTy.MinimumWidth = 6;
+            TenCongTy.Name = "TenCongTy";
             // 
-            // maSoThueDataGridViewTextBoxColumn
+            // MaSothue
             // 
-            maSoThueDataGridViewTextBoxColumn.DataPropertyName = "MaSoThue";
-            maSoThueDataGridViewTextBoxColumn.FillWeight = 107.165771F;
-            maSoThueDataGridViewTextBoxColumn.HeaderText = "Mã Số Thuế";
-            maSoThueDataGridViewTextBoxColumn.MinimumWidth = 6;
-            maSoThueDataGridViewTextBoxColumn.Name = "maSoThueDataGridViewTextBoxColumn";
+            MaSothue.DataPropertyName = "MaSoThue";
+            MaSothue.FillWeight = 107.165771F;
+            MaSothue.HeaderText = "Mã Số Thuế";
+            MaSothue.MinimumWidth = 6;
+            MaSothue.Name = "MaSothue";
             // 
-            // diaChiDataGridViewTextBoxColumn
+            // DiaChi
             // 
-            diaChiDataGridViewTextBoxColumn.DataPropertyName = "DiaChi";
-            diaChiDataGridViewTextBoxColumn.FillWeight = 107.165771F;
-            diaChiDataGridViewTextBoxColumn.HeaderText = "Địa Chỉ";
-            diaChiDataGridViewTextBoxColumn.MinimumWidth = 6;
-            diaChiDataGridViewTextBoxColumn.Name = "diaChiDataGridViewTextBoxColumn";
+            DiaChi.DataPropertyName = "DiaChi";
+            DiaChi.FillWeight = 107.165771F;
+            DiaChi.HeaderText = "Địa Chỉ";
+            DiaChi.MinimumWidth = 6;
+            DiaChi.Name = "DiaChi";
             // 
-            // soDienThoaiDataGridViewTextBoxColumn
+            // SoDienThoai
             // 
-            soDienThoaiDataGridViewTextBoxColumn.DataPropertyName = "SoDienThoai";
-            soDienThoaiDataGridViewTextBoxColumn.FillWeight = 107.165771F;
-            soDienThoaiDataGridViewTextBoxColumn.HeaderText = "Số Điện Thoại";
-            soDienThoaiDataGridViewTextBoxColumn.MinimumWidth = 6;
-            soDienThoaiDataGridViewTextBoxColumn.Name = "soDienThoaiDataGridViewTextBoxColumn";
+            SoDienThoai.DataPropertyName = "SoDienThoai";
+            SoDienThoai.FillWeight = 107.165771F;
+            SoDienThoai.HeaderText = "Số Điện Thoại";
+            SoDienThoai.MinimumWidth = 6;
+            SoDienThoai.Name = "SoDienThoai";
             // 
-            // nguoiDaiDienDataGridViewTextBoxColumn
+            // NguoiDaiDien
             // 
-            nguoiDaiDienDataGridViewTextBoxColumn.DataPropertyName = "NguoiDaiDien";
-            nguoiDaiDienDataGridViewTextBoxColumn.FillWeight = 107.165771F;
-            nguoiDaiDienDataGridViewTextBoxColumn.HeaderText = "Người Đại Diện";
-            nguoiDaiDienDataGridViewTextBoxColumn.MinimumWidth = 6;
-            nguoiDaiDienDataGridViewTextBoxColumn.Name = "nguoiDaiDienDataGridViewTextBoxColumn";
+            NguoiDaiDien.DataPropertyName = "NguoiDaiDien";
+            NguoiDaiDien.FillWeight = 107.165771F;
+            NguoiDaiDien.HeaderText = "Người Đại Diện";
+            NguoiDaiDien.MinimumWidth = 6;
+            NguoiDaiDien.Name = "NguoiDaiDien";
             // 
             // khachHangBindingSource
             // 
             khachHangBindingSource.DataSource = typeof(Data.KhachHang);
-            // 
-            // khoiTaoMoiBindingSource
-            // 
-           // khoiTaoMoiBindingSource.DataSource = typeof(Migrations.KhoiTaoMoi);
             // 
             // frmKhachHang
             // 
@@ -449,13 +446,13 @@
         private DataGridView dgvKhachHang;
         private BindingSource khachHangBindingSource;
         private BindingSource khoiTaoMoiBindingSource;
-        private DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn tenCongTyDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn maSoThueDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn diaChiDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn soDienThoaiDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nguoiDaiDienDataGridViewTextBoxColumn;
         private TextBox txtTimKiem;
         private Label label9;
+        private DataGridViewTextBoxColumn Idcol;
+        private DataGridViewTextBoxColumn TenCongTy;
+        private DataGridViewTextBoxColumn MaSothue;
+        private DataGridViewTextBoxColumn DiaChi;
+        private DataGridViewTextBoxColumn SoDienThoai;
+        private DataGridViewTextBoxColumn NguoiDaiDien;
     }
 }

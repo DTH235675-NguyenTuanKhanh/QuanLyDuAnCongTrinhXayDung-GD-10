@@ -12,4 +12,14 @@
 
         public virtual NhanVien NhanVien { get; set; } = null!;
     }
+    public class DanhSachBangLuong
+    {
+        public int ID { get; set; } // Hoặc MaNV tùy database của bạn
+        public string TenNhanVien { get; set; }
+        public int Thang { get; set; }
+        public int Nam { get; set; }
+        public int SoNgayCong { get; set; }
+        public decimal TongPhuCap { get; set; }
+        public decimal ThucLinh { get; set; }
+    }
 }

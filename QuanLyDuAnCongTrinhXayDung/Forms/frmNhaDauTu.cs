@@ -33,14 +33,14 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             btnXuat.Enabled = !b;
             txtTenNhaDauTu.Enabled = b;
             txtDiaChi.Enabled = b;
-            txtDienThoai.Enabled = b;
+            txtSoDienThoai.Enabled = b;
             txtMaSoThue.Enabled = b;
         }
         private void ClearText()
         {
             txtTenNhaDauTu.DataBindings.Clear();
             txtDiaChi.DataBindings.Clear();
-            txtDienThoai.DataBindings.Clear();
+            txtSoDienThoai.DataBindings.Clear();
             txtMaSoThue.DataBindings.Clear();
         }
 
@@ -85,7 +85,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             bindingSource.DataSource = ndt;
             txtTenNhaDauTu.DataBindings.Add("Text", bindingSource, "TenNhaDauTu", false, DataSourceUpdateMode.Never);
             txtDiaChi.DataBindings.Add("Text", bindingSource, "DiaChi", false, DataSourceUpdateMode.Never);
-            txtDienThoai.DataBindings.Add("Text", bindingSource, "DienThoai", false, DataSourceUpdateMode.Never);
+            txtSoDienThoai.DataBindings.Add("Text", bindingSource, "SoDienThoai", false, DataSourceUpdateMode.Never);
             txtMaSoThue.DataBindings.Add("Text", bindingSource, "MaSoThue", false, DataSourceUpdateMode.Never);
             dataGridView.DataSource = bindingSource;
         }

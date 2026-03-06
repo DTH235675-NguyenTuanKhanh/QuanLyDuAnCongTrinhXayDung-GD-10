@@ -34,7 +34,6 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             btnXoa.Enabled = !b;
             btnLuu.Enabled = b;
             btnHuyBo.Enabled = b;
-            dgvKhachHang.Enabled = b;
             txtTenCongTy.Enabled = b;
             txtDiaChi.Enabled = b;
             txtDienThoai.Enabled = b;
@@ -58,23 +57,30 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
         }
         private void frmKhachHang_Load(object sender, EventArgs e)
         {
+            // 1. Thiết lập trạng thái ban đầu (Đảm bảo Grid không bị Enabled = false trong này)
             BatTatChucNang(false);
-            dgvKhachHang.AutoGenerateColumns = false;
-
-            //Hien thi du lieu
-            List<KhachHang> kh = new List<KhachHang>();
-            kh = context.KhachHang.ToList();
-            BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = kh;
-            // Gán BindingSource cho DataGridView
             ClearText();
-            txtTenCongTy.DataBindings.Add("Text", bindingSource, "TenCongTy", false, DataSourceUpdateMode.Never);
-            txtNguoiDaiDien.DataBindings.Add("Text", bindingSource, "NguoiDaiDien", false, DataSourceUpdateMode.Never);
-            txtDiaChi.DataBindings.Add("Text", bindingSource, "DiaChi", false, DataSourceUpdateMode.Never);
-            txtDienThoai.DataBindings.Add("Text", bindingSource, "SoDienThoai", false, DataSourceUpdateMode.Never);
-            txtMaSoThue.DataBindings.Add("Text", bindingSource, "MaSoThue", false, DataSourceUpdateMode.Never);
+
+            // 2. Cấu hình Grid
+            dgvKhachHang.AutoGenerateColumns = false;
+            // Quan trọng: Phải cho phép chọn dòng
+            dgvKhachHang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            
+            // 4. Lấy dữ liệu và dùng BindingSource (CHÌA KHÓA Ở ĐÂY)
+            var danhSachkh = context.KhachHang.ToList();
+            BindingSource bindingSource = new BindingSource();
+            bindingSource.DataSource = danhSachkh;
+
+            // 5. Thiết lập Binding cho các TextBox (Formatting = true để dữ liệu mượt hơn)
+            txtTenCongTy.DataBindings.Add("Text", bindingSource, "TenCongTy", true, DataSourceUpdateMode.Never);
+            txtNguoiDaiDien.DataBindings.Add("Text", bindingSource, "NguoiDaiDien", true, DataSourceUpdateMode.Never);
+            txtDiaChi.DataBindings.Add("Text", bindingSource, "DiaChi", true, DataSourceUpdateMode.Never);
+            txtDienThoai.DataBindings.Add("Text", bindingSource, "SoDienThoai", true, DataSourceUpdateMode.Never);
+            txtMaSoThue.DataBindings.Add("Text", bindingSource, "MaSoThue", true, DataSourceUpdateMode.Never);
+
+            // 6. Gán nguồn dữ liệu DUY NHẤT cho Grid
+            // TUYỆT ĐỐI KHÔNG gán dgvKhachHang.DataSource = context.KhachHang.ToList() sau dòng này
             dgvKhachHang.DataSource = bindingSource;
-            dgvKhachHang.DataSource = context.KhachHang.ToList();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -89,7 +95,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
         {
             xulyThem = false;
             BatTatChucNang(true);
-            id = Convert.ToInt32(dgvKhachHang.CurrentRow.Cells["ID"].Value);
+            id = Convert.ToInt32(dgvKhachHang.CurrentRow.Cells["Idcol"].Value);
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -138,7 +144,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
         {
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa khách hàng này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                int id = Convert.ToInt32(dgvKhachHang.CurrentRow.Cells["ID"].Value);
+                int id = Convert.ToInt32(dgvKhachHang.CurrentRow.Cells["Idcol"].Value);
                 KhachHang kh = context.KhachHang.Find(id);
                 if (kh != null)
                 {

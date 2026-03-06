@@ -43,7 +43,7 @@
             btnThem = new Button();
             txtMaSoThue = new TextBox();
             label6 = new Label();
-            txtDienThoai = new TextBox();
+            txtSoDienThoai = new TextBox();
             label3 = new Label();
             txtDiaChi = new TextBox();
             label2 = new Label();
@@ -51,7 +51,6 @@
             label1 = new Label();
             groupBox2 = new GroupBox();
             dataGridView = new DataGridView();
-            Id = new DataGridViewTextBoxColumn();
             TenNhaDauTu = new DataGridViewTextBoxColumn();
             MaSoThue = new DataGridViewTextBoxColumn();
             DiaChi = new DataGridViewTextBoxColumn();
@@ -76,7 +75,7 @@
             groupBox1.Controls.Add(btnThem);
             groupBox1.Controls.Add(txtMaSoThue);
             groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(txtDienThoai);
+            groupBox1.Controls.Add(txtSoDienThoai);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(txtDiaChi);
             groupBox1.Controls.Add(label2);
@@ -211,12 +210,12 @@
             label6.TabIndex = 6;
             label6.Text = "Mã Số Thuế: ";
             // 
-            // txtDienThoai
+            // txtSoDienThoai
             // 
-            txtDienThoai.Location = new Point(818, 94);
-            txtDienThoai.Name = "txtDienThoai";
-            txtDienThoai.Size = new Size(425, 34);
-            txtDienThoai.TabIndex = 5;
+            txtSoDienThoai.Location = new Point(818, 94);
+            txtSoDienThoai.Name = "txtSoDienThoai";
+            txtSoDienThoai.Size = new Size(425, 34);
+            txtSoDienThoai.TabIndex = 5;
             // 
             // label3
             // 
@@ -276,6 +275,7 @@
             dataGridView.AllowUserToDeleteRows = false;
             dataGridView.AutoGenerateColumns = false;
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaptionText;
@@ -286,7 +286,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView.ColumnHeadersHeight = 29;
-            dataGridView.Columns.AddRange(new DataGridViewColumn[] { Id, TenNhaDauTu, MaSoThue, DiaChi, SoDienThoai });
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] { TenNhaDauTu, MaSoThue, DiaChi, SoDienThoai });
             dataGridView.DataSource = nhaDauTuBindingSource;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.ButtonHighlight;
@@ -301,15 +301,6 @@
             dataGridView.RowHeadersWidth = 51;
             dataGridView.Size = new Size(1259, 429);
             dataGridView.TabIndex = 0;
-            // 
-            // Id
-            // 
-            Id.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Id.DataPropertyName = "ID";
-            Id.HeaderText = "ID";
-            Id.MinimumWidth = 6;
-            Id.Name = "Id";
-            Id.Width = 50;
             // 
             // TenNhaDauTu
             // 
@@ -385,7 +376,7 @@
         private Label label5;
         private TextBox txtMaSoThue;
         private Label label6;
-        private TextBox txtDienThoai;
+        private TextBox txtSoDienThoai;
         private Label label3;
         private TextBox txtDiaChi;
         private Label label2;
@@ -393,11 +384,10 @@
         private Label label1;
         private GroupBox groupBox2;
         private DataGridView dataGridView;
-        private DataGridViewTextBoxColumn Id;
+        private BindingSource nhaDauTuBindingSource;
         private DataGridViewTextBoxColumn TenNhaDauTu;
         private DataGridViewTextBoxColumn MaSoThue;
         private DataGridViewTextBoxColumn DiaChi;
         private DataGridViewTextBoxColumn SoDienThoai;
-        private BindingSource nhaDauTuBindingSource;
     }
 }

@@ -55,14 +55,14 @@
             label1 = new Label();
             groupBox2 = new GroupBox();
             dataGridView = new DataGridView();
-            Id = new DataGridViewTextBoxColumn();
+            bangLuongBindingSource = new BindingSource(components);
+            colID = new DataGridViewTextBoxColumn();
             NhanVien = new DataGridViewTextBoxColumn();
             Thang = new DataGridViewTextBoxColumn();
             Nam = new DataGridViewTextBoxColumn();
             SoNgayCong = new DataGridViewTextBoxColumn();
             TongPhuCap = new DataGridViewTextBoxColumn();
             ThucLinh = new DataGridViewTextBoxColumn();
-            bangLuongBindingSource = new BindingSource(components);
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
@@ -337,7 +337,7 @@
             dataGridView.AutoGenerateColumns = false;
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Columns.AddRange(new DataGridViewColumn[] { Id, NhanVien, Thang, Nam, SoNgayCong, TongPhuCap, ThucLinh });
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] { colID, NhanVien, Thang, Nam, SoNgayCong, TongPhuCap, ThucLinh });
             dataGridView.DataSource = bangLuongBindingSource;
             dataGridView.Location = new Point(6, 33);
             dataGridView.Name = "dataGridView";
@@ -345,20 +345,22 @@
             dataGridView.Size = new Size(1167, 382);
             dataGridView.TabIndex = 0;
             // 
-            // Id
+            // bangLuongBindingSource
             // 
-            Id.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Id.DataPropertyName = "ID";
-            Id.FillWeight = 374.331482F;
-            Id.HeaderText = "ID";
-            Id.MinimumWidth = 6;
-            Id.Name = "Id";
-            Id.Width = 50;
+            bangLuongBindingSource.DataSource = typeof(Data.BangLuong);
+            // 
+            // colID
+            // 
+            colID.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            colID.DataPropertyName = "ID";
+            colID.HeaderText = "ID";
+            colID.MinimumWidth = 6;
+            colID.Name = "colID";
+            colID.Width = 50;
             // 
             // NhanVien
             // 
             NhanVien.DataPropertyName = "NhanVien";
-            NhanVien.FillWeight = 54.2780762F;
             NhanVien.HeaderText = "Nhân Viên";
             NhanVien.MinimumWidth = 6;
             NhanVien.Name = "NhanVien";
@@ -409,10 +411,6 @@
             ThucLinh.MinimumWidth = 6;
             ThucLinh.Name = "ThucLinh";
             // 
-            // bangLuongBindingSource
-            // 
-            bangLuongBindingSource.DataSource = typeof(Data.BangLuong);
-            // 
             // frmBangLuong
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -456,16 +454,17 @@
         private Label label4;
         private GroupBox groupBox2;
         private DataGridView dataGridView;
-        private DataGridViewTextBoxColumn Id;
+        private BindingSource bangLuongBindingSource;
+        private ComboBox cboNhanVien;
+        private TextBox txtLuongCoBan;
+        private Label label7;
+        private DataGridViewTextBoxColumn TenNhanVien;
+        private DataGridViewTextBoxColumn colID;
         private DataGridViewTextBoxColumn NhanVien;
         private DataGridViewTextBoxColumn Thang;
         private DataGridViewTextBoxColumn Nam;
         private DataGridViewTextBoxColumn SoNgayCong;
         private DataGridViewTextBoxColumn TongPhuCap;
         private DataGridViewTextBoxColumn ThucLinh;
-        private BindingSource bangLuongBindingSource;
-        private ComboBox cboNhanVien;
-        private TextBox txtLuongCoBan;
-        private Label label7;
     }
 }
