@@ -24,6 +24,24 @@ namespace QuanLyDuAnCongTrinhXayDung.Data
 
 
         public virtual ObservableCollectionListSource<PhanCong> PhanCong { get; } = new();
-        public virtual ObservableCollectionListSource<VatTuChiTiet> VatTuChiTiet { get; } = new();
+        public virtual ObservableCollectionListSource<PhanPhoiChiTiet> PhanPhoiChiTiet { get; } = new();
+    }
+    public class  DanhSachDuAn
+    {
+        public int ID { get; set; }
+        public string TenDuAn { get; set; }
+        public string? DiaDiem { get; set; }
+        public DateTime NgayBatDau { get; set; }
+        public DateTime NgayKetThuc { get; set; }
+        public decimal NganSach { get; set; }
+        public int LoaiDuAnID { get; set; }
+
+        public string TenLoai { get; set; } // Tên loại dự án để hiển thị
+
+        // Khóa ngoại
+        public int KhachHangID { get; set; }
+        public string TenKhachHang { get; set; } // Tên khách hàng để hiển thị
+        public int NhaDauTuID { get; set; }
+        public string TenNhaDauTu { get; set; } // Tên nhà đầu tư để hiển thị
     }
 }

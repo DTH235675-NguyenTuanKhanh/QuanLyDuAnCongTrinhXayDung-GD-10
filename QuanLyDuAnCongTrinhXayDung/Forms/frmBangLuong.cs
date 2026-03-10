@@ -23,8 +23,8 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
         public void LayNhanVienVaoComboBox()
         {
             List<NhanVien> dsNhanVien = context.NhanVien.ToList();
-            cboNhanVien.DataSource = dsNhanVien;
-            cboNhanVien.DisplayMember = "HoaVaTen";
+            cboNhanVien.DataSource = dsNhanVien;           
+            cboNhanVien.DisplayMember = "HoVaTen";
             cboNhanVien.ValueMember = "ID";
         }
         public void layLuongCoBan()
@@ -62,10 +62,10 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             txtTongPhuCap.Enabled = b;
             txtThucLinh.Enabled = b;
             txtLuongCoBan.Enabled = b;
+            dataGridView.Enabled = !b;
         }
         private void ClearText()
         {
-            cboNhanVien.Text = "";
             txtNam.DataBindings.Clear();
             txtThang.DataBindings.Clear();
             txtSoNgayCong.DataBindings.Clear();
@@ -88,17 +88,16 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
         private void frmBangLuong_Load(object sender, EventArgs e)
         {
             BatTatChucNang(false);
-            ClearText();
+            LayNhanVienVaoComboBox(); // Đảm bảo nạp NhanVien trước
 
-            // 1. Nạp danh sách NV vào combo
-            LayNhanVienVaoComboBox();
-
-            // 2. Lấy dữ liệu phẳng hóa
             dataGridView.AutoGenerateColumns = false;
-            var dsLuong = context.BangLuong.Select(r => new {
-                id = r.ID,
-                NhanVienID = r.NhanVien.ID,
-                NhanVien = r.NhanVien.HoVaTen, // Lấy từ thuộc tính HoVaTen
+
+            // SỬA TẠI ĐÂY: Sử dụng Class DanhSachBangLuong thay vì kiểu ẩn danh
+            List<DanhSachBangLuong> ds = context.BangLuong.Select(r => new DanhSachBangLuong
+            {
+                ID = r.ID,
+                NhanVienID = r.NhanVienID, // Khóa ngoại kết nối với ComboBox
+                TenNhanVien = r.NhanVien.HoVaTen, // Dùng để hiển thị hoặc kiểm tra
                 Thang = r.Thang,
                 Nam = r.Nam,
                 SoNgayCong = r.SoNgayCong,
@@ -107,11 +106,15 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             }).ToList();
 
             BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = dsLuong;
+            bindingSource.DataSource = ds;
 
-            // 3. Binding ComboBox (Kết nối ID của bảng lương với ID của combobox)
+            // Binding ComboBox (Đảm bảo NhanVienID khớp với ValueMember của ComboBox)
             cboNhanVien.DataBindings.Clear();
             cboNhanVien.DataBindings.Add("SelectedValue", bindingSource, "NhanVienID", true, DataSourceUpdateMode.Never);
+
+            // Binding các TextBox khác
+            txtThang.DataBindings.Clear();
+            txtThang.DataBindings.Add("Text", bindingSource, "Thang", true, DataSourceUpdateMode.Never);
 
             // 4. Binding các TextBox
             txtThang.DataBindings.Clear();

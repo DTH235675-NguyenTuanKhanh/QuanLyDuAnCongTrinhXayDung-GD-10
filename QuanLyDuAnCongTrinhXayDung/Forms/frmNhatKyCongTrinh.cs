@@ -35,6 +35,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             txtGhiChu.Enabled = b;
             txtNoiDungCongViec.Enabled = b;
             dtpNgayGhi.Enabled = b;
+            dataGridView.Enabled = !b;
         }
         private void ClearText()
         {

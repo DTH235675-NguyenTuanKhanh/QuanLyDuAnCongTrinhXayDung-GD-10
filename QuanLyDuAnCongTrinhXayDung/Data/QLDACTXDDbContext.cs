@@ -12,7 +12,8 @@ namespace QuanLyDuAnCongTrinhXayDung.Data
         public DbSet<PhanCong> PhanCong { get; set; }
         public DbSet<CongViec> CongViec { get; set; }
         public DbSet<VatTu> VatTu { get; set; }
-        public DbSet<VatTuChiTiet> VatTuChiTiet { get; set; }
+        public DbSet<PhanPhoi> PhanPhoi { get; set; }
+        public DbSet<PhanPhoiChiTiet> PhanPhoiChiTiet { get; set; }
         public DbSet<BangLuong> BangLuong { get; set; }
         public DbSet<LoaiDuAn> LoaiDuAn { get; set; }
         public DbSet<NhatKyCongTrinh> NhatKyCongTrinh { get; set; }

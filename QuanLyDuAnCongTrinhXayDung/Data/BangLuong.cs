@@ -15,6 +15,7 @@
     public class DanhSachBangLuong
     {
         public int ID { get; set; } // Hoặc MaNV tùy database của bạn
+        public int NhanVienID { get; set; }
         public string TenNhanVien { get; set; }
         public int Thang { get; set; }
         public int Nam { get; set; }

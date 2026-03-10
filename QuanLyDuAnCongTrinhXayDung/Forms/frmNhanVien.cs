@@ -57,6 +57,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             btnTimKiem.Enabled = !giaTri;
             btnNhap.Enabled = !giaTri;
             btnXuat.Enabled = !giaTri;
+            dgvNhanVien.Enabled = !giaTri;
         }
         private void dgvNhanVien_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {

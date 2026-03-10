@@ -1,6 +1,6 @@
 ﻿namespace QuanLyDuAnCongTrinhXayDung.Forms
 {
-    partial class frmBangLuong
+    partial class frmVatTu
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
-            txtLuongCoBan = new TextBox();
-            label7 = new Label();
-            cboNhanVien = new ComboBox();
-            txtSoNgayCong = new TextBox();
+            numDonGia = new NumericUpDown();
+            btnDoiAnh = new Button();
             label4 = new Label();
+            ptbHinhAnh = new PictureBox();
+            txtTenVatTu = new TextBox();
             btnNhap = new Button();
             btnXuat = new Button();
             btnThoat = new Button();
@@ -46,38 +45,41 @@
             btnXoa = new Button();
             btnSua = new Button();
             btnThem = new Button();
-            txtThucLinh = new TextBox();
-            label5 = new Label();
-            txtTongPhuCap = new TextBox();
-            label6 = new Label();
-            txtNam = new TextBox();
+            txtDonViTinh = new TextBox();
             label3 = new Label();
-            txtThang = new TextBox();
             label2 = new Label();
             label1 = new Label();
             groupBox2 = new GroupBox();
             dataGridView = new DataGridView();
             colID = new DataGridViewTextBoxColumn();
-            NhanVien = new DataGridViewTextBoxColumn();
-            Thang = new DataGridViewTextBoxColumn();
-            Nam = new DataGridViewTextBoxColumn();
-            SoNgayCong = new DataGridViewTextBoxColumn();
-            TongPhuCap = new DataGridViewTextBoxColumn();
-            ThucLinh = new DataGridViewTextBoxColumn();
-            bangLuongBindingSource = new BindingSource(components);
+            colTenVatTu = new DataGridViewTextBoxColumn();
+            colDonViTinh = new DataGridViewTextBoxColumn();
+            colDonGia = new DataGridViewTextBoxColumn();
+            colHinhAnh = new DataGridViewImageColumn();
+            vatTuBindingSource = new BindingSource(components);
+            phanPhoiChiTietBindingSource = new BindingSource(components);
+            phanPhoiBindingSource = new BindingSource(components);
+            chiTietPhanPhoiBindingSource = new BindingSource(components);
+            phanPhoiBindingSource1 = new BindingSource(components);
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numDonGia).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ptbHinhAnh).BeginInit();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)bangLuongBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)vatTuBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)phanPhoiChiTietBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)phanPhoiBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chiTietPhanPhoiBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)phanPhoiBindingSource1).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(txtLuongCoBan);
-            groupBox1.Controls.Add(label7);
-            groupBox1.Controls.Add(cboNhanVien);
-            groupBox1.Controls.Add(txtSoNgayCong);
+            groupBox1.Controls.Add(numDonGia);
+            groupBox1.Controls.Add(btnDoiAnh);
             groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(ptbHinhAnh);
+            groupBox1.Controls.Add(txtTenVatTu);
             groupBox1.Controls.Add(btnNhap);
             groupBox1.Controls.Add(btnXuat);
             groupBox1.Controls.Add(btnThoat);
@@ -87,68 +89,68 @@
             groupBox1.Controls.Add(btnXoa);
             groupBox1.Controls.Add(btnSua);
             groupBox1.Controls.Add(btnThem);
-            groupBox1.Controls.Add(txtThucLinh);
-            groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(txtTongPhuCap);
-            groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(txtNam);
+            groupBox1.Controls.Add(txtDonViTinh);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(txtThang);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(1179, 275);
-            groupBox1.TabIndex = 2;
+            groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Thông tin Lương";
+            groupBox1.Text = "Thông tin Vật tư";
             // 
-            // txtLuongCoBan
+            // numDonGia
             // 
-            txtLuongCoBan.Location = new Point(839, 91);
-            txtLuongCoBan.Name = "txtLuongCoBan";
-            txtLuongCoBan.Size = new Size(325, 34);
-            txtLuongCoBan.TabIndex = 32;
+            numDonGia.Location = new Point(132, 89);
+            numDonGia.Maximum = new decimal(new int[] { 1000000000, 0, 0, 0 });
+            numDonGia.Name = "numDonGia";
+            numDonGia.Size = new Size(356, 34);
+            numDonGia.TabIndex = 37;
             // 
-            // label7
+            // btnDoiAnh
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(687, 91);
-            label7.Name = "label7";
-            label7.Size = new Size(143, 28);
-            label7.TabIndex = 31;
-            label7.Text = "Lương Cơ Bản: ";
-            // 
-            // cboNhanVien
-            // 
-            cboNhanVien.FormattingEnabled = true;
-            cboNhanVien.Location = new Point(169, 38);
-            cboNhanVien.Name = "cboNhanVien";
-            cboNhanVien.Size = new Size(491, 36);
-            cboNhanVien.TabIndex = 30;
-            // 
-            // txtSoNgayCong
-            // 
-            txtSoNgayCong.Location = new Point(468, 91);
-            txtSoNgayCong.Name = "txtSoNgayCong";
-            txtSoNgayCong.Size = new Size(192, 34);
-            txtSoNgayCong.TabIndex = 29;
+            btnDoiAnh.BackColor = Color.Fuchsia;
+            btnDoiAnh.ForeColor = Color.Black;
+            btnDoiAnh.Location = new Point(531, 108);
+            btnDoiAnh.Name = "btnDoiAnh";
+            btnDoiAnh.Size = new Size(110, 46);
+            btnDoiAnh.TabIndex = 36;
+            btnDoiAnh.Text = "Đổi ảnh";
+            btnDoiAnh.UseVisualStyleBackColor = false;
+            btnDoiAnh.Click += btnDoiAnh_Click;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(321, 91);
+            label4.Location = new Point(531, 39);
             label4.Name = "label4";
-            label4.Size = new Size(141, 28);
-            label4.TabIndex = 28;
-            label4.Text = "Số ngày công: ";
+            label4.Size = new Size(99, 28);
+            label4.TabIndex = 35;
+            label4.Text = "Hình ảnh: ";
+            // 
+            // ptbHinhAnh
+            // 
+            ptbHinhAnh.Location = new Point(659, 39);
+            ptbHinhAnh.Name = "ptbHinhAnh";
+            ptbHinhAnh.Size = new Size(165, 140);
+            ptbHinhAnh.SizeMode = PictureBoxSizeMode.Zoom;
+            ptbHinhAnh.TabIndex = 34;
+            ptbHinhAnh.TabStop = false;
+            // 
+            // txtTenVatTu
+            // 
+            txtTenVatTu.Location = new Point(132, 39);
+            txtTenVatTu.Name = "txtTenVatTu";
+            txtTenVatTu.Size = new Size(356, 34);
+            txtTenVatTu.TabIndex = 33;
             // 
             // btnNhap
             // 
             btnNhap.BackColor = Color.MediumSpringGreen;
             btnNhap.ForeColor = Color.Black;
-            btnNhap.Location = new Point(863, 148);
+            btnNhap.Location = new Point(1035, 145);
             btnNhap.Name = "btnNhap";
             btnNhap.Size = new Size(128, 46);
             btnNhap.TabIndex = 23;
@@ -159,7 +161,7 @@
             // 
             btnXuat.BackColor = Color.MediumSpringGreen;
             btnXuat.ForeColor = Color.Black;
-            btnXuat.Location = new Point(695, 148);
+            btnXuat.Location = new Point(867, 145);
             btnXuat.Name = "btnXuat";
             btnXuat.Size = new Size(129, 46);
             btnXuat.TabIndex = 22;
@@ -249,79 +251,39 @@
             btnThem.UseVisualStyleBackColor = false;
             btnThem.Click += btnThem_Click;
             // 
-            // txtThucLinh
+            // txtDonViTinh
             // 
-            txtThucLinh.Location = new Point(818, 46);
-            txtThucLinh.Name = "txtThucLinh";
-            txtThucLinh.Size = new Size(346, 34);
-            txtThucLinh.TabIndex = 9;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(695, 46);
-            label5.Name = "label5";
-            label5.Size = new Size(104, 28);
-            label5.TabIndex = 8;
-            label5.Text = "Thực Lĩnh: ";
-            // 
-            // txtTongPhuCap
-            // 
-            txtTongPhuCap.Location = new Point(468, 148);
-            txtTongPhuCap.Name = "txtTongPhuCap";
-            txtTongPhuCap.Size = new Size(192, 34);
-            txtTongPhuCap.TabIndex = 7;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(321, 145);
-            label6.Name = "label6";
-            label6.Size = new Size(141, 28);
-            label6.TabIndex = 6;
-            label6.Text = "Tổng phụ cấp: ";
-            // 
-            // txtNam
-            // 
-            txtNam.Location = new Point(101, 139);
-            txtNam.Name = "txtNam";
-            txtNam.Size = new Size(203, 34);
-            txtNam.TabIndex = 5;
+            txtDonViTinh.Location = new Point(132, 145);
+            txtDonViTinh.Name = "txtDonViTinh";
+            txtDonViTinh.Size = new Size(356, 34);
+            txtDonViTinh.TabIndex = 5;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Location = new Point(20, 145);
             label3.Name = "label3";
-            label3.Size = new Size(63, 28);
+            label3.Size = new Size(117, 28);
             label3.TabIndex = 4;
-            label3.Text = "Năm: ";
-            label3.Click += label3_Click;
-            // 
-            // txtThang
-            // 
-            txtThang.Location = new Point(101, 91);
-            txtThang.Name = "txtThang";
-            txtThang.Size = new Size(203, 34);
-            txtThang.TabIndex = 3;
+            label3.Text = "Đơn vị tính: ";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Location = new Point(20, 91);
             label2.Name = "label2";
-            label2.Size = new Size(75, 28);
+            label2.Size = new Size(90, 28);
             label2.TabIndex = 2;
-            label2.Text = "Tháng: ";
+            label2.Text = "Đơn giá: ";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Location = new Point(20, 42);
             label1.Name = "label1";
-            label1.Size = new Size(143, 28);
+            label1.Size = new Size(108, 28);
             label1.TabIndex = 0;
-            label1.Text = "Tên Nhân viên: ";
+            label1.Text = "Tên Vật tư: ";
             // 
             // groupBox2
             // 
@@ -330,7 +292,7 @@
             groupBox2.Location = new Point(12, 293);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(1179, 421);
-            groupBox2.TabIndex = 4;
+            groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách Lương";
             // 
@@ -338,25 +300,17 @@
             // 
             dataGridView.AutoGenerateColumns = false;
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] { colID, colTenVatTu, colDonViTinh, colDonGia, colHinhAnh });
+            dataGridView.DataSource = vatTuBindingSource;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
             dataGridViewCellStyle1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Columns.AddRange(new DataGridViewColumn[] { colID, NhanVien, Thang, Nam, SoNgayCong, TongPhuCap, ThucLinh });
-            dataGridView.DataSource = bangLuongBindingSource;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridView.Location = new Point(6, 33);
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersWidth = 51;
@@ -365,85 +319,81 @@
             // 
             // colID
             // 
-            colID.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             colID.DataPropertyName = "ID";
             colID.HeaderText = "ID";
             colID.MinimumWidth = 6;
             colID.Name = "colID";
-            colID.Width = 50;
             // 
-            // NhanVien
+            // colTenVatTu
             // 
-            NhanVien.DataPropertyName = "TenNhanVien";
-            NhanVien.HeaderText = "Nhân Viên";
-            NhanVien.MinimumWidth = 6;
-            NhanVien.Name = "NhanVien";
+            colTenVatTu.DataPropertyName = "TenVatTu";
+            colTenVatTu.HeaderText = "Tên Vật tư";
+            colTenVatTu.MinimumWidth = 6;
+            colTenVatTu.Name = "colTenVatTu";
             // 
-            // Thang
+            // colDonViTinh
             // 
-            Thang.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Thang.DataPropertyName = "Thang";
-            Thang.FillWeight = 54.2780762F;
-            Thang.HeaderText = "Tháng";
-            Thang.MinimumWidth = 6;
-            Thang.Name = "Thang";
-            Thang.Width = 125;
+            colDonViTinh.DataPropertyName = "DonViTinh";
+            colDonViTinh.HeaderText = "Đơn Vị Tính";
+            colDonViTinh.MinimumWidth = 6;
+            colDonViTinh.Name = "colDonViTinh";
             // 
-            // Nam
+            // colDonGia
             // 
-            Nam.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Nam.DataPropertyName = "Nam";
-            Nam.FillWeight = 54.2780762F;
-            Nam.HeaderText = "Năm";
-            Nam.MinimumWidth = 6;
-            Nam.Name = "Nam";
-            Nam.Width = 125;
+            colDonGia.DataPropertyName = "DonGia";
+            colDonGia.HeaderText = "Đơn Giá";
+            colDonGia.MinimumWidth = 6;
+            colDonGia.Name = "colDonGia";
             // 
-            // SoNgayCong
+            // colHinhAnh
             // 
-            SoNgayCong.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            SoNgayCong.DataPropertyName = "SoNgayCong";
-            SoNgayCong.FillWeight = 54.2780762F;
-            SoNgayCong.HeaderText = "Số Ngày Công";
-            SoNgayCong.MinimumWidth = 6;
-            SoNgayCong.Name = "SoNgayCong";
-            SoNgayCong.Width = 175;
+            colHinhAnh.DataPropertyName = "HinhAnh";
+            colHinhAnh.HeaderText = "HinhAnh";
+            colHinhAnh.MinimumWidth = 6;
+            colHinhAnh.Name = "colHinhAnh";
             // 
-            // TongPhuCap
+            // vatTuBindingSource
             // 
-            TongPhuCap.DataPropertyName = "TongPhuCap";
-            TongPhuCap.FillWeight = 54.2780762F;
-            TongPhuCap.HeaderText = "Tổng Phụ Cấp";
-            TongPhuCap.MinimumWidth = 6;
-            TongPhuCap.Name = "TongPhuCap";
+            vatTuBindingSource.DataSource = typeof(Data.VatTu);
             // 
-            // ThucLinh
+            // phanPhoiChiTietBindingSource
             // 
-            ThucLinh.DataPropertyName = "ThucLinh";
-            ThucLinh.FillWeight = 54.2780762F;
-            ThucLinh.HeaderText = "Thực Lĩnh";
-            ThucLinh.MinimumWidth = 6;
-            ThucLinh.Name = "ThucLinh";
+            phanPhoiChiTietBindingSource.DataSource = typeof(Data.PhanPhoiChiTiet);
             // 
-            // bangLuongBindingSource
+            // phanPhoiBindingSource
             // 
-            bangLuongBindingSource.DataSource = typeof(Data.BangLuong);
+            phanPhoiBindingSource.DataSource = typeof(Data.PhanPhoi);
             // 
-            // frmBangLuong
+            // chiTietPhanPhoiBindingSource
+            // 
+            chiTietPhanPhoiBindingSource.DataMember = "ChiTietPhanPhoi";
+            chiTietPhanPhoiBindingSource.DataSource = phanPhoiBindingSource;
+            // 
+            // phanPhoiBindingSource1
+            // 
+            phanPhoiBindingSource1.DataSource = typeof(Data.PhanPhoi);
+            // 
+            // frmVatTu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1200, 722);
+            ClientSize = new Size(1202, 774);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Name = "frmBangLuong";
-            Text = "Bảng Lương";
-            Load += frmBangLuong_Load;
+            Name = "frmVatTu";
+            Text = "Vật Tư";
+            Load += frmVatTu_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numDonGia).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ptbHinhAnh).EndInit();
             groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
-            ((System.ComponentModel.ISupportInitialize)bangLuongBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)vatTuBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)phanPhoiChiTietBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)phanPhoiBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chiTietPhanPhoiBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)phanPhoiBindingSource1).EndInit();
             ResumeLayout(false);
         }
 
@@ -459,30 +409,26 @@
         private Button btnXoa;
         private Button btnSua;
         private Button btnThem;
-        private TextBox txtThucLinh;
-        private Label label5;
-        private TextBox txtTongPhuCap;
-        private Label label6;
-        private TextBox txtNam;
+        private TextBox txtDonViTinh;
         private Label label3;
-        private TextBox txtThang;
         private Label label2;
         private Label label1;
-        private TextBox txtSoNgayCong;
+        private TextBox txtTenVatTu;
+        private Button btnDoiAnh;
         private Label label4;
+        private PictureBox ptbHinhAnh;
         private GroupBox groupBox2;
         private DataGridView dataGridView;
-        private BindingSource bangLuongBindingSource;
-        private ComboBox cboNhanVien;
-        private TextBox txtLuongCoBan;
-        private Label label7;
-        private DataGridViewTextBoxColumn TenNhanVien;
+        private BindingSource chiTietPhanPhoiBindingSource;
+        private BindingSource phanPhoiBindingSource;
+        private BindingSource phanPhoiChiTietBindingSource;
+        private BindingSource vatTuBindingSource;
+        private BindingSource phanPhoiBindingSource1;
+        private NumericUpDown numDonGia;
         private DataGridViewTextBoxColumn colID;
-        private DataGridViewTextBoxColumn NhanVien;
-        private DataGridViewTextBoxColumn Thang;
-        private DataGridViewTextBoxColumn Nam;
-        private DataGridViewTextBoxColumn SoNgayCong;
-        private DataGridViewTextBoxColumn TongPhuCap;
-        private DataGridViewTextBoxColumn ThucLinh;
+        private DataGridViewTextBoxColumn colTenVatTu;
+        private DataGridViewTextBoxColumn colDonViTinh;
+        private DataGridViewTextBoxColumn colDonGia;
+        private DataGridViewImageColumn colHinhAnh;
     }
 }

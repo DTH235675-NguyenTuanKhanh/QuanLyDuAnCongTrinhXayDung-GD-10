@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuanLyDuAnCongTrinhXayDung.Data;
 
@@ -11,9 +12,11 @@ using QuanLyDuAnCongTrinhXayDung.Data;
 namespace QuanLyDuAnCongTrinhXayDung.Migrations
 {
     [DbContext(typeof(QLDACTXDDbContext))]
-    partial class QLDACTXDDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260308152654_KhoiTaoMoi")]
+    partial class KhoiTaoMoi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -315,6 +318,9 @@ namespace QuanLyDuAnCongTrinhXayDung.Migrations
                     b.Property<string>("GhiChu")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("HinhAnh")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("NgayLap")
                         .HasColumnType("datetime2");
 
@@ -369,9 +375,6 @@ namespace QuanLyDuAnCongTrinhXayDung.Migrations
 
                     b.Property<string>("DonViTinh")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HinhAnh")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TenVatTu")

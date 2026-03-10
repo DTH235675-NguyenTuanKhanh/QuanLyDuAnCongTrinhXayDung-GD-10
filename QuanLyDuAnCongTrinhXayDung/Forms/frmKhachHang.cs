@@ -44,6 +44,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             txtDiaChi.Enabled = b;
             txtMaSoThue.Enabled = b;
             txtNguoiDaiDien.Enabled = b;
+            dgvKhachHang.Enabled = !b;
 
 
         }
@@ -65,7 +66,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             dgvKhachHang.AutoGenerateColumns = false;
             // Quan trọng: Phải cho phép chọn dòng
             dgvKhachHang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            
+
             // 4. Lấy dữ liệu và dùng BindingSource (CHÌA KHÓA Ở ĐÂY)
             var danhSachkh = context.KhachHang.ToList();
             BindingSource bindingSource = new BindingSource();
@@ -187,7 +188,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-           Close();
+            Close();
         }
 
         private void btnXuat_Click(object sender, EventArgs e)
@@ -253,6 +254,11 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                     MessageBox.Show("Nhập dữ liệu từ Excel thành công!");
                 }
             }
+        }
+
+        private void dgvKhachHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

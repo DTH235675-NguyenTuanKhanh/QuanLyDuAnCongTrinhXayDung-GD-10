@@ -32,6 +32,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             btnNhap.Enabled = !b;
             btnXuat.Enabled = !b;
             txtTenLoaiDuAn.Enabled = b;
+            dataGridView.Enabled = !b;
         }
 
         private void label2_Click(object sender, EventArgs e)

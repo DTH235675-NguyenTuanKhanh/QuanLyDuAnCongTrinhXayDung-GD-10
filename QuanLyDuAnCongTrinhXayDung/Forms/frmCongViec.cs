@@ -33,6 +33,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             btnNhap.Enabled = !b;
             btnXuat.Enabled = !b;
             txtTenCongViec.Enabled = b;
+            dataGridView.Enabled = !b;
         }
 
         private void frmCongViec_Load(object sender, EventArgs e)

@@ -35,6 +35,10 @@
             btnBangLuong = new Button();
             button1 = new Button();
             btnNhatKy = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            btnVatTu = new Button();
+            btnPhanPhoi = new Button();
             SuspendLayout();
             // 
             // NhanVien
@@ -107,11 +111,55 @@
             btnNhatKy.UseVisualStyleBackColor = true;
             btnNhatKy.Click += btnNhatKy_Click;
             // 
+            // button2
+            // 
+            button2.Location = new Point(544, 123);
+            button2.Name = "button2";
+            button2.Size = new Size(94, 29);
+            button2.TabIndex = 7;
+            button2.Text = "Dự án";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(101, 194);
+            button3.Name = "button3";
+            button3.Size = new Size(94, 29);
+            button3.TabIndex = 8;
+            button3.Text = "Phân công";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // btnVatTu
+            // 
+            btnVatTu.Location = new Point(235, 194);
+            btnVatTu.Name = "btnVatTu";
+            btnVatTu.Size = new Size(94, 29);
+            btnVatTu.TabIndex = 9;
+            btnVatTu.Text = "Vật tư";
+            btnVatTu.UseVisualStyleBackColor = true;
+            btnVatTu.Click += btnVatTu_Click;
+            // 
+            // btnPhanPhoi
+            // 
+            btnPhanPhoi.Location = new Point(389, 194);
+            btnPhanPhoi.Name = "btnPhanPhoi";
+            btnPhanPhoi.Size = new Size(94, 29);
+            btnPhanPhoi.TabIndex = 10;
+            btnPhanPhoi.Text = "Phân phối";
+            btnPhanPhoi.UseVisualStyleBackColor = true;
+            btnPhanPhoi.Click += btnPhanPhoi_Click;
+            // 
             // DangNhap
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnPhanPhoi);
+            Controls.Add(btnVatTu);
+            Controls.Add(button3);
+            Controls.Add(button2);
             Controls.Add(btnNhatKy);
             Controls.Add(button1);
             Controls.Add(btnBangLuong);
@@ -134,5 +182,9 @@
         private Button btnBangLuong;
         private Button button1;
         private Button btnNhatKy;
+        private Button button2;
+        private Button button3;
+        private Button btnVatTu;
+        private Button btnPhanPhoi;
     }
 }

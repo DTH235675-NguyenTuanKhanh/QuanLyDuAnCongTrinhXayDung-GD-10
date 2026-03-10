@@ -7,8 +7,9 @@ namespace QuanLyDuAnCongTrinhXayDung.Data
         public int ID { get; set; } 
         public string TenVatTu { get; set; } 
         public string DonViTinh { get; set; } 
-        public decimal DonGia { get; set; } 
+        public decimal DonGia { get; set; }
+        public string? HinhAnh { get; set; } // Đường dẫn hoặc URL đến hình ảnh liên quan đến phân phối
 
-        public virtual ObservableCollectionListSource<VatTuChiTiet> ChiPhiVatTu { get; } = new(); 
+        public virtual ObservableCollectionListSource<PhanPhoiChiTiet> PhanPhoiChiTiet { get;  } = new();
     }
 }
