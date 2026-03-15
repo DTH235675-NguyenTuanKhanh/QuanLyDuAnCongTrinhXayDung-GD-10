@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKhachHang));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKhachHang));
             groupBox1 = new GroupBox();
             txtTimKiem = new TextBox();
             label9 = new Label();
@@ -54,6 +54,7 @@
             label2 = new Label();
             txtTenCongTy = new TextBox();
             label1 = new Label();
+            pictureBox1 = new PictureBox();
             groupBox2 = new GroupBox();
             dgvKhachHang = new DataGridView();
             Idcol = new DataGridViewTextBoxColumn();
@@ -64,13 +65,12 @@
             NguoiDaiDien = new DataGridViewTextBoxColumn();
             khachHangBindingSource = new BindingSource(components);
             khoiTaoMoiBindingSource = new BindingSource(components);
-            pictureBox1 = new PictureBox();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvKhachHang).BeginInit();
             ((System.ComponentModel.ISupportInitialize)khachHangBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)khoiTaoMoiBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -310,6 +310,17 @@
             label1.TabIndex = 0;
             label1.Text = "Tên Công Ty: ";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(818, 27);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(439, 231);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 35;
+            pictureBox1.TabStop = false;
+            // 
             // groupBox2
             // 
             groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -317,7 +328,7 @@
             groupBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox2.Location = new Point(10, 293);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1265, 468);
+            groupBox2.Size = new Size(1265, 448);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách Khách Hàng";
@@ -350,11 +361,11 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvKhachHang.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvKhachHang.Location = new Point(0, 33);
+            dgvKhachHang.Location = new Point(6, 33);
             dgvKhachHang.Name = "dgvKhachHang";
             dgvKhachHang.RowHeadersWidth = 51;
             dgvKhachHang.SelectionMode = DataGridViewSelectionMode.CellSelect;
-            dgvKhachHang.Size = new Size(1259, 435);
+            dgvKhachHang.Size = new Size(1253, 409);
             dgvKhachHang.TabIndex = 0;
             dgvKhachHang.CellContentClick += dgvKhachHang_CellContentClick;
             // 
@@ -410,17 +421,6 @@
             // 
             khachHangBindingSource.DataSource = typeof(Data.KhachHang);
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(818, 27);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(439, 231);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 35;
-            pictureBox1.TabStop = false;
-            // 
             // frmKhachHang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -430,16 +430,16 @@
             Controls.Add(groupBox1);
             Name = "frmKhachHang";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "frmKhachHang";
+            Text = "KHÁCH HÀNG";
             WindowState = FormWindowState.Maximized;
             Load += frmKhachHang_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvKhachHang).EndInit();
             ((System.ComponentModel.ISupportInitialize)khachHangBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)khoiTaoMoiBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 

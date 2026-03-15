@@ -279,7 +279,6 @@
             // 
             // khoiTaoBindingSource
             // 
-            khoiTaoBindingSource.DataSource = typeof(Migrations.KhoiTao);
             // 
             // pictureBox1
             // 

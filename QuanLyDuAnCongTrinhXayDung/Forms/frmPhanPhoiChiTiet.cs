@@ -1,4 +1,5 @@
-﻿using QuanLyDuAnCongTrinhXayDung.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using QuanLyDuAnCongTrinhXayDung.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,22 +22,27 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             InitializeComponent();
             id = maPhanPhoi;
         }
+        public void LayDuAnVaoComboBox()
+        {
+            cboDuAn.DataSource = context.DuAn.ToList();
+            cboDuAn.ValueMember = "ID";
+            cboDuAn.DisplayMember = "TenDuAn";
+            cboDuAn.SelectedIndex = -1;
+        }
         public void LayVatTuVaoComboBox()
         {
             cboVatTu.DataSource = context.VatTu.ToList();
             cboVatTu.ValueMember = "ID";
             cboVatTu.DisplayMember = "TenVatTu";
-            cboVatTu.SelectedIndex = -1; // Không chọn gì lúc đầu
+            cboVatTu.SelectedIndex = -1;
         }
         public void BatTatChucNang()
         {
             btnXoa.Enabled = dataGridView.Rows.Count > 0;
-            // Bạn có thể thêm btnLuu.Enabled tại đây nếu cần
         }
 
         private void TinhTongChiPhiHienThoi()
         {
-            // Tính tổng tiền cho dòng đang nhập trên TextBox/Numeric
             decimal tongDong = numSoLuong.Value * numDonGia.Value;
             txtTongChiPhi.Text = tongDong.ToString("#,##0");
         }
@@ -44,33 +50,47 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
         private void frmPhanPhoiChiTiet_Load(object sender, EventArgs e)
         {
             LayVatTuVaoComboBox();
+            LayDuAnVaoComboBox();
             dataGridView.AutoGenerateColumns = false;
 
-            if (id != 0) // Chế độ Sửa: Load dữ liệu từ CSDL
+            if (id != 0)
             {
+                var phieu = context.PhanPhoi.FirstOrDefault(p => p.ID == id);
+                if (phieu != null)
+                {
+                    txtGhiChu.Text = phieu.GhiChu;
+                }
+                // Sử dụng Include để nạp các bảng liên quan (VatTu và PhanPhoi -> DuAn)
                 var query = context.PhanPhoiChiTiet
+                    .Include(r => r.VatTu)
+                    .Include(r => r.PhanPhoi)
+                        .ThenInclude(p => p.DuAn)
                     .Where(r => r.PhanPhoiID == id)
                     .Select(r => new DanhSachPhanPhoiChiTiet
                     {
                         ID = r.ID,
                         PhanPhoiID = r.PhanPhoiID,
                         VatTuID = r.VatTuID,
-                        TenVatTu = r.VatTu.TenVatTu,
+                        TenVatTu = r.VatTu != null ? r.VatTu.TenVatTu : "Không xác định",
+                        // Kiểm tra Null cho Dự án để tránh lỗi trắng bảng
+                        DuAnID = r.PhanPhoi.DuAnID,
+                        TenDuAn = (r.PhanPhoi != null && r.PhanPhoi.DuAn != null)
+                                  ? r.PhanPhoi.DuAn.TenDuAn
+                                  : "Chưa gán dự án",
                         SoLuong = r.SoLuong,
-                        DonGia = r.VatTu.DonGia,
-                        TongChiPhi = (decimal)r.SoLuong * r.VatTu.DonGia
+                        DonGia = r.DonGia,
+                        TongChiPhi = r.TongChiPhi
                     }).ToList();
 
-                // Nạp kết quả vào BindingList đã khai báo ở đầu Form
                 phanPhoiChiTiet = new BindingList<DanhSachPhanPhoiChiTiet>(query);
             }
             else
             {
-                // Nếu là thêm mới, đảm bảo danh sách được khởi tạo trống
                 phanPhoiChiTiet = new BindingList<DanhSachPhanPhoiChiTiet>();
             }
 
-            // QUAN TRỌNG: Dòng này phải nằm ngoài IF để Grid luôn nhận diện danh sách
+            // Làm mới Grid
+            dataGridView.DataSource = null;
             dataGridView.DataSource = phanPhoiChiTiet;
 
             BatTatChucNang();
@@ -78,170 +98,131 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
 
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
-            if (cboVatTu.SelectedValue == null)
+            // Kiểm tra cả Vật tư và Dự án
+            if (cboVatTu.SelectedValue == null || cboDuAn.SelectedValue == null || numSoLuong.Value <= 0)
             {
-                MessageBox.Show("Vui lòng chọn vật tư.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (numSoLuong.Value <= 0)
-            {
-                MessageBox.Show("Số lượng phải lớn hơn 0.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (numDonGia.Value <= 0)
-            {
-                MessageBox.Show("Đơn giá phải lớn hơn 0.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng chọn Dự án, Vật tư và nhập Số lượng!", "Thông báo");
                 return;
             }
 
-            try
+            int maVatTu = Convert.ToInt32(cboVatTu.SelectedValue);
+            int maDuAn = Convert.ToInt32(cboDuAn.SelectedValue);
+
+            // Tìm xem vật tư này đã tồn tại trong danh sách tạm chưa
+            var chiTiet = phanPhoiChiTiet.FirstOrDefault(x => x.VatTuID == maVatTu);
+
+            if (chiTiet != null)
             {
-                // 2. Lấy ID vật tư đang chọn
-                int maVatTu = Convert.ToInt32(cboVatTu.SelectedValue.ToString());
+                // Cập nhật dòng đã tồn tại
+                chiTiet.SoLuong = (int)numSoLuong.Value;
+                chiTiet.DonGia = numDonGia.Value;
+                chiTiet.TongChiPhi = numSoLuong.Value * numDonGia.Value;
+                chiTiet.DuAnID = maDuAn;
+                chiTiet.TenDuAn = cboDuAn.Text; // Cập nhật tên dự án nếu có thay đổi
 
-                // 3. Tìm xem vật tư này đã có trong danh sách tạm (BindingList) chưa
-                var chiTiet = phanPhoiChiTiet.FirstOrDefault(x => x.VatTuID == maVatTu);
-
-                if (chiTiet != null)
+                phanPhoiChiTiet.ResetBindings();
+            }
+            else
+            {
+                // Thêm dòng mới vào Grid
+                phanPhoiChiTiet.Add(new DanhSachPhanPhoiChiTiet
                 {
-                    // --- TRƯỜNG HỢP ĐÃ CÓ: Cập nhật thông tin ---
-                    chiTiet.SoLuong = Convert.ToInt32(numSoLuong.Value);
-                    chiTiet.DonGia = numDonGia.Value;
-                    // Tính toán tổng chi phí (Số lượng * Đơn giá)
-                    chiTiet.TongChiPhi = numSoLuong.Value * numDonGia.Value;
-
-                    // Làm mới DataGridView để hiển thị số liệu mới cập nhật
-                    dataGridView.Refresh();
-                }
-                else
-                {
-                    // --- TRƯỜNG HỢP CHƯA CÓ: Thêm dòng mới ---
-                    DanhSachPhanPhoiChiTiet ct = new DanhSachPhanPhoiChiTiet
-                    {
-                        ID = 0, // ID tạm, sẽ được DB cấp khi lưu chính thức
-                        PhanPhoiID = id,
-                        VatTuID = maVatTu,
-                        TenVatTu = cboVatTu.Text,
-                        SoLuong = Convert.ToInt32(numSoLuong.Value),
-                        DonGia = numDonGia.Value,
-                        TongChiPhi = numSoLuong.Value * numDonGia.Value
-                    };
-
-                    phanPhoiChiTiet.Add(ct);
-                }
-
-                // 4. Cập nhật lại trạng thái các nút (nếu có hàm này)
-                BatTatChucNang();
-
-                // (Tùy chọn) Xóa trắng hoặc reset ô nhập sau khi xác nhận thành công
-                // cboVatTu.SelectedIndex = -1;
-                // numSoLuong.Value = 0;
+                    ID = 0,
+                    PhanPhoiID = id,
+                    VatTuID = maVatTu,
+                    TenVatTu = cboVatTu.Text,
+                    DuAnID = maDuAn,
+                    TenDuAn = cboDuAn.Text,
+                    SoLuong = (int)numSoLuong.Value,
+                    DonGia = numDonGia.Value,
+                    TongChiPhi = numSoLuong.Value * numDonGia.Value
+                });
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message);
-            }
+            BatTatChucNang();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (dataGridView.CurrentRow == null)
+            if (dataGridView.CurrentRow != null && MessageBox.Show("Xóa dòng này?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                MessageBox.Show("Vui lòng chọn dòng cần xóa!", "Thông báo");
-                return;
-            }
+                // Lấy mã vật tư từ dòng đang chọn để xóa trong BindingList
+                // Lưu ý: Đảm bảo DataPropertyName của cột ID Vật tư là "VatTuID"
+                int maVT = Convert.ToInt32(dataGridView.CurrentRow.Cells["VatTuID"].Value);
+                var item = phanPhoiChiTiet.FirstOrDefault(x => x.VatTuID == maVT);
 
-            // 2. Xác nhận trước khi xóa (Nên có để tránh bấm nhầm)
-            if (MessageBox.Show("Bạn có chắc chắn muốn xóa vật tư này khỏi danh sách chi tiết?", "Xác nhận",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                try
+                if (item != null)
                 {
-                    // 3. Lấy ID Vật tư của dòng đang chọn (Dựa vào cột VatTuID ẩn hoặc cột ID hiển thị)
-                    // Lưu ý: "colVatTuID" là tên (Name) của cột chứa mã vật tư trong DataGridView
-                    int maVT = Convert.ToInt32(dataGridView.CurrentRow.Cells["colVatTuID"].Value.ToString());
-
-                    // 4. Tìm đối tượng trong BindingList khớp với mã vừa lấy
-                    var chiTiet = phanPhoiChiTiet.FirstOrDefault(x => x.VatTuID == maVT);
-
-                    if (chiTiet != null)
-                    {
-                        // 5. Xóa khỏi danh sách tạm (Giao diện sẽ tự cập nhật nhờ BindingList)
-                        phanPhoiChiTiet.Remove(chiTiet);
-                    }
-
-                    // 6. Cập nhật lại trạng thái các nút (Ẩn nút Xóa nếu danh sách trống)
-                    BatTatChucNang();
+                    phanPhoiChiTiet.Remove(item);
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi khi xóa: " + ex.Message, "Lỗi");
-                }
+                BatTatChucNang();
             }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            if (cboDuAn.SelectedValue == null)
+            {
+                MessageBox.Show("Vui lòng chọn Dự án trước khi lưu!", "Thông báo");
+                return;
+            }
+
             try
             {
-                // Giả sử biến 'id' lưu mã Phân Phối truyền từ form danh sách
-                if (id != 0) // Cập nhật phiếu cũ
+                int maDuAnChon = Convert.ToInt32(cboDuAn.SelectedValue);
+
+                if (id == 0) // Thêm phiếu mới
                 {
-                    var pp = context.PhanPhoi.Find(id);
-                    if (pp != null)
+                    PhanPhoi ppNew = new PhanPhoi
                     {
-                        // Cập nhật thông tin phiếu (Ngày, Ghi chú...) nếu cần
-                        // context.PhanPhoi.Update(pp);
-
-                        // 1. Xóa chi tiết cũ của phiếu này
-                        var oldDetails = context.PhanPhoiChiTiet.Where(r => r.PhanPhoiID == id).ToList();
-                        context.PhanPhoiChiTiet.RemoveRange(oldDetails);
-
-                        // 2. Thêm lại chi tiết mới từ list trên Grid
-                        foreach (var item in phanPhoiChiTiet)
-                        {
-                            PhanPhoiChiTiet ct = new PhanPhoiChiTiet();
-                            ct.PhanPhoiID = id;
-                            ct.VatTuID = item.VatTuID;
-                            ct.SoLuong = item.SoLuong;
-                            // Nếu bảng chi tiết của bạn có cột DonGia thì thêm vào đây:
-                            // ct.DonGia = item.DonGia; 
-                            context.PhanPhoiChiTiet.Add(ct);
-                        }
-                        context.SaveChanges();
-                    }
-                }
-                else // Thêm phiếu mới hoàn toàn
-                {
-                    PhanPhoi pp = new PhanPhoi();
-                    pp.NgayLap = DateTime.Now;
-                    // pp.DuAnID = ... (Lấy từ ComboBox dự án nếu có)
-
-                    context.PhanPhoi.Add(pp);
-                    context.SaveChanges(); // Lưu để lấy ID tự sinh
-
-                    foreach (var item in phanPhoiChiTiet)
-                    {
-                        PhanPhoiChiTiet ct = new PhanPhoiChiTiet();
-                        ct.PhanPhoiID = pp.ID; // Gán ID vừa tạo
-                        ct.VatTuID = item.VatTuID;
-                        ct.SoLuong = item.SoLuong;
-                        context.PhanPhoiChiTiet.Add(ct);
-                    }
+                        NgayLap = DateTime.Now,
+                        DuAnID = maDuAnChon, // Gán ID dự án từ ComboBox vào đây
+                        GhiChu = txtGhiChu.Text
+                    };
+                    context.PhanPhoi.Add(ppNew);
                     context.SaveChanges();
+                    id = ppNew.ID;
                 }
-                MessageBox.Show("Lưu chi tiết phân phối thành công!", "Thông báo");
+                else // Cập nhật phiếu cũ
+                {
+                    var ppUpdate = context.PhanPhoi.Find(id);
+                    if (ppUpdate != null)
+                    {
+                        ppUpdate.DuAnID = maDuAnChon; // Cập nhật lại dự án nếu người dùng thay đổi
+                        ppUpdate.GhiChu = txtGhiChu.Text;
+                    }
+
+                    // Xóa chi tiết cũ để lưu lại chi tiết mới
+                    var oldDetails = context.PhanPhoiChiTiet.Where(r => r.PhanPhoiID == id).ToList();
+                    context.PhanPhoiChiTiet.RemoveRange(oldDetails);
+                }
+
+                // Lưu danh sách chi tiết vật tư
+                foreach (var item in phanPhoiChiTiet)
+                {
+                    context.PhanPhoiChiTiet.Add(new PhanPhoiChiTiet
+                    {
+                        PhanPhoiID = id,
+                        VatTuID = item.VatTuID,
+                        SoLuong = item.SoLuong,
+                        DonGia = item.DonGia,
+                        TongChiPhi = item.TongChiPhi
+                    });
+                }
+
+                context.SaveChanges();
+                MessageBox.Show("Lưu thành công!", "Thông báo");
                 this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi hệ thống: " + ex.Message);
+                var message = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                MessageBox.Show("Lỗi hệ thống: " + message);
             }
         }
 
         private void btnHuyBo_Click(object sender, EventArgs e)
         {
-
+            frmPhanPhoiChiTiet_Load(sender, e); // Tải lại dữ liệu ban đầu từ CSDL
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -251,17 +232,13 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
 
         private void cboVatTu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboVatTu.SelectedValue != null)
+            if (cboVatTu.SelectedValue != null && int.TryParse(cboVatTu.SelectedValue.ToString(), out int maVT))
             {
-                // Kiểm tra xem SelectedValue có thực sự là số không trước khi ép kiểu
-                if (int.TryParse(cboVatTu.SelectedValue.ToString(), out int maVT))
+                var vt = context.VatTu.Find(maVT);
+                if (vt != null)
                 {
-                    var vt = context.VatTu.Find(maVT);
-                    if (vt != null)
-                    {
-                        numDonGia.Value = vt.DonGia;
-                        TinhTongChiPhiHienThoi();
-                    }
+                    numDonGia.Value = vt.DonGia;
+                    TinhTongChiPhiHienThoi();
                 }
             }
         }

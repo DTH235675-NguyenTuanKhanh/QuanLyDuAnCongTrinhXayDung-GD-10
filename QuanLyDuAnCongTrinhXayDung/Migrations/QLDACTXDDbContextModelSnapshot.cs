@@ -333,6 +333,9 @@ namespace QuanLyDuAnCongTrinhXayDung.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<decimal>("DonGia")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int?>("DuAnID")
                         .HasColumnType("int");
 
@@ -341,6 +344,9 @@ namespace QuanLyDuAnCongTrinhXayDung.Migrations
 
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("TongChiPhi")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("VatTuID")
                         .HasColumnType("int");

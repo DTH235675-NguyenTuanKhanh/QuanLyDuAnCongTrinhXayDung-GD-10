@@ -223,18 +223,21 @@
             mnuThongKeVatTu.Name = "mnuThongKeVatTu";
             mnuThongKeVatTu.Size = new Size(306, 38);
             mnuThongKeVatTu.Text = "Thống Kê Vật Tư";
+            mnuThongKeVatTu.Click += mnuThongKeVatTu_Click;
             // 
             // mnuThongKeChiPhi
             // 
             mnuThongKeChiPhi.Name = "mnuThongKeChiPhi";
             mnuThongKeChiPhi.Size = new Size(306, 38);
             mnuThongKeChiPhi.Text = "Thống Kê Chi Phí";
+            mnuThongKeChiPhi.Click += mnuThongKeChiPhi_Click;
             // 
             // mnuThongKeLuong
             // 
             mnuThongKeLuong.Name = "mnuThongKeLuong";
             mnuThongKeLuong.Size = new Size(306, 38);
             mnuThongKeLuong.Text = "Thống Kê Lương";
+            mnuThongKeLuong.Click += mnuThongKeLuong_Click;
             // 
             // mnuTroGiup
             // 

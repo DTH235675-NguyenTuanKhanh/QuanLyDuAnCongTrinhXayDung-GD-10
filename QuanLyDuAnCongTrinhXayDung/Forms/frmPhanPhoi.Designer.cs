@@ -33,9 +33,6 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             groupBox2 = new GroupBox();
             dataGridView = new DataGridView();
-            colID = new DataGridViewTextBoxColumn();
-            colNgayLap = new DataGridViewTextBoxColumn();
-            colGhiChu = new DataGridViewTextBoxColumn();
             phanPhoiBindingSource = new BindingSource(components);
             btnThoat = new Button();
             btnTimKiem = new Button();
@@ -44,6 +41,11 @@
             btnThem = new Button();
             btnNhap = new Button();
             btnXuat = new Button();
+            colID = new DataGridViewTextBoxColumn();
+            colNgayLap = new DataGridViewTextBoxColumn();
+            DuAn = new DataGridViewTextBoxColumn();
+            colDuAnID = new DataGridViewTextBoxColumn();
+            colGhiChu = new DataGridViewTextBoxColumn();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)phanPhoiBindingSource).BeginInit();
@@ -76,7 +78,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Columns.AddRange(new DataGridViewColumn[] { colID, colNgayLap, colGhiChu });
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] { colID, colNgayLap, DuAn, colDuAnID, colGhiChu });
             dataGridView.DataSource = phanPhoiBindingSource;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
@@ -93,29 +95,6 @@
             dataGridView.Size = new Size(1273, 423);
             dataGridView.TabIndex = 0;
             // 
-            // colID
-            // 
-            colID.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            colID.DataPropertyName = "ID";
-            colID.HeaderText = "ID";
-            colID.MinimumWidth = 6;
-            colID.Name = "colID";
-            colID.Width = 50;
-            // 
-            // colNgayLap
-            // 
-            colNgayLap.DataPropertyName = "NgayLap";
-            colNgayLap.HeaderText = "Ngày lập";
-            colNgayLap.MinimumWidth = 6;
-            colNgayLap.Name = "colNgayLap";
-            // 
-            // colGhiChu
-            // 
-            colGhiChu.DataPropertyName = "GhiChu";
-            colGhiChu.HeaderText = "Ghi chú";
-            colGhiChu.MinimumWidth = 6;
-            colGhiChu.Name = "colGhiChu";
-            // 
             // phanPhoiBindingSource
             // 
             phanPhoiBindingSource.DataSource = typeof(Data.PhanPhoi);
@@ -125,9 +104,9 @@
             btnThoat.Anchor = AnchorStyles.Bottom;
             btnThoat.BackColor = Color.Silver;
             btnThoat.ForeColor = Color.Black;
-            btnThoat.Location = new Point(774, 488);
+            btnThoat.Location = new Point(740, 488);
             btnThoat.Name = "btnThoat";
-            btnThoat.Size = new Size(129, 46);
+            btnThoat.Size = new Size(102, 46);
             btnThoat.TabIndex = 28;
             btnThoat.Text = "Thoát";
             btnThoat.UseVisualStyleBackColor = false;
@@ -138,9 +117,9 @@
             btnTimKiem.Anchor = AnchorStyles.Bottom;
             btnTimKiem.BackColor = Color.Fuchsia;
             btnTimKiem.ForeColor = Color.Black;
-            btnTimKiem.Location = new Point(599, 488);
+            btnTimKiem.Location = new Point(590, 488);
             btnTimKiem.Name = "btnTimKiem";
-            btnTimKiem.Size = new Size(140, 46);
+            btnTimKiem.Size = new Size(113, 46);
             btnTimKiem.TabIndex = 27;
             btnTimKiem.Text = "Tìm Kiếm";
             btnTimKiem.UseVisualStyleBackColor = false;
@@ -151,9 +130,9 @@
             btnXoa.Anchor = AnchorStyles.Bottom;
             btnXoa.BackColor = Color.Red;
             btnXoa.ForeColor = Color.Black;
-            btnXoa.Location = new Point(432, 488);
+            btnXoa.Location = new Point(453, 488);
             btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(129, 46);
+            btnXoa.Size = new Size(102, 46);
             btnXoa.TabIndex = 24;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = false;
@@ -164,9 +143,9 @@
             btnSua.Anchor = AnchorStyles.Bottom;
             btnSua.BackColor = Color.Yellow;
             btnSua.ForeColor = Color.Black;
-            btnSua.Location = new Point(272, 488);
+            btnSua.Location = new Point(321, 488);
             btnSua.Name = "btnSua";
-            btnSua.Size = new Size(129, 46);
+            btnSua.Size = new Size(102, 46);
             btnSua.TabIndex = 23;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = false;
@@ -177,9 +156,9 @@
             btnThem.Anchor = AnchorStyles.Bottom;
             btnThem.BackColor = Color.Lime;
             btnThem.ForeColor = Color.Black;
-            btnThem.Location = new Point(57, 488);
+            btnThem.Location = new Point(125, 488);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(181, 46);
+            btnThem.Size = new Size(168, 46);
             btnThem.TabIndex = 22;
             btnThem.Text = "Thêm phân phối mới..";
             btnThem.UseVisualStyleBackColor = false;
@@ -190,9 +169,9 @@
             btnNhap.Anchor = AnchorStyles.Bottom;
             btnNhap.BackColor = Color.MediumSpringGreen;
             btnNhap.ForeColor = Color.Black;
-            btnNhap.Location = new Point(1106, 488);
+            btnNhap.Location = new Point(1010, 488);
             btnNhap.Name = "btnNhap";
-            btnNhap.Size = new Size(128, 46);
+            btnNhap.Size = new Size(101, 46);
             btnNhap.TabIndex = 30;
             btnNhap.Text = "Nhập Excel";
             btnNhap.UseVisualStyleBackColor = false;
@@ -203,13 +182,51 @@
             btnXuat.Anchor = AnchorStyles.Bottom;
             btnXuat.BackColor = Color.MediumSpringGreen;
             btnXuat.ForeColor = Color.Black;
-            btnXuat.Location = new Point(938, 488);
+            btnXuat.Location = new Point(877, 488);
             btnXuat.Name = "btnXuat";
-            btnXuat.Size = new Size(129, 46);
+            btnXuat.Size = new Size(102, 46);
             btnXuat.TabIndex = 29;
             btnXuat.Text = "Xuất Excel";
             btnXuat.UseVisualStyleBackColor = false;
             btnXuat.Click += btnXuat_Click;
+            // 
+            // colID
+            // 
+            colID.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            colID.DataPropertyName = "ID";
+            colID.HeaderText = "ID";
+            colID.MinimumWidth = 6;
+            colID.Name = "colID";
+            colID.Width = 125;
+            // 
+            // colNgayLap
+            // 
+            colNgayLap.DataPropertyName = "NgayLap";
+            colNgayLap.HeaderText = "Ngày lập";
+            colNgayLap.MinimumWidth = 6;
+            colNgayLap.Name = "colNgayLap";
+            // 
+            // DuAn
+            // 
+            DuAn.DataPropertyName = "TenDuAn";
+            DuAn.HeaderText = "Tên Dự Án";
+            DuAn.MinimumWidth = 6;
+            DuAn.Name = "DuAn";
+            // 
+            // colDuAnID
+            // 
+            colDuAnID.DataPropertyName = "DuAnID";
+            colDuAnID.HeaderText = "DuAnID";
+            colDuAnID.MinimumWidth = 6;
+            colDuAnID.Name = "colDuAnID";
+            colDuAnID.Visible = false;
+            // 
+            // colGhiChu
+            // 
+            colGhiChu.DataPropertyName = "GhiChu";
+            colGhiChu.HeaderText = "Ghi Chú";
+            colGhiChu.MinimumWidth = 6;
+            colGhiChu.Name = "colGhiChu";
             // 
             // frmPhanPhoi
             // 
@@ -245,11 +262,14 @@
         private Button btnXoa;
         private Button btnSua;
         private Button btnThem;
-        private DataGridViewTextBoxColumn colID;
-        private DataGridViewTextBoxColumn colNgayLap;
         private DataGridViewTextBoxColumn colDuAn;
-        private DataGridViewTextBoxColumn colGhiChu;
         private Button btnNhap;
         private Button btnXuat;
+        private DataGridViewTextBoxColumn colTenDuAn;
+        private DataGridViewTextBoxColumn colID;
+        private DataGridViewTextBoxColumn colNgayLap;
+        private DataGridViewTextBoxColumn DuAn;
+        private DataGridViewTextBoxColumn colDuAnID;
+        private DataGridViewTextBoxColumn colGhiChu;
     }
 }

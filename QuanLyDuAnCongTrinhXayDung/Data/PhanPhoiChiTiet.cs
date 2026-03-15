@@ -17,6 +17,8 @@ namespace QuanLyDuAnCongTrinhXayDung.Data
             public virtual VatTu VatTu { get; set; } = null!;
     
             public int SoLuong { get; set; }
+            public decimal DonGia { get; set; }
+            public decimal TongChiPhi { get; set; }
     }
     [NotMapped]
     public class DanhSachPhanPhoiChiTiet
@@ -24,7 +26,10 @@ namespace QuanLyDuAnCongTrinhXayDung.Data
         public int ID { get; set; }
         public int PhanPhoiID { get; set; }
         public int VatTuID { get; set; }
+        public int DuAnID { get; set; }
+        public string TenDuAn { get; set; } = null!;
         public string TenVatTu { get; set; } = null!;
+        
         public int SoLuong { get; set; }
         public decimal DonGia { get; set; }
         public decimal TongChiPhi { get; set; }

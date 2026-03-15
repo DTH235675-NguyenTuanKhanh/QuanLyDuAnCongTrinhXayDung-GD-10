@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyDuAnCongTrinhXayDung.Data;
+using QuanLyDuAnCongTrinhXayDung.Reports;
 using BC = BCrypt.Net.BCrypt;
 
 namespace QuanLyDuAnCongTrinhXayDung.Forms
@@ -288,6 +289,24 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                 child.Close();
             }
             ChuaDangNhap();
+        }
+
+        private void mnuThongKeVatTu_Click(object sender, EventArgs e)
+        {
+            frmThongKeVatTu frm = new frmThongKeVatTu();
+            frm.ShowDialog();
+        }
+
+        private void mnuThongKeLuong_Click(object sender, EventArgs e)
+        {
+            frmThongKeLuong frm = new frmThongKeLuong();
+            frm.ShowDialog();
+        }
+
+        private void mnuThongKeChiPhi_Click(object sender, EventArgs e)
+        {
+            frmThongKeChiPhi frm = new frmThongKeChiPhi();
+            frm.ShowDialog();
         }
     }
 }

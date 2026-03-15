@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using Microsoft.EntityFrameworkCore;
 using QuanLyDuAnCongTrinhXayDung.Data;
 using System;
 using System.Collections.Generic;
@@ -23,23 +24,20 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
 
         private void frmPhanPhoi_Load(object sender, EventArgs e)
         {
-            // Tắt tự động tạo cột để khớp với các cột bạn đã vẽ thủ công trên giao diện
             dataGridView.AutoGenerateColumns = false;
 
-            // Khai báo List theo class phụ vừa tạo
-            List<DanhSachPhanPhoi> ds = new List<DanhSachPhanPhoi>();
+            // Sử dụng Include(r => r.DuAn) để nạp dữ liệu từ bảng liên kết
+            var ds = context.PhanPhoi
+                .Include(r => r.DuAn)
+                .Select(r => new DanhSachPhanPhoi
+                {
+                    ID = r.ID,
+                    NgayLap = r.NgayLap,
+                    DuAnID = r.DuAnID,
+                    TenDuAn = r.DuAn != null ? r.DuAn.TenDuAn : "Chưa xác định",
+                    GhiChu = r.GhiChu
+                }).ToList();
 
-            // Truy vấn dữ liệu từ context
-            ds = context.PhanPhoi.Select(r => new DanhSachPhanPhoi
-            {
-                ID = (int)r.ID,
-                NgayLap = r.NgayLap,
-                DuAnID = (int)r.DuAnID,
-                TenDuAn = r.DuAn.TenDuAn, // Lấy tên dự án từ bảng liên kết
-                GhiChu = r.GhiChu
-            }).ToList();
-
-            // Gán nguồn dữ liệu cho bảng
             dataGridView.DataSource = ds;
         }
 
@@ -56,14 +54,10 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
         {
             if (dataGridView.CurrentRow != null)
             {
-                var cellValue = dataGridView.CurrentRow.Cells["colID"].Value;
-                if (cellValue != null)
-                {
-                    id = Convert.ToInt32(cellValue);
-                    // Mở form sửa và truyền ID vào
-                    using (frmPhanPhoiChiTiet f = new frmPhanPhoiChiTiet(id)) { f.ShowDialog(); }
-                    frmPhanPhoi_Load(sender, e); // Tải lại dữ liệu sau khi sửa
-                }
+                // Phải lấy đúng tên cột chứa mã Phân phối (thường là colID hoặc ID)
+                int maPhieu = Convert.ToInt32(dataGridView.CurrentRow.Cells["colID"].Value);
+                frmPhanPhoiChiTiet f = new frmPhanPhoiChiTiet(maPhieu);
+                f.ShowDialog();
             }
         }
 
@@ -89,9 +83,8 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
         }
-
         private void btnXuat_Click(object sender, EventArgs e)
         {
             // 1. Hỏi người dùng muốn xuất loại dữ liệu nào
@@ -245,16 +238,18 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
 
             if (!string.IsNullOrEmpty(input))
             {
-                var dsGoc = context.PhanPhoi.Select(p => new DanhSachPhanPhoi
-                {
-                    ID = p.ID,
-                    NgayLap = p.NgayLap,
-                    DuAnID = p.DuAnID,
-                    TenDuAn = p.DuAn.TenDuAn,
-                    GhiChu = p.GhiChu
-                }).ToList();
+                // Phải Include DuAn trước khi Select
+                var dsGoc = context.PhanPhoi
+                    .Include(p => p.DuAn)
+                    .Select(p => new DanhSachPhanPhoi
+                    {
+                        ID = p.ID,
+                        NgayLap = p.NgayLap,
+                        DuAnID = p.DuAnID,
+                        TenDuAn = p.DuAn != null ? p.DuAn.TenDuAn : "",
+                        GhiChu = p.GhiChu
+                    }).ToList();
 
-                // Lọc gần đúng theo tên dự án hoặc ghi chú
                 var ketQua = dsGoc.Where(x => x.TenDuAn.ToLower().Contains(input.ToLower())
                                            || (x.GhiChu != null && x.GhiChu.ToLower().Contains(input.ToLower()))).ToList();
 
@@ -273,5 +268,10 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                 frmPhanPhoi_Load(sender, e);
             }
         }
+
+       // private void btnXemChiTiet_Click(object sender, EventArgs e)
+        //{
+        
+        //}
     }
 }
