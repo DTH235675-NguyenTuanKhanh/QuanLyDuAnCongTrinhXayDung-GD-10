@@ -59,6 +59,9 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                 if (phieu != null)
                 {
                     txtGhiChu.Text = phieu.GhiChu;
+                    cboDuAn.SelectedValue = phieu.DuAnID; // Chọn đúng dự án của phiếu này
+                    cboDuAn.Enabled = false;
+                    
                 }
                 // Sử dụng Include để nạp các bảng liên quan (VatTu và PhanPhoi -> DuAn)
                 var query = context.PhanPhoiChiTiet
@@ -99,7 +102,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
             // Kiểm tra cả Vật tư và Dự án
-            if (cboVatTu.SelectedValue == null || cboDuAn.SelectedValue == null || numSoLuong.Value <= 0)
+            if (cboVatTu.SelectedValue == null || (cboDuAn.Enabled && cboDuAn.SelectedValue == null) || numSoLuong.Value <= 0)
             {
                 MessageBox.Show("Vui lòng chọn Dự án, Vật tư và nhập Số lượng!", "Thông báo");
                 return;
@@ -119,7 +122,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                 chiTiet.TongChiPhi = numSoLuong.Value * numDonGia.Value;
                 chiTiet.DuAnID = maDuAn;
                 chiTiet.TenDuAn = cboDuAn.Text; // Cập nhật tên dự án nếu có thay đổi
-
+                cboDuAn.Enabled = false;
                 phanPhoiChiTiet.ResetBindings();
             }
             else
@@ -176,7 +179,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                     {
                         NgayLap = DateTime.Now,
                         DuAnID = maDuAnChon, // Gán ID dự án từ ComboBox vào đây
-                        GhiChu = txtGhiChu.Text
+                        GhiChu = txtGhiChu.Text ??""
                     };
                     context.PhanPhoi.Add(ppNew);
                     context.SaveChanges();
@@ -188,7 +191,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                     if (ppUpdate != null)
                     {
                         ppUpdate.DuAnID = maDuAnChon; // Cập nhật lại dự án nếu người dùng thay đổi
-                        ppUpdate.GhiChu = txtGhiChu.Text;
+                        ppUpdate.GhiChu = txtGhiChu.Text??"";
                     }
 
                     // Xóa chi tiết cũ để lưu lại chi tiết mới
@@ -205,7 +208,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                         VatTuID = item.VatTuID,
                         SoLuong = item.SoLuong,
                         DonGia = item.DonGia,
-                        TongChiPhi = item.TongChiPhi
+                        TongChiPhi = item.SoLuong * item.DonGia
                     });
                 }
 

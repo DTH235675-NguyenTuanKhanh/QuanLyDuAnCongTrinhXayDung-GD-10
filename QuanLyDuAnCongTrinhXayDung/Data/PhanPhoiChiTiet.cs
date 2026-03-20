@@ -14,11 +14,13 @@ namespace QuanLyDuAnCongTrinhXayDung.Data
             public virtual PhanPhoi PhanPhoi { get; set; } = null!;
     
             public int VatTuID { get; set; }
-            public virtual VatTu VatTu { get; set; } = null!;
+        public virtual DuAn DuAn { get; set; } = null!;
+        public virtual VatTu VatTu { get; set; } = null!;
     
             public int SoLuong { get; set; }
             public decimal DonGia { get; set; }
-            public decimal TongChiPhi { get; set; }
+        [NotMapped]
+        public decimal TongChiPhi { get; set; }
     }
     [NotMapped]
     public class DanhSachPhanPhoiChiTiet

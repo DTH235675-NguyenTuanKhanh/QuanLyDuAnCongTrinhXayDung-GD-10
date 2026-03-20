@@ -16,6 +16,8 @@ namespace QuanLyDuAnCongTrinhXayDung.Data
         public virtual DuAn DuAn { get; set; } = null!;
 
         public string? GhiChu { get; set; }
+        [NotMapped]
+        public decimal TongChiPhi { get; set; }
 
         // Liên kết đến các dòng vật tư chi tiết
         public virtual ObservableCollectionListSource<PhanPhoiChiTiet> ChiTietPhanPhoi { get; } = new();
@@ -27,6 +29,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Data
         public DateTime NgayLap { get; set; }
         public int DuAnID { get; set; }
         public string TenDuAn { get; set; } = null!;
+        public decimal TongChiPhi { get; set; }
         public string? GhiChu { get; set; }
     }
 }

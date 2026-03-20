@@ -1,6 +1,7 @@
 ﻿using ClosedXML.Excel;
 using Microsoft.EntityFrameworkCore;
 using QuanLyDuAnCongTrinhXayDung.Data;
+using QuanLyDuAnCongTrinhXayDung.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,7 +36,8 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                     NgayLap = r.NgayLap,
                     DuAnID = r.DuAnID,
                     TenDuAn = r.DuAn != null ? r.DuAn.TenDuAn : "Chưa xác định",
-                    GhiChu = r.GhiChu
+                    GhiChu = r.GhiChu,
+                    TongChiPhi = r.ChiTietPhanPhoi.Sum(ct => ct.SoLuong * ct.VatTu.DonGia) // Tính tổng chi phí từ chi tiết
                 }).ToList();
 
             dataGridView.DataSource = ds;
@@ -107,6 +109,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                     table.Columns.Add("Mã Phân Phối", typeof(int));
                     table.Columns.Add("Ngày Lập", typeof(DateTime));
                     table.Columns.Add("Dự Án", typeof(string));
+                    table.Columns.Add("Tổng Chi Phí", typeof(decimal));
                     table.Columns.Add("Ghi Chú", typeof(string));
 
                     var ds = context.PhanPhoi.Select(p => new
@@ -114,6 +117,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                         p.ID,
                         p.NgayLap,
                         TenDA = p.DuAn.TenDuAn,
+                        TongChiPhi = p.ChiTietPhanPhoi.Sum(ct => ct.SoLuong * ct.VatTu.DonGia),
                         p.GhiChu
                     }).ToList();
 
@@ -247,7 +251,8 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                         NgayLap = p.NgayLap,
                         DuAnID = p.DuAnID,
                         TenDuAn = p.DuAn != null ? p.DuAn.TenDuAn : "",
-                        GhiChu = p.GhiChu
+                        GhiChu = p.GhiChu,
+                        TongChiPhi = p.ChiTietPhanPhoi.Sum(ct => ct.SoLuong * ct.VatTu.DonGia)
                     }).ToList();
 
                 var ketQua = dsGoc.Where(x => x.TenDuAn.ToLower().Contains(input.ToLower())
@@ -269,9 +274,18 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             }
         }
 
-       // private void btnXemChiTiet_Click(object sender, EventArgs e)
+        private void btnInPhanPhoi_Click(object sender, EventArgs e)
+        {
+            id = Convert.ToInt32(dataGridView.CurrentRow.Cells["colID"].Value);
+            using (frmInPhanPhoi f = new frmInPhanPhoi(id))
+            {
+                f.ShowDialog();
+            }
+        }
+
+        // private void btnXemChiTiet_Click(object sender, EventArgs e)
         //{
-        
+
         //}
     }
 }

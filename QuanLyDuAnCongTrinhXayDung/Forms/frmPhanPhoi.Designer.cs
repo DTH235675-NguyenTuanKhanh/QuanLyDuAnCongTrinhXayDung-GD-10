@@ -33,11 +33,6 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             groupBox2 = new GroupBox();
             dataGridView = new DataGridView();
-            colID = new DataGridViewTextBoxColumn();
-            colNgayLap = new DataGridViewTextBoxColumn();
-            DuAn = new DataGridViewTextBoxColumn();
-            colDuAnID = new DataGridViewTextBoxColumn();
-            colGhiChu = new DataGridViewTextBoxColumn();
             phanPhoiBindingSource = new BindingSource(components);
             btnThoat = new Button();
             btnTimKiem = new Button();
@@ -47,6 +42,12 @@
             btnNhap = new Button();
             btnXuat = new Button();
             btnInPhanPhoi = new Button();
+            colID = new DataGridViewTextBoxColumn();
+            colNgayLap = new DataGridViewTextBoxColumn();
+            DuAn = new DataGridViewTextBoxColumn();
+            colDuAnID = new DataGridViewTextBoxColumn();
+            colTongChiPhi = new DataGridViewTextBoxColumn();
+            colGhiChu = new DataGridViewTextBoxColumn();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)phanPhoiBindingSource).BeginInit();
@@ -79,7 +80,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Columns.AddRange(new DataGridViewColumn[] { colID, colNgayLap, DuAn, colDuAnID, colGhiChu });
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] { colID, colNgayLap, DuAn, colDuAnID, colTongChiPhi, colGhiChu });
             dataGridView.DataSource = phanPhoiBindingSource;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
@@ -95,44 +96,6 @@
             dataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
             dataGridView.Size = new Size(1273, 423);
             dataGridView.TabIndex = 0;
-            // 
-            // colID
-            // 
-            colID.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            colID.DataPropertyName = "ID";
-            colID.HeaderText = "ID";
-            colID.MinimumWidth = 6;
-            colID.Name = "colID";
-            colID.Width = 125;
-            // 
-            // colNgayLap
-            // 
-            colNgayLap.DataPropertyName = "NgayLap";
-            colNgayLap.HeaderText = "Ngày lập";
-            colNgayLap.MinimumWidth = 6;
-            colNgayLap.Name = "colNgayLap";
-            // 
-            // DuAn
-            // 
-            DuAn.DataPropertyName = "TenDuAn";
-            DuAn.HeaderText = "Tên Dự Án";
-            DuAn.MinimumWidth = 6;
-            DuAn.Name = "DuAn";
-            // 
-            // colDuAnID
-            // 
-            colDuAnID.DataPropertyName = "DuAnID";
-            colDuAnID.HeaderText = "DuAnID";
-            colDuAnID.MinimumWidth = 6;
-            colDuAnID.Name = "colDuAnID";
-            colDuAnID.Visible = false;
-            // 
-            // colGhiChu
-            // 
-            colGhiChu.DataPropertyName = "GhiChu";
-            colGhiChu.HeaderText = "Ghi Chú";
-            colGhiChu.MinimumWidth = 6;
-            colGhiChu.Name = "colGhiChu";
             // 
             // phanPhoiBindingSource
             // 
@@ -240,6 +203,52 @@
             btnInPhanPhoi.TabIndex = 31;
             btnInPhanPhoi.Text = "In phân phối..";
             btnInPhanPhoi.UseVisualStyleBackColor = false;
+            btnInPhanPhoi.Click += btnInPhanPhoi_Click;
+            // 
+            // colID
+            // 
+            colID.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            colID.DataPropertyName = "ID";
+            colID.HeaderText = "ID";
+            colID.MinimumWidth = 6;
+            colID.Name = "colID";
+            colID.Width = 125;
+            // 
+            // colNgayLap
+            // 
+            colNgayLap.DataPropertyName = "NgayLap";
+            colNgayLap.HeaderText = "Ngày lập";
+            colNgayLap.MinimumWidth = 6;
+            colNgayLap.Name = "colNgayLap";
+            // 
+            // DuAn
+            // 
+            DuAn.DataPropertyName = "TenDuAn";
+            DuAn.HeaderText = "Tên Dự Án";
+            DuAn.MinimumWidth = 6;
+            DuAn.Name = "DuAn";
+            // 
+            // colDuAnID
+            // 
+            colDuAnID.DataPropertyName = "DuAnID";
+            colDuAnID.HeaderText = "DuAnID";
+            colDuAnID.MinimumWidth = 6;
+            colDuAnID.Name = "colDuAnID";
+            colDuAnID.Visible = false;
+            // 
+            // colTongChiPhi
+            // 
+            colTongChiPhi.DataPropertyName = "TongChiPhi";
+            colTongChiPhi.HeaderText = "Tổng chi phí";
+            colTongChiPhi.MinimumWidth = 6;
+            colTongChiPhi.Name = "colTongChiPhi";
+            // 
+            // colGhiChu
+            // 
+            colGhiChu.DataPropertyName = "GhiChu";
+            colGhiChu.HeaderText = "Ghi Chú";
+            colGhiChu.MinimumWidth = 6;
+            colGhiChu.Name = "colGhiChu";
             // 
             // frmPhanPhoi
             // 
@@ -280,11 +289,12 @@
         private Button btnNhap;
         private Button btnXuat;
         private DataGridViewTextBoxColumn colTenDuAn;
+        private Button btnInPhanPhoi;
         private DataGridViewTextBoxColumn colID;
         private DataGridViewTextBoxColumn colNgayLap;
         private DataGridViewTextBoxColumn DuAn;
         private DataGridViewTextBoxColumn colDuAnID;
+        private DataGridViewTextBoxColumn colTongChiPhi;
         private DataGridViewTextBoxColumn colGhiChu;
-        private Button btnInPhanPhoi;
     }
 }
