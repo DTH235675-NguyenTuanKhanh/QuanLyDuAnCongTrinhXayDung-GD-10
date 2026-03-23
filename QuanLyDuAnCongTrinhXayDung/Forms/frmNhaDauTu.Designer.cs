@@ -53,11 +53,12 @@
             pictureBox1 = new PictureBox();
             groupBox2 = new GroupBox();
             dataGridView = new DataGridView();
+            nhaDauTuBindingSource = new BindingSource(components);
+            colID = new DataGridViewTextBoxColumn();
             TenNhaDauTu = new DataGridViewTextBoxColumn();
             MaSoThue = new DataGridViewTextBoxColumn();
             DiaChi = new DataGridViewTextBoxColumn();
             SoDienThoai = new DataGridViewTextBoxColumn();
-            nhaDauTuBindingSource = new BindingSource(components);
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox2.SuspendLayout();
@@ -307,7 +308,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView.ColumnHeadersHeight = 29;
-            dataGridView.Columns.AddRange(new DataGridViewColumn[] { TenNhaDauTu, MaSoThue, DiaChi, SoDienThoai });
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] { colID, TenNhaDauTu, MaSoThue, DiaChi, SoDienThoai });
             dataGridView.DataSource = nhaDauTuBindingSource;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Control;
@@ -323,6 +324,19 @@
             dataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
             dataGridView.Size = new Size(1259, 429);
             dataGridView.TabIndex = 0;
+            // 
+            // nhaDauTuBindingSource
+            // 
+            nhaDauTuBindingSource.DataSource = typeof(Data.NhaDauTu);
+            // 
+            // colID
+            // 
+            colID.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            colID.DataPropertyName = "ID";
+            colID.HeaderText = "ID";
+            colID.MinimumWidth = 6;
+            colID.Name = "colID";
+            colID.Width = 75;
             // 
             // TenNhaDauTu
             // 
@@ -357,10 +371,6 @@
             SoDienThoai.HeaderText = "Số Điện Thoại";
             SoDienThoai.MinimumWidth = 6;
             SoDienThoai.Name = "SoDienThoai";
-            // 
-            // nhaDauTuBindingSource
-            // 
-            nhaDauTuBindingSource.DataSource = typeof(Data.NhaDauTu);
             // 
             // frmNhaDauTu
             // 
@@ -410,10 +420,11 @@
         private GroupBox groupBox2;
         private DataGridView dataGridView;
         private BindingSource nhaDauTuBindingSource;
+        private PictureBox pictureBox1;
+        private DataGridViewTextBoxColumn colID;
         private DataGridViewTextBoxColumn TenNhaDauTu;
         private DataGridViewTextBoxColumn MaSoThue;
         private DataGridViewTextBoxColumn DiaChi;
         private DataGridViewTextBoxColumn SoDienThoai;
-        private PictureBox pictureBox1;
     }
 }

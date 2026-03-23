@@ -45,11 +45,11 @@ namespace QuanLyDuAnCongTrinhXayDung.Reports
                     // LƯU Ý: Bạn phải truyền ĐỦ tham số mà DataTable yêu cầu
                     // Chuột phải vào AddDanhSachChiPhiRow -> Go to Definition để xem thứ tự cột
                     danhSachPhanPhoiDataTable.AddDanhSachPhanPhoiRow(
-                        row.ID,
-                        row.DuAnID,
+                      row.ID,
+                      row.DuAnID,
                         row.TenDuAn,
                         row.NgayLap,
-                        row.GhiChu ?? string.Empty,
+                        row.GhiChu ?? string.Empty, // Nếu GhiChu có thể null, hãy xử lý để tránh lỗi
                         row.TongChiPhi
                     );
                 }
@@ -69,10 +69,13 @@ namespace QuanLyDuAnCongTrinhXayDung.Reports
                     MessageBox.Show("Không tìm thấy file báo cáo tại: " + reportPath);
                     return;
                 }
+                reportViewer.LocalReport.ReportPath = reportPath;
+
+                // SAU ĐÓ MỚI SET PARAMETER
                 ReportParameter reportParameter = new ReportParameter("MoTaKetQuaHienThi", "(Tất cả thời gian)");
                 reportViewer.LocalReport.SetParameters(reportParameter);
 
-                reportViewer.LocalReport.ReportPath = reportPath;
+                // CÁC THIẾT LẬP CÒN LẠI
                 reportViewer.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
                 reportViewer.ZoomMode = ZoomMode.Percent;
                 reportViewer.ZoomPercent = 100;
@@ -114,12 +117,23 @@ namespace QuanLyDuAnCongTrinhXayDung.Reports
             reportDataSource.Value = danhSachPhanPhoiDataTable;
             reportViewer.LocalReport.DataSources.Clear();
             reportViewer.LocalReport.DataSources.Add(reportDataSource);
-            reportViewer.LocalReport.ReportPath = Path.Combine(reportsFolder, "rptThongKeDoanhThu.rdlc");
-            ReportParameter reportParameter = new ReportParameter("MoTaKetQuaHienThi", "Từ ngày " + dtpTuNgay.Text + " - Đến ngày: " + dtpDenNgay.Text);
+            string reportPath = Path.Combine(reportsFolder, "rptThongKeChiPhi.rdlc");
+            if (!File.Exists(reportPath))
+            {
+                MessageBox.Show("Không tìm thấy file báo cáo tại: " + reportPath);
+                return;
+            }
+            reportViewer.LocalReport.ReportPath = reportPath;
+
+            // SAU ĐÓ MỚI SET PARAMETER
+            ReportParameter reportParameter = new ReportParameter("MoTaKetQuaHienThi", "(Tất cả thời gian)");
             reportViewer.LocalReport.SetParameters(reportParameter);
-            reportViewer.SetDisplayMode(DisplayMode.PrintLayout);
+
+            // CÁC THIẾT LẬP CÒN LẠI
+            reportViewer.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
             reportViewer.ZoomMode = ZoomMode.Percent;
             reportViewer.ZoomPercent = 100;
+
             reportViewer.RefreshReport();
         }
 

@@ -127,13 +127,13 @@
                   <Width>1.484cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.68017cm</Width>
+                  <Width>6.1195cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.08233cm</Width>
+                  <Width>5.2305cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.515cm</Width>
+                  <Width>3.95567cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -172,23 +172,21 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox4">
+                        <Textbox Name="Textbox12">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Dự Án</Value>
+                                  <Value>Tên Dự Án</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox4</rd:DefaultName>
+                          <rd:DefaultName>Textbox12</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -204,7 +202,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox7">
+                        <Textbox Name="Textbox14">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -215,12 +213,10 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox7</rd:DefaultName>
+                          <rd:DefaultName>Textbox14</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -236,23 +232,21 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox9">
+                        <Textbox Name="Textbox16">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Tổng Tiền</Value>
+                                  <Value>Tổng chi phí</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox9</rd:DefaultName>
+                          <rd:DefaultName>Textbox16</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -450,7 +444,9 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>TongChiPhi1</rd:DefaultName>
@@ -496,7 +492,7 @@
             <Top>2.80189cm</Top>
             <Left>0.00001cm</Left>
             <Height>1.8cm</Height>
-            <Width>16.7615cm</Width>
+            <Width>16.78967cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -511,7 +507,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!MotaKetQuaHienThi.Value</Value>
+                    <Value>=Parameters!MoTaKetQuaHienThi.Value</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -539,7 +535,7 @@
         <Height>1.81177in</Height>
         <Style />
       </Body>
-      <Width>6.59902in</Width>
+      <Width>6.61011in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -553,7 +549,7 @@
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="MotaKetQuaHienThi">
+    <ReportParameter Name="MoTaKetQuaHienThi">
       <DataType>String</DataType>
       <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
@@ -568,7 +564,7 @@
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>MotaKetQuaHienThi</ParameterName>
+          <ParameterName>MoTaKetQuaHienThi</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

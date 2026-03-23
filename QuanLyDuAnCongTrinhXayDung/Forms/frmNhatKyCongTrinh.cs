@@ -107,7 +107,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
         {
             xulyThem = false;
             BatTatChucNang(true);
-            id = Convert.ToInt32(dataGridView.CurrentRow.Cells["Id"].Value.ToString());
+            id = Convert.ToInt32(dataGridView.CurrentRow.Cells["colID"].Value.ToString());
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -138,7 +138,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                 else // Chế độ Sửa
                 {
                     // Lấy ID của dòng nhật ký đang chọn trên bảng
-                    int idNK = int.Parse(dataGridView.CurrentRow.Cells["ID"].Value.ToString());
+                    int idNK = int.Parse(dataGridView.CurrentRow.Cells["colID"].Value.ToString());
                     var nkUpdate = context.NhatKyCongTrinh.Find(idNK);
 
                     if (nkUpdate != null)

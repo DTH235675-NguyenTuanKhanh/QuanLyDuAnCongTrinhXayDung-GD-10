@@ -118,24 +118,30 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            txtTenLoaiDuAn.Enabled = true;
-            string tukhoa = txtTenLoaiDuAn.Text.Trim();
-            if (!string.IsNullOrEmpty(tukhoa))
-            {
-                frmLoaiDuAn_Load(sender, e);
-            }
-            if (int.TryParse(tukhoa, out int tenCanTim))
+            string input = Microsoft.VisualBasic.Interaction.InputBox("Nhập tên loại cần tìm:", "Tìm kiếm", "");
 
+            if (!string.IsNullOrEmpty(input))
             {
-                var lda = context.LoaiDuAn.Find(tenCanTim);
-                if (lda != null)
+                // Lấy danh sách từ CSDL
+                var dsGoc = context.LoaiDuAn.ToList();
+
+                // Lọc theo từ khóa
+                var ketQua = dsGoc.Where(x => x.TenLoai.ToLower().Contains(input.ToLower())).ToList();
+
+                if (ketQua.Count > 0)
                 {
-                    BindingSource bs = new BindingSource();
-                    bs.DataSource = new List<LoaiDuAn> { lda };
-                    dataGridView.DataSource = bs;
+                    dataGridView.DataSource = ketQua;
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy Loại nào khớp với từ khóa!", "Thông báo");
+                    dataGridView.DataSource = dsGoc;
                 }
             }
-            else { MessageBox.Show("Vui lòng nhập Tên loại cần tìm"); }
+            else
+            {
+               frmLoaiDuAn_Load(sender, e); // Nếu input rỗng, load lại toàn bộ danh sách
+            }
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

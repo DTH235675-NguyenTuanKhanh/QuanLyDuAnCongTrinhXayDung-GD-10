@@ -57,14 +57,14 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
         {
             xulyThem = false;
             BatTatChucNang(true);
-            id = Convert.ToInt32(dataGridView.CurrentRow.Cells["Id"].Value.ToString());
+            id = Convert.ToInt32(dataGridView.CurrentRow.Cells["colID"].Value.ToString());
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa NĐT này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                int id = Convert.ToInt32(dataGridView.CurrentRow.Cells["Id"].Value);
+                int id = Convert.ToInt32(dataGridView.CurrentRow.Cells["colID"].Value);
                 NhaDauTu ndt = context.NhaDauTu.Find(id);
                 if (ndt != null)
                 {

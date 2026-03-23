@@ -53,11 +53,12 @@
             pictureBox1 = new PictureBox();
             groupBox2 = new GroupBox();
             dataGridView = new DataGridView();
+            nhatKyCongTrinhBindingSource = new BindingSource(components);
+            colID = new DataGridViewTextBoxColumn();
             DuAn = new DataGridViewTextBoxColumn();
             NgayGhi = new DataGridViewTextBoxColumn();
             NoiDungCongViec = new DataGridViewTextBoxColumn();
             GhiChu = new DataGridViewTextBoxColumn();
-            nhatKyCongTrinhBindingSource = new BindingSource(components);
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox2.SuspendLayout();
@@ -305,7 +306,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Columns.AddRange(new DataGridViewColumn[] { DuAn, NgayGhi, NoiDungCongViec, GhiChu });
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] { colID, DuAn, NgayGhi, NoiDungCongViec, GhiChu });
             dataGridView.DataSource = nhatKyCongTrinhBindingSource;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
@@ -321,6 +322,17 @@
             dataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
             dataGridView.Size = new Size(1253, 382);
             dataGridView.TabIndex = 0;
+            // 
+            // nhatKyCongTrinhBindingSource
+            // 
+            nhatKyCongTrinhBindingSource.DataSource = typeof(Data.NhatKyCongTrinh);
+            // 
+            // colID
+            // 
+            colID.DataPropertyName = "ID";
+            colID.HeaderText = "ID";
+            colID.MinimumWidth = 6;
+            colID.Name = "colID";
             // 
             // DuAn
             // 
@@ -355,10 +367,6 @@
             GhiChu.HeaderText = "Ghi Chú";
             GhiChu.MinimumWidth = 6;
             GhiChu.Name = "GhiChu";
-            // 
-            // nhatKyCongTrinhBindingSource
-            // 
-            nhatKyCongTrinhBindingSource.DataSource = typeof(Data.NhatKyCongTrinh);
             // 
             // frmNhatKyCongTrinh
             // 
@@ -405,6 +413,7 @@
         private DataGridView dataGridView;
         private BindingSource nhatKyCongTrinhBindingSource;
         private PictureBox pictureBox1;
+        private DataGridViewTextBoxColumn colID;
         private DataGridViewTextBoxColumn DuAn;
         private DataGridViewTextBoxColumn NgayGhi;
         private DataGridViewTextBoxColumn NoiDungCongViec;

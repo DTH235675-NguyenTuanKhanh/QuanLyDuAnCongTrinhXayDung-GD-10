@@ -29,8 +29,10 @@ namespace QuanLyDuAnCongTrinhXayDung.Reports
 
         private void frmInPhanPhoi_Load(object sender, EventArgs e)
         {
+            MessageBox.Show("ID đang tìm: " + id);
             // 1. Lấy thông tin bảng cha (DanhSachPhanPhoi)
             var phanPhoi = context.PhanPhoi
+                                  .Include(p => p.DuAn)
                                   .Include(r => r.ChiTietPhanPhoi)
                                   .Where(r => r.ID == id)
                                   .SingleOrDefault();
@@ -39,18 +41,19 @@ namespace QuanLyDuAnCongTrinhXayDung.Reports
             {
                 // 2. Lấy danh sách chi tiết theo ID phân phối
                 var chiTiet = context.PhanPhoiChiTiet
-                                     .Where(r => r.PhanPhoiID == id)
-                                     .Select(r => new DanhSachPhanPhoiChiTiet
-                                     {
-                                         ID = r.ID,
-                                         PhanPhoiID = r.PhanPhoiID,
-                                         TenVatTu = r.VatTu.TenVatTu,
-                                         SoLuong = r.SoLuong,
-                                         DonGia = r.DonGia,
-                                         TenDuAn = r.DuAn.TenDuAn,
-                                         // Tính tổng chi phí từng dòng
-                                         TongChiPhi = Convert.ToInt32(r.SoLuong * r.DonGia)
-                                     }).ToList();
+                      .Include(r => r.VatTu) // QUAN TRỌNG: Phải nạp bảng Vật Tư
+                      .Include(r => r.DuAn)  // QUAN TRỌNG: Phải nạp bảng Dự Án
+                      .Where(r => r.PhanPhoiID == id) // Mở comment dòng này để lọc đúng theo ID = 1
+                      .Select(r => new DanhSachPhanPhoiChiTiet
+                      {
+                          ID = r.ID,
+                          PhanPhoiID = r.PhanPhoiID,
+                          TenVatTu = r.VatTu.TenVatTu, // Sẽ bị null nếu không có Include
+                          SoLuong = r.SoLuong,
+                          DonGia = r.VatTu.DonGia,
+                          TenDuAn = r.DuAn.TenDuAn,   // Sẽ bị null nếu không có Include
+                          TongChiPhi = r.SoLuong * r.VatTu.DonGia
+                      }).ToList();
 
                 danhSachPhanPhoiChiTietDataTable.Clear();
                 foreach (var row in chiTiet)
@@ -64,10 +67,10 @@ namespace QuanLyDuAnCongTrinhXayDung.Reports
                         row.TenDuAn,
                         row.TongChiPhi);
                 }
-
+                MessageBox.Show("Tìm thấy " + danhSachPhanPhoiChiTietDataTable.Rows.Count + " dòng vật tư.");
                 // 3. Cấu hình Report Viewer
                 ReportDataSource reportDataSource = new ReportDataSource();
-                reportDataSource.Name = "DataSetPhanPhoiChiTiet"; // Khớp với Name trong RDLC
+                reportDataSource.Name = "DanhSachPhanPhoiChiTiet"; // Khớp với Name trong RDLC
                 reportDataSource.Value = danhSachPhanPhoiChiTietDataTable;
 
                 reportViewer.LocalReport.DataSources.Clear();

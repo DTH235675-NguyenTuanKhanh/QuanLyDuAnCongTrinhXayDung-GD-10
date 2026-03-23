@@ -113,6 +113,7 @@
             // 
             // dtpTuNgay
             // 
+            dtpTuNgay.Anchor = AnchorStyles.Top;
             dtpTuNgay.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpTuNgay.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpTuNgay.Format = DateTimePickerFormat.Custom;
@@ -125,6 +126,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(54, 30);

@@ -1059,7 +1059,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Reports {
             
             private global::System.Data.DataColumn columnDonGia;
             
-            private global::System.Data.DataColumn columnDuAn;
+            private global::System.Data.DataColumn columnTenDuAn;
             
             private global::System.Data.DataColumn columnTongChiPhi;
             
@@ -1140,9 +1140,9 @@ namespace QuanLyDuAnCongTrinhXayDung.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn DuAnColumn {
+            public global::System.Data.DataColumn TenDuAnColumn {
                 get {
-                    return this.columnDuAn;
+                    return this.columnTenDuAn;
                 }
             }
             
@@ -1191,7 +1191,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DanhSachPhanPhoiChiTietRow AddDanhSachPhanPhoiChiTietRow(int ID, int PhanPhoiID, string TenVatTu, int SoLuong, decimal DonGia, string DuAn, decimal TongChiPhi) {
+            public DanhSachPhanPhoiChiTietRow AddDanhSachPhanPhoiChiTietRow(int ID, int PhanPhoiID, string TenVatTu, int SoLuong, decimal DonGia, string TenDuAn, decimal TongChiPhi) {
                 DanhSachPhanPhoiChiTietRow rowDanhSachPhanPhoiChiTietRow = ((DanhSachPhanPhoiChiTietRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -1199,7 +1199,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Reports {
                         TenVatTu,
                         SoLuong,
                         DonGia,
-                        DuAn,
+                        TenDuAn,
                         TongChiPhi};
                 rowDanhSachPhanPhoiChiTietRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDanhSachPhanPhoiChiTietRow);
@@ -1228,7 +1228,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Reports {
                 this.columnTenVatTu = base.Columns["TenVatTu"];
                 this.columnSoLuong = base.Columns["SoLuong"];
                 this.columnDonGia = base.Columns["DonGia"];
-                this.columnDuAn = base.Columns["DuAn"];
+                this.columnTenDuAn = base.Columns["TenDuAn"];
                 this.columnTongChiPhi = base.Columns["TongChiPhi"];
             }
             
@@ -1245,8 +1245,8 @@ namespace QuanLyDuAnCongTrinhXayDung.Reports {
                 base.Columns.Add(this.columnSoLuong);
                 this.columnDonGia = new global::System.Data.DataColumn("DonGia", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDonGia);
-                this.columnDuAn = new global::System.Data.DataColumn("DuAn", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDuAn);
+                this.columnTenDuAn = new global::System.Data.DataColumn("TenDuAn", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTenDuAn);
                 this.columnTongChiPhi = new global::System.Data.DataColumn("TongChiPhi", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTongChiPhi);
                 this.columnPhanPhoiID.AllowDBNull = false;
@@ -2163,17 +2163,17 @@ namespace QuanLyDuAnCongTrinhXayDung.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string DuAn {
+            public string TenDuAn {
                 get {
                     try {
-                        return ((string)(this[this.tableDanhSachPhanPhoiChiTiet.DuAnColumn]));
+                        return ((string)(this[this.tableDanhSachPhanPhoiChiTiet.TenDuAnColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DuAn\' in table \'DanhSachPhanPhoiChiTiet\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TenDuAn\' in table \'DanhSachPhanPhoiChiTiet\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDanhSachPhanPhoiChiTiet.DuAnColumn] = value;
+                    this[this.tableDanhSachPhanPhoiChiTiet.TenDuAnColumn] = value;
                 }
             }
             
@@ -2243,14 +2243,14 @@ namespace QuanLyDuAnCongTrinhXayDung.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsDuAnNull() {
-                return this.IsNull(this.tableDanhSachPhanPhoiChiTiet.DuAnColumn);
+            public bool IsTenDuAnNull() {
+                return this.IsNull(this.tableDanhSachPhanPhoiChiTiet.TenDuAnColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetDuAnNull() {
-                this[this.tableDanhSachPhanPhoiChiTiet.DuAnColumn] = global::System.Convert.DBNull;
+            public void SetTenDuAnNull() {
+                this[this.tableDanhSachPhanPhoiChiTiet.TenDuAnColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
