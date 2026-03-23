@@ -293,7 +293,7 @@
             // 
             // helpProvider1
             // 
-            helpProvider1.HelpNamespace = "https://dth235675-nguyentuankhanh.github.io/QuanLyDuAnCongTrinhXayDung-GD-10/";
+            helpProvider1.HelpNamespace = "https://dth235675-nguyentuankhanh.github.io/DTH235675-NguyenTuanKhanh-HuongDan/";
             // 
             // frmMain
             // 
