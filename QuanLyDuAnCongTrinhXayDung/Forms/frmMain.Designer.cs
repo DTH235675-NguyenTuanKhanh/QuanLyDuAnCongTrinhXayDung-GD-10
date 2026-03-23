@@ -61,6 +61,7 @@
             lblTrangThai = new ToolStripStatusLabel();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             lblLienKet = new ToolStripStatusLabel();
+            helpProvider1 = new HelpProvider();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -253,6 +254,7 @@
             mnuHuongDan.Name = "mnuHuongDan";
             mnuHuongDan.Size = new Size(332, 38);
             mnuHuongDan.Text = "Hướng dẫn sử dụng";
+            mnuHuongDan.Click += mnuHuongDan_Click;
             // 
             // mnuThongTin
             // 
@@ -289,6 +291,10 @@
             lblLienKet.Size = new Size(81, 20);
             lblLienKet.Text = "© 2024 FIT";
             // 
+            // helpProvider1
+            // 
+            helpProvider1.HelpNamespace = "https://dth235675-nguyentuankhanh.github.io/QuanLyDuAnCongTrinhXayDung-GD-10/";
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -299,9 +305,11 @@
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
             DoubleBuffered = true;
+            helpProvider1.SetHelpNavigator(this, HelpNavigator.Topic);
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
             Name = "frmMain";
+            helpProvider1.SetShowHelp(this, true);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Quản Lý Dự Án Công Trình Xây Dựng";
             WindowState = FormWindowState.Maximized;
@@ -348,5 +356,6 @@
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStripStatusLabel lblLienKet;
         private ToolStripMenuItem mnuBangLuong;
+        private HelpProvider helpProvider1;
     }
 }

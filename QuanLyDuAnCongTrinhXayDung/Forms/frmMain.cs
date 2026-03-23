@@ -308,5 +308,10 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             frmThongKeChiPhi frm = new frmThongKeChiPhi();
             frm.ShowDialog();
         }
+
+        private void mnuHuongDan_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, helpProvider1.HelpNamespace);
+        }
     }
 }
