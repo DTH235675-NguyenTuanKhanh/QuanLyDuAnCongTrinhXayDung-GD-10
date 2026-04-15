@@ -29,6 +29,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
         frmPhanPhoi phanPhoi = null;
         frmDangNhap dangNhap = null;
         string hoVaTenNhanVien = "";
+        string quyenHan = "";
         public frmMain()
         {
             InitializeComponent();
@@ -36,134 +37,57 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
 
         private void mnuDuAn_Click(object sender, EventArgs e)
         {
-            if (duAn == null || duAn.IsDisposed)
-            {
-                duAn = new frmDuAn();
-                duAn.MdiParent = this;
-                duAn.Show();
-            }
-            else
-                duAn.Activate();
+            openChildForm(new frmDuAn());
         }
 
         private void mnuCongViec_Click(object sender, EventArgs e)
         {
-            if (congViec == null || congViec.IsDisposed)
-            {
-                congViec = new frmCongViec();
-                congViec.MdiParent = this;
-                congViec.Show();
-            }
-            else
-                congViec.Activate();
+            openChildForm(new frmCongViec());
         }
 
         private void mnuLoaiDuAn_Click(object sender, EventArgs e)
         {
-            if (loaiDuAn == null || loaiDuAn.IsDisposed)
-            {
-                loaiDuAn = new frmLoaiDuAn();
-                loaiDuAn.MdiParent = this;
-                loaiDuAn.Show();
-            }
-            else
-                loaiDuAn.Activate();
+            openChildForm(new frmLoaiDuAn());
         }
 
         private void mnuNhatKyCongTrinh_Click(object sender, EventArgs e)
         {
-            if (nhatKy == null || nhatKy.IsDisposed)
-            {
-                nhatKy = new frmNhatKyCongTrinh();
-                nhatKy.MdiParent = this;
-                nhatKy.Show();
-            }
-            else
-                nhatKy.Activate();
+            openChildForm(new frmNhatKyCongTrinh());
         }
 
         private void mnuPhanCong_Click(object sender, EventArgs e)
         {
-            if (phanCong == null || phanCong.IsDisposed)
-            {
-                phanCong = new frmPhanCong();
-                phanCong.MdiParent = this;
-                phanCong.Show();
-            }
-            else
-                phanCong.Activate();
+            openChildForm(new frmPhanCong());
         }
 
         private void mnuKhachHang_Click(object sender, EventArgs e)
         {
-            if (khachHang == null || khachHang.IsDisposed)
-            {
-                khachHang = new frmKhachHang();
-                khachHang.MdiParent = this;
-                khachHang.Show();
-            }
-            else
-                khachHang.Activate();
+            openChildForm(new frmKhachHang());
         }
 
         private void mnuNhanVien_Click(object sender, EventArgs e)
         {
-            if (nhanVien == null || nhanVien.IsDisposed)
-            {
-                nhanVien = new frmNhanVien();
-                nhanVien.MdiParent = this;
-                nhanVien.Show();
-            }
-            else
-                nhanVien.Activate();
+            openChildForm(new frmNhanVien());
         }
 
         private void mnuNhaDauTu_Click(object sender, EventArgs e)
         {
-            if (nhaDauTu == null || nhaDauTu.IsDisposed)
-            {
-                nhaDauTu = new frmNhaDauTu();
-                nhaDauTu.MdiParent = this;
-                nhaDauTu.Show();
-            }
-            else
-                nhaDauTu.Activate();
+            openChildForm(new frmNhaDauTu());
         }
 
         private void mnuVatTu_Click(object sender, EventArgs e)
         {
-            if (vatTu == null || vatTu.IsDisposed)
-            {
-                vatTu = new frmVatTu();
-                vatTu.MdiParent = this;
-                vatTu.Show();
-            }
-            else
-                vatTu.Activate();
+            openChildForm(new frmVatTu());
         }
 
         private void mnuPhanPhoi_Click(object sender, EventArgs e)
         {
-            if (phanPhoi == null || phanPhoi.IsDisposed)
-            {
-                phanPhoi = new frmPhanPhoi();
-                phanPhoi.MdiParent = this;
-                phanPhoi.Show();
-            }
-            else
-                phanPhoi.Activate();
+            openChildForm(new frmPhanPhoi());
         }
 
         private void mnuBangLuong_Click(object sender, EventArgs e)
         {
-            if (bangLuong == null || bangLuong.IsDisposed)
-            {
-                bangLuong = new frmBangLuong();
-                bangLuong.MdiParent = this;
-                bangLuong.Show();
-            }
-            else
-                bangLuong.Activate();
+            openChildForm(new frmBangLuong());
         }
         private void DangNhap()
         {
@@ -232,6 +156,13 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             mnuBangLuong.Enabled = true;
             mnuDangXuat.Enabled = true;
             mnuDoiMatKhau.Enabled = true;
+            btnDuAn.Enabled = true;
+            btnNhanVien.Enabled = true;
+            btnKhachHang.Enabled = true;
+            btnVatTu.Enabled = true;
+            btnPhanPhoi.Enabled = true;
+            btnPhanCong.Enabled = true;
+
 
             lblTrangThai.Text = "Quản lý: " + hoVaTenNhanVien;
         }
@@ -250,7 +181,37 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             mnuBangLuong.Enabled = false;
             mnuDangXuat.Enabled = true;
             mnuDoiMatKhau.Enabled = true;
-            lblTrangThai.Text = "Nhân viên: " + hoVaTenNhanVien;
+            btnDuAn.Enabled = false;
+            btnPhanCong.Enabled = false;
+            btnPhanPhoi.Enabled = false;
+            btnVatTu.Enabled = false;
+            btnNhanVien.Enabled = false;
+            btnKhachHang.Enabled = true;
+            if (quyenHan == "Kế toán")
+            {
+                mnuNhanVien.Enabled = true;   
+                mnuVatTu.Enabled = true;     
+                mnuPhanPhoi.Enabled = true;   
+                mnuBangLuong.Enabled = true;  
+
+                btnVatTu.Enabled = true;
+                btnPhanPhoi.Enabled = true;
+            }
+            else
+            {
+                mnuNhanVien.Enabled = false;
+                mnuVatTu.Enabled = false;
+                mnuPhanPhoi.Enabled = false;
+                mnuBangLuong.Enabled = false;
+
+                btnVatTu.Enabled = false;
+                btnPhanPhoi.Enabled = false;
+            }
+
+            mnuPhanCong.Enabled = false;
+            btnPhanCong.Enabled = false;
+
+            lblTrangThai.Text = "Nhân viên (" + quyenHan + "): " + hoVaTenNhanVien;
 
         }
         public void ChuaDangNhap()
@@ -268,6 +229,15 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             mnuBangLuong.Enabled = false;
             mnuDangXuat.Enabled = false;
             mnuDoiMatKhau.Enabled = false;
+            btnDuAn.Enabled = false;
+            btnNhanVien.Enabled = false;
+            btnKhachHang.Enabled = false;
+            btnVatTu.Enabled = false;
+            btnPhanPhoi.Enabled = false;
+            btnPhanCong.Enabled = false;
+            mnuThongKeChiPhi.Enabled = false;
+            mnuThongKeLuong.Enabled = false;
+            mnuThongKeChiPhi.Enabled = false;
             lblTrangThai.Text = "Chưa đăng nhập.";
         }
 
@@ -289,29 +259,112 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                 child.Close();
             }
             ChuaDangNhap();
+            CloseAllChildForms();
         }
 
         private void mnuThongKeVatTu_Click(object sender, EventArgs e)
         {
-            frmThongKeVatTu frm = new frmThongKeVatTu();
-            frm.ShowDialog();
+            openChildForm(new frmThongKeVatTu());
         }
 
         private void mnuThongKeLuong_Click(object sender, EventArgs e)
         {
-            frmThongKeLuong frm = new frmThongKeLuong();
-            frm.ShowDialog();
+            openChildForm(new frmThongKeLuong());
         }
 
         private void mnuThongKeChiPhi_Click(object sender, EventArgs e)
         {
-            frmThongKeChiPhi frm = new frmThongKeChiPhi();
-            frm.ShowDialog();
+            openChildForm(new frmThongKeChiPhi());
         }
 
         private void mnuHuongDan_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, helpProvider1.HelpNamespace);
+        }
+
+        private void btnDuAn_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmDuAn());
+        }
+        private Form activeForm = null;
+
+        private void openChildForm(Form childForm)
+        {
+            // 1. Nếu đang có form con khác đang mở thì đóng nó lại cho nhẹ máy
+            if (activeForm != null)
+                activeForm.Close();
+
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill; // Nó sẽ tự Fill vào vùng trống còn lại của Panel
+
+            panel1.Controls.Clear();
+            panel1.Controls.Add(childForm);
+            panel1.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();                       // Lệnh hiển thị
+        }
+
+        private void btnNhanVien_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmNhanVien());
+        }
+
+        private void btnKhachHang_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmKhachHang());
+        }
+
+        private void btnNhatKy_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmPhanCong());
+        }
+
+        private void btnVatTu_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmVatTu());
+        }
+
+        private void btnPhanPhoi_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmPhanPhoi());
+        }
+
+        private void mnuThoat_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+       
+            private void CloseChildForm(Form childForm)
+        {
+            // Kiểm tra xem trong Panel có Control nào không
+            if (panel1.Controls.Count > 0)
+            {
+                // Lấy Control đầu tiên và ép kiểu về Form
+                Form activeChild = panel1.Controls[0] as Form;
+
+                if (activeChild != null)
+                {
+                    activeChild.Close();   // Đóng Form
+                    activeChild.Dispose(); // Giải phóng bộ nhớ
+                    panel1.Controls.Clear(); // Xóa khỏi danh sách quản lý của Panel
+                }
+            }
+        }
+        private void CloseAllChildForms()
+        {
+                CloseChildForm(new frmBangLuong());
+                CloseChildForm(new frmCongViec());
+                CloseChildForm(new frmDuAn());
+                CloseChildForm(new frmKhachHang());
+                CloseChildForm(new frmLoaiDuAn());
+                CloseChildForm(new frmNhatKyCongTrinh());
+                CloseChildForm(new frmNhanVien());
+                CloseChildForm(new frmNhaDauTu());
+                CloseChildForm(new frmPhanCong());
+                CloseChildForm(new frmPhanPhoi());
+                CloseChildForm(new frmVatTu());
         }
     }
 }

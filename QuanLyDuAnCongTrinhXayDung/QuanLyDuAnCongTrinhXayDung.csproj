@@ -9,6 +9,102 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\ban_le.jpg" />
+    <None Remove="Images\bot_tret.jpg" />
+    <None Remove="Images\cat.jpg" />
+    <None Remove="Images\chau_rua.jpg" />
+    <None Remove="Images\cua_xingfa.jpg" />
+    <None Remove="Images\da_1x2.jpg" />
+    <None Remove="Images\da_kimsa.jpg" />
+    <None Remove="Images\gach.jpg" />
+    <None Remove="Images\gach_nen.jpg" />
+    <None Remove="Images\khoa_huyhoang.jpg" />
+    <None Remove="Images\kinh_cl.jpg" />
+    <None Remove="Images\ong_binhminh.jpg" />
+    <None Remove="Images\satphi10.jpg" />
+    <None Remove="Images\son_dulux.jpg" />
+    <None Remove="Images\thep_cuon.jpg" />
+    <None Remove="Images\xa_go.jpg" />
+    <None Remove="Images\ximang.jpg" />
+    <None Remove="Reports\QLDACTXDDataSet.xsd" />
+    <None Remove="Reports\rptInPhanPhoi.rdlc" />
+    <None Remove="Reports\rptThongKeChiPhi.rdlc" />
+    <None Remove="Reports\rptThongKeLuong.rdlc" />
+    <None Remove="Reports\rptThongKeVatTu.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\ban_le.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\bot_tret.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\cat.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\chau_rua.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\cua_xingfa.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\da_1x2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\da_kimsa.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\gach.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\gach_nen.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\khoa_huyhoang.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\kinh_cl.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ong_binhminh.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\satphi10.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\son_dulux.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\thep_cuon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\xa_go.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\ximang.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\QLDACTXDDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLDACTXDDataSet.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\rptInPhanPhoi.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\rptThongKeChiPhi.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\rptThongKeLuong.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\rptThongKeVatTu.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
     <PackageReference Include="ClosedXML" Version="0.105.0" />
     <PackageReference Include="Corrected.Microsoft.ReportingServices.ReportViewerControl.Winforms" Version="150.1358.0" />
@@ -31,11 +127,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Reports\QLDACTXDDataSet.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>QLDACTXDDataSet.xsd</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -43,17 +134,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Reports\QLDACTXDDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>QLDACTXDDataSet.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
 
 </Project>

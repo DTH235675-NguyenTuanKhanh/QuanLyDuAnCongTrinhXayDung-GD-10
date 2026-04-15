@@ -61,7 +61,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                     txtGhiChu.Text = phieu.GhiChu;
                     cboDuAn.SelectedValue = phieu.DuAnID; // Chọn đúng dự án của phiếu này
                     cboDuAn.Enabled = false;
-                    
+
                 }
                 // Sử dụng Include để nạp các bảng liên quan (VatTu và PhanPhoi -> DuAn)
                 var query = context.PhanPhoiChiTiet
@@ -172,54 +172,70 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
             try
             {
                 int maDuAnChon = Convert.ToInt32(cboDuAn.SelectedValue);
+                PhanPhoi pp;
+                decimal tongTienPhieu = phanPhoiChiTiet.Sum(x => x.SoLuong * x.DonGia);
 
-                if (id == 0) // Thêm phiếu mới
+                if (id == 0) // Thêm mới
                 {
-                    PhanPhoi ppNew = new PhanPhoi
+                    pp = new PhanPhoi
                     {
                         NgayLap = DateTime.Now,
-                        DuAnID = maDuAnChon, // Gán ID dự án từ ComboBox vào đây
-                        GhiChu = txtGhiChu.Text ??""
+                        DuAnID = maDuAnChon,
+                        GhiChu = txtGhiChu.Text ?? "",
+                        TongChiPhi = tongTienPhieu
                     };
-                    context.PhanPhoi.Add(ppNew);
-                    context.SaveChanges();
-                    id = ppNew.ID;
+                    context.PhanPhoi.Add(pp);
                 }
-                else // Cập nhật phiếu cũ
+                else // Cập nhật
                 {
-                    var ppUpdate = context.PhanPhoi.Find(id);
-                    if (ppUpdate != null)
+                    pp = context.PhanPhoi.Find(id);
+                    if (pp != null)
                     {
-                        ppUpdate.DuAnID = maDuAnChon; // Cập nhật lại dự án nếu người dùng thay đổi
-                        ppUpdate.GhiChu = txtGhiChu.Text??"";
-                    }
+                        pp.DuAnID = maDuAnChon;
+                        pp.GhiChu = txtGhiChu.Text ?? "";
+                        pp.TongChiPhi = tongTienPhieu;
 
-                    // Xóa chi tiết cũ để lưu lại chi tiết mới
-                    var oldDetails = context.PhanPhoiChiTiet.Where(r => r.PhanPhoiID == id).ToList();
-                    context.PhanPhoiChiTiet.RemoveRange(oldDetails);
+                        // Xóa chi tiết cũ
+                        var oldDetails = context.PhanPhoiChiTiet.Where(r => r.PhanPhoiID == id).ToList();
+                        context.PhanPhoiChiTiet.RemoveRange(oldDetails);
+                    }
                 }
 
-                // Lưu danh sách chi tiết vật tư
+                // Lưu bước đệm để có ID cho pp (nếu là thêm mới)
+                context.SaveChanges();
+                int newId = pp.ID; // Lấy ID vừa sinh ra hoặc ID cũ
+
+                // Lưu danh sách chi tiết
                 foreach (var item in phanPhoiChiTiet)
                 {
-                    context.PhanPhoiChiTiet.Add(new PhanPhoiChiTiet
+                    var detail = new PhanPhoiChiTiet
                     {
-                        PhanPhoiID = id,
+                        PhanPhoiID = newId,
                         VatTuID = item.VatTuID,
+                        DuAnID = maDuAnChon,
                         SoLuong = item.SoLuong,
                         DonGia = item.DonGia,
                         TongChiPhi = item.SoLuong * item.DonGia
-                    });
+                    };
+
+
+                    context.PhanPhoiChiTiet.Add(detail);
                 }
 
                 context.SaveChanges();
-                MessageBox.Show("Lưu thành công!", "Thông báo");
+                MessageBox.Show("Lưu dữ liệu thành công!", "Thông báo");
                 this.Close();
             }
             catch (Exception ex)
             {
-                var message = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
-                MessageBox.Show("Lỗi hệ thống: " + message);
+                // Bóc tách lỗi đến tận cùng
+                Exception inner = ex;
+                while (inner.InnerException != null)
+                {
+                    inner = inner.InnerException;
+                }
+
+                MessageBox.Show("Lỗi thực tế từ Database: " + inner.Message, "Phát hiện lỗi");
             }
         }
 

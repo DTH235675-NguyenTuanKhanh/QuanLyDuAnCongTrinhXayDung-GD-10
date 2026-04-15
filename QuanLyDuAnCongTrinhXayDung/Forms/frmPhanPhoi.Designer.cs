@@ -30,24 +30,26 @@
         {
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPhanPhoi));
             groupBox2 = new GroupBox();
             dataGridView = new DataGridView();
-            phanPhoiBindingSource = new BindingSource(components);
-            btnThoat = new Button();
-            btnTimKiem = new Button();
-            btnXoa = new Button();
-            btnSua = new Button();
-            btnThem = new Button();
-            btnNhap = new Button();
-            btnXuat = new Button();
-            btnInPhanPhoi = new Button();
             colID = new DataGridViewTextBoxColumn();
             colNgayLap = new DataGridViewTextBoxColumn();
             DuAn = new DataGridViewTextBoxColumn();
             colDuAnID = new DataGridViewTextBoxColumn();
             colTongChiPhi = new DataGridViewTextBoxColumn();
             colGhiChu = new DataGridViewTextBoxColumn();
+            phanPhoiBindingSource = new BindingSource(components);
+            btnCongViec = new Button();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
+            button5 = new Button();
+            button6 = new Button();
+            button7 = new Button();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)phanPhoiBindingSource).BeginInit();
@@ -82,128 +84,20 @@
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Columns.AddRange(new DataGridViewColumn[] { colID, colNgayLap, DuAn, colDuAnID, colTongChiPhi, colGhiChu });
             dataGridView.DataSource = phanPhoiBindingSource;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView.Location = new Point(6, 33);
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersWidth = 51;
             dataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
             dataGridView.Size = new Size(1273, 423);
             dataGridView.TabIndex = 0;
-            // 
-            // phanPhoiBindingSource
-            // 
-            phanPhoiBindingSource.DataSource = typeof(Data.PhanPhoi);
-            // 
-            // btnThoat
-            // 
-            btnThoat.Anchor = AnchorStyles.Bottom;
-            btnThoat.BackColor = Color.Silver;
-            btnThoat.ForeColor = Color.Black;
-            btnThoat.Location = new Point(855, 488);
-            btnThoat.Name = "btnThoat";
-            btnThoat.Size = new Size(102, 46);
-            btnThoat.TabIndex = 28;
-            btnThoat.Text = "Thoát";
-            btnThoat.UseVisualStyleBackColor = false;
-            btnThoat.Click += btnThoat_Click;
-            // 
-            // btnTimKiem
-            // 
-            btnTimKiem.Anchor = AnchorStyles.Bottom;
-            btnTimKiem.BackColor = Color.Fuchsia;
-            btnTimKiem.ForeColor = Color.Black;
-            btnTimKiem.Location = new Point(705, 488);
-            btnTimKiem.Name = "btnTimKiem";
-            btnTimKiem.Size = new Size(113, 46);
-            btnTimKiem.TabIndex = 27;
-            btnTimKiem.Text = "Tìm Kiếm";
-            btnTimKiem.UseVisualStyleBackColor = false;
-            btnTimKiem.Click += btnTimKiem_Click;
-            // 
-            // btnXoa
-            // 
-            btnXoa.Anchor = AnchorStyles.Bottom;
-            btnXoa.BackColor = Color.Red;
-            btnXoa.ForeColor = Color.Black;
-            btnXoa.Location = new Point(568, 488);
-            btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(102, 46);
-            btnXoa.TabIndex = 24;
-            btnXoa.Text = "Xóa";
-            btnXoa.UseVisualStyleBackColor = false;
-            btnXoa.Click += btnXoa_Click;
-            // 
-            // btnSua
-            // 
-            btnSua.Anchor = AnchorStyles.Bottom;
-            btnSua.BackColor = Color.Yellow;
-            btnSua.ForeColor = Color.Black;
-            btnSua.Location = new Point(436, 488);
-            btnSua.Name = "btnSua";
-            btnSua.Size = new Size(102, 46);
-            btnSua.TabIndex = 23;
-            btnSua.Text = "Sửa";
-            btnSua.UseVisualStyleBackColor = false;
-            btnSua.Click += btnSua_Click;
-            // 
-            // btnThem
-            // 
-            btnThem.Anchor = AnchorStyles.Bottom;
-            btnThem.BackColor = Color.Lime;
-            btnThem.ForeColor = Color.Black;
-            btnThem.Location = new Point(70, 488);
-            btnThem.Name = "btnThem";
-            btnThem.Size = new Size(168, 46);
-            btnThem.TabIndex = 22;
-            btnThem.Text = "Thêm phân phối mới..";
-            btnThem.UseVisualStyleBackColor = false;
-            btnThem.Click += btnThem_Click;
-            // 
-            // btnNhap
-            // 
-            btnNhap.Anchor = AnchorStyles.Bottom;
-            btnNhap.BackColor = Color.MediumSpringGreen;
-            btnNhap.ForeColor = Color.Black;
-            btnNhap.Location = new Point(1125, 488);
-            btnNhap.Name = "btnNhap";
-            btnNhap.Size = new Size(101, 46);
-            btnNhap.TabIndex = 30;
-            btnNhap.Text = "Nhập Excel";
-            btnNhap.UseVisualStyleBackColor = false;
-            btnNhap.Click += btnNhap_Click;
-            // 
-            // btnXuat
-            // 
-            btnXuat.Anchor = AnchorStyles.Bottom;
-            btnXuat.BackColor = Color.MediumSpringGreen;
-            btnXuat.ForeColor = Color.Black;
-            btnXuat.Location = new Point(992, 488);
-            btnXuat.Name = "btnXuat";
-            btnXuat.Size = new Size(102, 46);
-            btnXuat.TabIndex = 29;
-            btnXuat.Text = "Xuất Excel";
-            btnXuat.UseVisualStyleBackColor = false;
-            btnXuat.Click += btnXuat_Click;
-            // 
-            // btnInPhanPhoi
-            // 
-            btnInPhanPhoi.Anchor = AnchorStyles.Bottom;
-            btnInPhanPhoi.BackColor = Color.Lime;
-            btnInPhanPhoi.ForeColor = Color.Black;
-            btnInPhanPhoi.Location = new Point(269, 488);
-            btnInPhanPhoi.Name = "btnInPhanPhoi";
-            btnInPhanPhoi.Size = new Size(135, 46);
-            btnInPhanPhoi.TabIndex = 31;
-            btnInPhanPhoi.Text = "In phân phối..";
-            btnInPhanPhoi.UseVisualStyleBackColor = false;
-            btnInPhanPhoi.Click += btnInPhanPhoi_Click;
             // 
             // colID
             // 
@@ -239,6 +133,8 @@
             // colTongChiPhi
             // 
             colTongChiPhi.DataPropertyName = "TongChiPhi";
+            dataGridViewCellStyle2.Format = "C0";
+            colTongChiPhi.DefaultCellStyle = dataGridViewCellStyle2;
             colTongChiPhi.HeaderText = "Tổng chi phí";
             colTongChiPhi.MinimumWidth = 6;
             colTongChiPhi.Name = "colTongChiPhi";
@@ -250,20 +146,179 @@
             colGhiChu.MinimumWidth = 6;
             colGhiChu.Name = "colGhiChu";
             // 
+            // phanPhoiBindingSource
+            // 
+            phanPhoiBindingSource.DataSource = typeof(Data.PhanPhoi);
+            // 
+            // btnCongViec
+            // 
+            btnCongViec.Anchor = AnchorStyles.Bottom;
+            btnCongViec.BackColor = Color.Transparent;
+            btnCongViec.FlatAppearance.BorderSize = 0;
+            btnCongViec.FlatAppearance.MouseOverBackColor = Color.SpringGreen;
+            btnCongViec.FlatStyle = FlatStyle.Flat;
+            btnCongViec.ForeColor = Color.Black;
+            btnCongViec.Image = (Image)resources.GetObject("btnCongViec.Image");
+            btnCongViec.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCongViec.Location = new Point(252, 488);
+            btnCongViec.Name = "btnCongViec";
+            btnCongViec.Size = new Size(134, 46);
+            btnCongViec.TabIndex = 53;
+            btnCongViec.Text = "In phân phối";
+            btnCongViec.TextAlign = ContentAlignment.MiddleRight;
+            btnCongViec.UseVisualStyleBackColor = false;
+            btnCongViec.Click += btnInPhanPhoi_Click;
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Bottom;
+            button1.BackColor = Color.Transparent;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseOverBackColor = Color.SpringGreen;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.Black;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(905, 488);
+            button1.Name = "button1";
+            button1.Size = new Size(125, 46);
+            button1.TabIndex = 52;
+            button1.Text = "Nhập Excel";
+            button1.TextAlign = ContentAlignment.MiddleRight;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += btnNhap_Click;
+            // 
+            // button2
+            // 
+            button2.Anchor = AnchorStyles.Bottom;
+            button2.BackColor = Color.Transparent;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.MouseOverBackColor = Color.SpringGreen;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.ForeColor = Color.Black;
+            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(1036, 488);
+            button2.Name = "button2";
+            button2.Size = new Size(116, 46);
+            button2.TabIndex = 51;
+            button2.Text = "Xuất Excel";
+            button2.TextAlign = ContentAlignment.MiddleRight;
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += btnXuat_Click;
+            // 
+            // button3
+            // 
+            button3.Anchor = AnchorStyles.Bottom;
+            button3.BackColor = Color.Transparent;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatAppearance.MouseOverBackColor = Color.Red;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.ForeColor = Color.Black;
+            button3.Image = (Image)resources.GetObject("button3.Image");
+            button3.ImageAlign = ContentAlignment.MiddleLeft;
+            button3.Location = new Point(780, 488);
+            button3.Name = "button3";
+            button3.Size = new Size(88, 46);
+            button3.TabIndex = 50;
+            button3.Text = "Thoát";
+            button3.TextAlign = ContentAlignment.MiddleRight;
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += btnThoat_Click;
+            // 
+            // button4
+            // 
+            button4.Anchor = AnchorStyles.Bottom;
+            button4.BackColor = Color.Transparent;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatAppearance.MouseOverBackColor = Color.Cyan;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.ForeColor = Color.Black;
+            button4.Image = (Image)resources.GetObject("button4.Image");
+            button4.ImageAlign = ContentAlignment.MiddleLeft;
+            button4.Location = new Point(631, 488);
+            button4.Name = "button4";
+            button4.Size = new Size(111, 46);
+            button4.TabIndex = 49;
+            button4.Text = "Tìm Kiếm";
+            button4.TextAlign = ContentAlignment.MiddleRight;
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += btnTimKiem_Click;
+            // 
+            // button5
+            // 
+            button5.Anchor = AnchorStyles.Bottom;
+            button5.BackColor = Color.Transparent;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatAppearance.MouseOverBackColor = Color.Red;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.ForeColor = Color.Black;
+            button5.Image = (Image)resources.GetObject("button5.Image");
+            button5.ImageAlign = ContentAlignment.MiddleLeft;
+            button5.Location = new Point(520, 488);
+            button5.Name = "button5";
+            button5.Size = new Size(76, 46);
+            button5.TabIndex = 46;
+            button5.Text = "Xóa";
+            button5.TextAlign = ContentAlignment.MiddleRight;
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += btnXoa_Click;
+            // 
+            // button6
+            // 
+            button6.Anchor = AnchorStyles.Bottom;
+            button6.BackColor = Color.Transparent;
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatAppearance.MouseOverBackColor = Color.DeepSkyBlue;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.ForeColor = Color.Black;
+            button6.Image = (Image)resources.GetObject("button6.Image");
+            button6.ImageAlign = ContentAlignment.MiddleLeft;
+            button6.Location = new Point(416, 488);
+            button6.Name = "button6";
+            button6.Size = new Size(77, 46);
+            button6.TabIndex = 45;
+            button6.Text = "Sửa";
+            button6.TextAlign = ContentAlignment.MiddleRight;
+            button6.UseVisualStyleBackColor = false;
+            button6.Click += btnSua_Click;
+            // 
+            // button7
+            // 
+            button7.Anchor = AnchorStyles.Bottom;
+            button7.BackColor = Color.Transparent;
+            button7.BackgroundImageLayout = ImageLayout.Zoom;
+            button7.FlatAppearance.BorderColor = Color.Lime;
+            button7.FlatAppearance.BorderSize = 0;
+            button7.FlatAppearance.MouseDownBackColor = Color.Lime;
+            button7.FlatAppearance.MouseOverBackColor = Color.Lime;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.ForeColor = Color.Black;
+            button7.Image = (Image)resources.GetObject("button7.Image");
+            button7.ImageAlign = ContentAlignment.MiddleLeft;
+            button7.Location = new Point(66, 488);
+            button7.Name = "button7";
+            button7.Size = new Size(161, 46);
+            button7.TabIndex = 44;
+            button7.Text = "Thêm phân phối";
+            button7.TextAlign = ContentAlignment.MiddleRight;
+            button7.UseVisualStyleBackColor = false;
+            button7.Click += btnThem_Click;
+            // 
             // frmPhanPhoi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1300, 546);
-            Controls.Add(btnInPhanPhoi);
-            Controls.Add(btnNhap);
-            Controls.Add(btnXuat);
-            Controls.Add(btnThoat);
+            Controls.Add(btnCongViec);
             Controls.Add(groupBox2);
-            Controls.Add(btnTimKiem);
-            Controls.Add(btnXoa);
-            Controls.Add(btnThem);
-            Controls.Add(btnSua);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(button7);
+            Controls.Add(button6);
+            Controls.Add(button3);
+            Controls.Add(button5);
+            Controls.Add(button4);
             Name = "frmPhanPhoi";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Phân Phối";
@@ -280,21 +335,21 @@
         private GroupBox groupBox2;
         private DataGridView dataGridView;
         private BindingSource phanPhoiBindingSource;
-        private Button btnThoat;
-        private Button btnTimKiem;
-        private Button btnXoa;
-        private Button btnSua;
-        private Button btnThem;
         private DataGridViewTextBoxColumn colDuAn;
-        private Button btnNhap;
-        private Button btnXuat;
         private DataGridViewTextBoxColumn colTenDuAn;
-        private Button btnInPhanPhoi;
         private DataGridViewTextBoxColumn colID;
         private DataGridViewTextBoxColumn colNgayLap;
         private DataGridViewTextBoxColumn DuAn;
         private DataGridViewTextBoxColumn colDuAnID;
         private DataGridViewTextBoxColumn colTongChiPhi;
         private DataGridViewTextBoxColumn colGhiChu;
+        private Button btnCongViec;
+        private Button button1;
+        private Button button2;
+        private Button button3;
+        private Button button4;
+        private Button button5;
+        private Button button6;
+        private Button button7;
     }
 }

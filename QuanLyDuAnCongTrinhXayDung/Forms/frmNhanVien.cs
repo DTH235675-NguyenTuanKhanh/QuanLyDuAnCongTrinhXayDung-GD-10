@@ -319,5 +319,11 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                 MessageBox.Show("Xuất file Excel thành công!");
             }
         }
+
+        private void btnLuong_Click(object sender, EventArgs e)
+        {
+            frmBangLuong frm = new frmBangLuong();
+            frm.ShowDialog();
+        }
     }
 }

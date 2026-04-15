@@ -21,6 +21,7 @@ namespace QuanLyDuAnCongTrinhXayDung.Data
             public decimal DonGia { get; set; }
         [NotMapped]
         public decimal TongChiPhi { get; set; }
+        public int DuAnID { get; internal set; }
     }
     [NotMapped]
     public class DanhSachPhanPhoiChiTiet

@@ -29,19 +29,10 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhaDauTu));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhaDauTu));
             groupBox1 = new GroupBox();
-            btnNhap = new Button();
-            btnXuat = new Button();
-            btnThoat = new Button();
-            btnTimKiem = new Button();
-            btnHuyBo = new Button();
-            btnLuu = new Button();
-            btnXoa = new Button();
-            btnSua = new Button();
-            btnThem = new Button();
             txtMaSoThue = new TextBox();
             label6 = new Label();
             txtSoDienThoai = new TextBox();
@@ -53,12 +44,21 @@
             pictureBox1 = new PictureBox();
             groupBox2 = new GroupBox();
             dataGridView = new DataGridView();
-            nhaDauTuBindingSource = new BindingSource(components);
             colID = new DataGridViewTextBoxColumn();
             TenNhaDauTu = new DataGridViewTextBoxColumn();
             MaSoThue = new DataGridViewTextBoxColumn();
             DiaChi = new DataGridViewTextBoxColumn();
             SoDienThoai = new DataGridViewTextBoxColumn();
+            nhaDauTuBindingSource = new BindingSource(components);
+            btnNhap = new Button();
+            btnXuat = new Button();
+            btnThoat = new Button();
+            btnTimKiem = new Button();
+            btnHuyBo = new Button();
+            btnLuu = new Button();
+            btnXoa = new Button();
+            btnSua = new Button();
+            btnThem = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox2.SuspendLayout();
@@ -70,138 +70,30 @@
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox1.Controls.Add(btnNhap);
+            groupBox1.Controls.Add(txtMaSoThue);
             groupBox1.Controls.Add(btnXuat);
+            groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(btnThoat);
+            groupBox1.Controls.Add(txtSoDienThoai);
             groupBox1.Controls.Add(btnTimKiem);
+            groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(btnHuyBo);
+            groupBox1.Controls.Add(txtDiaChi);
             groupBox1.Controls.Add(btnLuu);
+            groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(btnXoa);
             groupBox1.Controls.Add(btnSua);
-            groupBox1.Controls.Add(btnThem);
-            groupBox1.Controls.Add(txtMaSoThue);
-            groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(txtSoDienThoai);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(txtDiaChi);
-            groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(txtTenNhaDauTu);
+            groupBox1.Controls.Add(btnThem);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(pictureBox1);
             groupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1265, 220);
+            groupBox1.Size = new Size(1265, 250);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin Nhà đầu tư";
-            // 
-            // btnNhap
-            // 
-            btnNhap.BackColor = Color.MediumSpringGreen;
-            btnNhap.ForeColor = Color.Black;
-            btnNhap.Location = new Point(975, 153);
-            btnNhap.Name = "btnNhap";
-            btnNhap.Size = new Size(120, 46);
-            btnNhap.TabIndex = 23;
-            btnNhap.Text = "Nhập Excel";
-            btnNhap.UseVisualStyleBackColor = false;
-            btnNhap.Click += btnNhap_Click;
-            // 
-            // btnXuat
-            // 
-            btnXuat.BackColor = Color.MediumSpringGreen;
-            btnXuat.ForeColor = Color.Black;
-            btnXuat.Location = new Point(1123, 153);
-            btnXuat.Name = "btnXuat";
-            btnXuat.Size = new Size(121, 46);
-            btnXuat.TabIndex = 22;
-            btnXuat.Text = "Xuất Excel";
-            btnXuat.UseVisualStyleBackColor = false;
-            btnXuat.Click += btnXuat_Click;
-            // 
-            // btnThoat
-            // 
-            btnThoat.BackColor = Color.Silver;
-            btnThoat.ForeColor = Color.Black;
-            btnThoat.Location = new Point(839, 153);
-            btnThoat.Name = "btnThoat";
-            btnThoat.Size = new Size(100, 46);
-            btnThoat.TabIndex = 21;
-            btnThoat.Text = "Thoát";
-            btnThoat.UseVisualStyleBackColor = false;
-            btnThoat.Click += btnThoat_Click;
-            // 
-            // btnTimKiem
-            // 
-            btnTimKiem.BackColor = Color.Fuchsia;
-            btnTimKiem.ForeColor = Color.Black;
-            btnTimKiem.Location = new Point(696, 153);
-            btnTimKiem.Name = "btnTimKiem";
-            btnTimKiem.Size = new Size(111, 46);
-            btnTimKiem.TabIndex = 20;
-            btnTimKiem.Text = "Tìm Kiếm";
-            btnTimKiem.UseVisualStyleBackColor = false;
-            btnTimKiem.Click += btnTimKiem_Click;
-            // 
-            // btnHuyBo
-            // 
-            btnHuyBo.BackColor = Color.FromArgb(255, 128, 0);
-            btnHuyBo.ForeColor = Color.Black;
-            btnHuyBo.Location = new Point(565, 153);
-            btnHuyBo.Name = "btnHuyBo";
-            btnHuyBo.Size = new Size(100, 46);
-            btnHuyBo.TabIndex = 19;
-            btnHuyBo.Text = "Hủy Bỏ";
-            btnHuyBo.UseVisualStyleBackColor = false;
-            btnHuyBo.Click += btnHuyBo_Click;
-            // 
-            // btnLuu
-            // 
-            btnLuu.BackColor = Color.Cyan;
-            btnLuu.ForeColor = Color.Black;
-            btnLuu.Location = new Point(424, 153);
-            btnLuu.Name = "btnLuu";
-            btnLuu.Size = new Size(100, 46);
-            btnLuu.TabIndex = 18;
-            btnLuu.Text = "Lưu";
-            btnLuu.UseVisualStyleBackColor = false;
-            btnLuu.Click += btnLuu_Click;
-            // 
-            // btnXoa
-            // 
-            btnXoa.BackColor = Color.Red;
-            btnXoa.ForeColor = Color.Black;
-            btnXoa.Location = new Point(285, 153);
-            btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(100, 46);
-            btnXoa.TabIndex = 17;
-            btnXoa.Text = "Xóa";
-            btnXoa.UseVisualStyleBackColor = false;
-            btnXoa.Click += btnXoa_Click;
-            // 
-            // btnSua
-            // 
-            btnSua.BackColor = Color.Yellow;
-            btnSua.ForeColor = Color.Black;
-            btnSua.Location = new Point(149, 153);
-            btnSua.Name = "btnSua";
-            btnSua.Size = new Size(100, 46);
-            btnSua.TabIndex = 16;
-            btnSua.Text = "Sửa";
-            btnSua.UseVisualStyleBackColor = false;
-            btnSua.Click += btnSua_Click;
-            // 
-            // btnThem
-            // 
-            btnThem.BackColor = Color.Lime;
-            btnThem.ForeColor = Color.Black;
-            btnThem.Location = new Point(19, 153);
-            btnThem.Name = "btnThem";
-            btnThem.Size = new Size(100, 46);
-            btnThem.TabIndex = 1;
-            btnThem.Text = "Thêm";
-            btnThem.UseVisualStyleBackColor = false;
-            btnThem.Click += btnThem_Click;
             // 
             // txtMaSoThue
             // 
@@ -283,9 +175,9 @@
             groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox2.Controls.Add(dataGridView);
             groupBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(12, 238);
+            groupBox2.Location = new Point(12, 268);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1265, 468);
+            groupBox2.Size = new Size(1265, 438);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
             groupBox2.Text = "Danh sách Nhà đầu tư";
@@ -322,12 +214,8 @@
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersWidth = 51;
             dataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
-            dataGridView.Size = new Size(1259, 429);
+            dataGridView.Size = new Size(1259, 399);
             dataGridView.TabIndex = 0;
-            // 
-            // nhaDauTuBindingSource
-            // 
-            nhaDauTuBindingSource.DataSource = typeof(Data.NhaDauTu);
             // 
             // colID
             // 
@@ -372,6 +260,166 @@
             SoDienThoai.MinimumWidth = 6;
             SoDienThoai.Name = "SoDienThoai";
             // 
+            // nhaDauTuBindingSource
+            // 
+            nhaDauTuBindingSource.DataSource = typeof(Data.NhaDauTu);
+            // 
+            // btnNhap
+            // 
+            btnNhap.BackColor = Color.Transparent;
+            btnNhap.FlatAppearance.BorderSize = 0;
+            btnNhap.FlatAppearance.MouseOverBackColor = Color.SpringGreen;
+            btnNhap.FlatStyle = FlatStyle.Flat;
+            btnNhap.ForeColor = Color.Black;
+            btnNhap.Image = (Image)resources.GetObject("btnNhap.Image");
+            btnNhap.ImageAlign = ContentAlignment.MiddleLeft;
+            btnNhap.Location = new Point(438, 144);
+            btnNhap.Name = "btnNhap";
+            btnNhap.Size = new Size(145, 46);
+            btnNhap.TabIndex = 32;
+            btnNhap.Text = "Nhập Excel";
+            btnNhap.TextAlign = ContentAlignment.MiddleRight;
+            btnNhap.UseVisualStyleBackColor = false;
+            // 
+            // btnXuat
+            // 
+            btnXuat.BackColor = Color.Transparent;
+            btnXuat.FlatAppearance.BorderSize = 0;
+            btnXuat.FlatAppearance.MouseOverBackColor = Color.SpringGreen;
+            btnXuat.FlatStyle = FlatStyle.Flat;
+            btnXuat.ForeColor = Color.Black;
+            btnXuat.Image = (Image)resources.GetObject("btnXuat.Image");
+            btnXuat.ImageAlign = ContentAlignment.MiddleLeft;
+            btnXuat.Location = new Point(438, 188);
+            btnXuat.Name = "btnXuat";
+            btnXuat.Size = new Size(145, 46);
+            btnXuat.TabIndex = 31;
+            btnXuat.Text = "Xuất Excel";
+            btnXuat.TextAlign = ContentAlignment.MiddleRight;
+            btnXuat.UseVisualStyleBackColor = false;
+            // 
+            // btnThoat
+            // 
+            btnThoat.BackColor = Color.Transparent;
+            btnThoat.FlatAppearance.BorderSize = 0;
+            btnThoat.FlatAppearance.MouseOverBackColor = Color.Red;
+            btnThoat.FlatStyle = FlatStyle.Flat;
+            btnThoat.ForeColor = Color.Black;
+            btnThoat.Image = (Image)resources.GetObject("btnThoat.Image");
+            btnThoat.ImageAlign = ContentAlignment.MiddleLeft;
+            btnThoat.Location = new Point(609, 165);
+            btnThoat.Name = "btnThoat";
+            btnThoat.Size = new Size(99, 46);
+            btnThoat.TabIndex = 30;
+            btnThoat.Text = "Thoát";
+            btnThoat.TextAlign = ContentAlignment.MiddleRight;
+            btnThoat.UseVisualStyleBackColor = false;
+            // 
+            // btnTimKiem
+            // 
+            btnTimKiem.BackColor = Color.Transparent;
+            btnTimKiem.FlatAppearance.BorderSize = 0;
+            btnTimKiem.FlatAppearance.MouseOverBackColor = Color.Cyan;
+            btnTimKiem.FlatStyle = FlatStyle.Flat;
+            btnTimKiem.ForeColor = Color.Black;
+            btnTimKiem.Image = (Image)resources.GetObject("btnTimKiem.Image");
+            btnTimKiem.ImageAlign = ContentAlignment.MiddleLeft;
+            btnTimKiem.Location = new Point(289, 188);
+            btnTimKiem.Name = "btnTimKiem";
+            btnTimKiem.Size = new Size(127, 46);
+            btnTimKiem.TabIndex = 29;
+            btnTimKiem.Text = "Tìm Kiếm";
+            btnTimKiem.TextAlign = ContentAlignment.MiddleRight;
+            btnTimKiem.UseVisualStyleBackColor = false;
+            // 
+            // btnHuyBo
+            // 
+            btnHuyBo.BackColor = Color.Transparent;
+            btnHuyBo.FlatAppearance.BorderSize = 0;
+            btnHuyBo.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 0, 0);
+            btnHuyBo.FlatStyle = FlatStyle.Flat;
+            btnHuyBo.ForeColor = Color.Black;
+            btnHuyBo.Image = (Image)resources.GetObject("btnHuyBo.Image");
+            btnHuyBo.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHuyBo.Location = new Point(289, 144);
+            btnHuyBo.Name = "btnHuyBo";
+            btnHuyBo.Size = new Size(115, 46);
+            btnHuyBo.TabIndex = 28;
+            btnHuyBo.Text = "Hủy Bỏ";
+            btnHuyBo.TextAlign = ContentAlignment.MiddleRight;
+            btnHuyBo.UseVisualStyleBackColor = false;
+            // 
+            // btnLuu
+            // 
+            btnLuu.BackColor = Color.Transparent;
+            btnLuu.FlatAppearance.BorderSize = 0;
+            btnLuu.FlatAppearance.MouseOverBackColor = Color.DeepSkyBlue;
+            btnLuu.FlatStyle = FlatStyle.Flat;
+            btnLuu.ForeColor = Color.Black;
+            btnLuu.Image = (Image)resources.GetObject("btnLuu.Image");
+            btnLuu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLuu.Location = new Point(176, 188);
+            btnLuu.Name = "btnLuu";
+            btnLuu.Size = new Size(86, 46);
+            btnLuu.TabIndex = 27;
+            btnLuu.Text = "Lưu";
+            btnLuu.TextAlign = ContentAlignment.MiddleRight;
+            btnLuu.UseVisualStyleBackColor = false;
+            // 
+            // btnXoa
+            // 
+            btnXoa.BackColor = Color.Transparent;
+            btnXoa.FlatAppearance.BorderSize = 0;
+            btnXoa.FlatAppearance.MouseOverBackColor = Color.Red;
+            btnXoa.FlatStyle = FlatStyle.Flat;
+            btnXoa.ForeColor = Color.Black;
+            btnXoa.Image = (Image)resources.GetObject("btnXoa.Image");
+            btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
+            btnXoa.Location = new Point(176, 144);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(86, 46);
+            btnXoa.TabIndex = 26;
+            btnXoa.Text = "Xóa";
+            btnXoa.TextAlign = ContentAlignment.MiddleRight;
+            btnXoa.UseVisualStyleBackColor = false;
+            // 
+            // btnSua
+            // 
+            btnSua.BackColor = Color.Transparent;
+            btnSua.FlatAppearance.BorderSize = 0;
+            btnSua.FlatAppearance.MouseOverBackColor = Color.DeepSkyBlue;
+            btnSua.FlatStyle = FlatStyle.Flat;
+            btnSua.ForeColor = Color.Black;
+            btnSua.Image = (Image)resources.GetObject("btnSua.Image");
+            btnSua.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSua.Location = new Point(49, 188);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(91, 46);
+            btnSua.TabIndex = 25;
+            btnSua.Text = "Sửa";
+            btnSua.TextAlign = ContentAlignment.MiddleRight;
+            btnSua.UseVisualStyleBackColor = false;
+            // 
+            // btnThem
+            // 
+            btnThem.BackColor = Color.Transparent;
+            btnThem.BackgroundImageLayout = ImageLayout.Zoom;
+            btnThem.FlatAppearance.BorderColor = Color.Lime;
+            btnThem.FlatAppearance.BorderSize = 0;
+            btnThem.FlatAppearance.MouseDownBackColor = Color.Lime;
+            btnThem.FlatAppearance.MouseOverBackColor = Color.Lime;
+            btnThem.FlatStyle = FlatStyle.Flat;
+            btnThem.ForeColor = Color.Black;
+            btnThem.Image = (Image)resources.GetObject("btnThem.Image");
+            btnThem.ImageAlign = ContentAlignment.MiddleLeft;
+            btnThem.Location = new Point(49, 144);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new Size(100, 46);
+            btnThem.TabIndex = 24;
+            btnThem.Text = "Thêm";
+            btnThem.TextAlign = ContentAlignment.MiddleRight;
+            btnThem.UseVisualStyleBackColor = false;
+            // 
             // frmNhaDauTu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -398,15 +446,6 @@
         private GroupBox groupBox1;
         private TextBox txtTimKiem;
         private Label label9;
-        private Button btnNhap;
-        private Button btnXuat;
-        private Button btnThoat;
-        private Button btnTimKiem;
-        private Button btnHuyBo;
-        private Button btnLuu;
-        private Button btnXoa;
-        private Button btnSua;
-        private Button btnThem;
         private TextBox txtNguoiDaiDien;
         private Label label5;
         private TextBox txtMaSoThue;
@@ -426,5 +465,14 @@
         private DataGridViewTextBoxColumn MaSoThue;
         private DataGridViewTextBoxColumn DiaChi;
         private DataGridViewTextBoxColumn SoDienThoai;
+        private Button btnNhap;
+        private Button btnXuat;
+        private Button btnThoat;
+        private Button btnTimKiem;
+        private Button btnHuyBo;
+        private Button btnLuu;
+        private Button btnXoa;
+        private Button btnSua;
+        private Button btnThem;
     }
 }

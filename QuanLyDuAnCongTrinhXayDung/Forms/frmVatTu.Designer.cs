@@ -31,26 +31,27 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVatTu));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
-            numDonGia = new NumericUpDown();
             btnDoiAnh = new Button();
-            label4 = new Label();
-            ptbHinhAnh = new PictureBox();
-            txtTenVatTu = new TextBox();
+            numDonGia = new NumericUpDown();
             btnNhap = new Button();
+            label4 = new Label();
             btnXuat = new Button();
+            ptbHinhAnh = new PictureBox();
             btnThoat = new Button();
+            txtTenVatTu = new TextBox();
             btnTimKiem = new Button();
+            txtDonViTinh = new TextBox();
             btnHuyBo = new Button();
             btnLuu = new Button();
-            btnXoa = new Button();
-            btnSua = new Button();
-            btnThem = new Button();
-            txtDonViTinh = new TextBox();
             label3 = new Label();
+            btnXoa = new Button();
             label2 = new Label();
+            btnSua = new Button();
             label1 = new Label();
+            btnThem = new Button();
             pictureBox1 = new PictureBox();
             groupBox2 = new GroupBox();
             dataGridView = new DataGridView();
@@ -82,32 +83,50 @@
             // groupBox1
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            groupBox1.Controls.Add(numDonGia);
             groupBox1.Controls.Add(btnDoiAnh);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(ptbHinhAnh);
-            groupBox1.Controls.Add(txtTenVatTu);
+            groupBox1.Controls.Add(numDonGia);
             groupBox1.Controls.Add(btnNhap);
+            groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(btnXuat);
+            groupBox1.Controls.Add(ptbHinhAnh);
             groupBox1.Controls.Add(btnThoat);
+            groupBox1.Controls.Add(txtTenVatTu);
             groupBox1.Controls.Add(btnTimKiem);
+            groupBox1.Controls.Add(txtDonViTinh);
             groupBox1.Controls.Add(btnHuyBo);
             groupBox1.Controls.Add(btnLuu);
-            groupBox1.Controls.Add(btnXoa);
-            groupBox1.Controls.Add(btnSua);
-            groupBox1.Controls.Add(btnThem);
-            groupBox1.Controls.Add(txtDonViTinh);
             groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(btnXoa);
             groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(btnSua);
             groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(btnThem);
             groupBox1.Controls.Add(pictureBox1);
             groupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1179, 275);
+            groupBox1.Size = new Size(1179, 298);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin Vật tư";
+            // 
+            // btnDoiAnh
+            // 
+            btnDoiAnh.BackColor = Color.Transparent;
+            btnDoiAnh.FlatAppearance.BorderSize = 0;
+            btnDoiAnh.FlatAppearance.MouseOverBackColor = Color.SpringGreen;
+            btnDoiAnh.FlatStyle = FlatStyle.Flat;
+            btnDoiAnh.ForeColor = Color.Black;
+            btnDoiAnh.Image = (Image)resources.GetObject("btnDoiAnh.Image");
+            btnDoiAnh.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDoiAnh.Location = new Point(531, 100);
+            btnDoiAnh.Name = "btnDoiAnh";
+            btnDoiAnh.Size = new Size(122, 34);
+            btnDoiAnh.TabIndex = 53;
+            btnDoiAnh.Text = "Đổi ảnh";
+            btnDoiAnh.TextAlign = ContentAlignment.MiddleRight;
+            btnDoiAnh.UseVisualStyleBackColor = false;
+            btnDoiAnh.Click += btnDoiAnh_Click;
             // 
             // numDonGia
             // 
@@ -117,17 +136,23 @@
             numDonGia.Size = new Size(356, 34);
             numDonGia.TabIndex = 37;
             // 
-            // btnDoiAnh
+            // btnNhap
             // 
-            btnDoiAnh.BackColor = Color.Fuchsia;
-            btnDoiAnh.ForeColor = Color.Black;
-            btnDoiAnh.Location = new Point(531, 108);
-            btnDoiAnh.Name = "btnDoiAnh";
-            btnDoiAnh.Size = new Size(110, 46);
-            btnDoiAnh.TabIndex = 36;
-            btnDoiAnh.Text = "Đổi ảnh";
-            btnDoiAnh.UseVisualStyleBackColor = false;
-            btnDoiAnh.Click += btnDoiAnh_Click;
+            btnNhap.BackColor = Color.Transparent;
+            btnNhap.FlatAppearance.BorderSize = 0;
+            btnNhap.FlatAppearance.MouseOverBackColor = Color.SpringGreen;
+            btnNhap.FlatStyle = FlatStyle.Flat;
+            btnNhap.ForeColor = Color.Black;
+            btnNhap.Image = (Image)resources.GetObject("btnNhap.Image");
+            btnNhap.ImageAlign = ContentAlignment.MiddleLeft;
+            btnNhap.Location = new Point(415, 199);
+            btnNhap.Name = "btnNhap";
+            btnNhap.Size = new Size(145, 34);
+            btnNhap.TabIndex = 52;
+            btnNhap.Text = "Nhập Excel";
+            btnNhap.TextAlign = ContentAlignment.MiddleRight;
+            btnNhap.UseVisualStyleBackColor = false;
+            btnNhap.Click += btnNhap_Click;
             // 
             // label4
             // 
@@ -138,6 +163,24 @@
             label4.TabIndex = 35;
             label4.Text = "Hình ảnh: ";
             // 
+            // btnXuat
+            // 
+            btnXuat.BackColor = Color.Transparent;
+            btnXuat.FlatAppearance.BorderSize = 0;
+            btnXuat.FlatAppearance.MouseOverBackColor = Color.SpringGreen;
+            btnXuat.FlatStyle = FlatStyle.Flat;
+            btnXuat.ForeColor = Color.Black;
+            btnXuat.Image = (Image)resources.GetObject("btnXuat.Image");
+            btnXuat.ImageAlign = ContentAlignment.MiddleLeft;
+            btnXuat.Location = new Point(415, 243);
+            btnXuat.Name = "btnXuat";
+            btnXuat.Size = new Size(145, 34);
+            btnXuat.TabIndex = 51;
+            btnXuat.Text = "Xuất Excel";
+            btnXuat.TextAlign = ContentAlignment.MiddleRight;
+            btnXuat.UseVisualStyleBackColor = false;
+            btnXuat.Click += btnXuat_Click;
+            // 
             // ptbHinhAnh
             // 
             ptbHinhAnh.Location = new Point(659, 39);
@@ -147,6 +190,24 @@
             ptbHinhAnh.TabIndex = 34;
             ptbHinhAnh.TabStop = false;
             // 
+            // btnThoat
+            // 
+            btnThoat.BackColor = Color.Transparent;
+            btnThoat.FlatAppearance.BorderSize = 0;
+            btnThoat.FlatAppearance.MouseOverBackColor = Color.Red;
+            btnThoat.FlatStyle = FlatStyle.Flat;
+            btnThoat.ForeColor = Color.Black;
+            btnThoat.Image = (Image)resources.GetObject("btnThoat.Image");
+            btnThoat.ImageAlign = ContentAlignment.MiddleLeft;
+            btnThoat.Location = new Point(585, 224);
+            btnThoat.Name = "btnThoat";
+            btnThoat.Size = new Size(99, 34);
+            btnThoat.TabIndex = 50;
+            btnThoat.Text = "Thoát";
+            btnThoat.TextAlign = ContentAlignment.MiddleRight;
+            btnThoat.UseVisualStyleBackColor = false;
+            btnThoat.Click += btnThoat_Click;
+            // 
             // txtTenVatTu
             // 
             txtTenVatTu.Location = new Point(132, 39);
@@ -154,113 +215,23 @@
             txtTenVatTu.Size = new Size(356, 34);
             txtTenVatTu.TabIndex = 33;
             // 
-            // btnNhap
-            // 
-            btnNhap.BackColor = Color.MediumSpringGreen;
-            btnNhap.ForeColor = Color.Black;
-            btnNhap.Location = new Point(1035, 145);
-            btnNhap.Name = "btnNhap";
-            btnNhap.Size = new Size(128, 46);
-            btnNhap.TabIndex = 23;
-            btnNhap.Text = "Nhập Excel";
-            btnNhap.UseVisualStyleBackColor = false;
-            btnNhap.Click += btnNhap_Click;
-            // 
-            // btnXuat
-            // 
-            btnXuat.BackColor = Color.MediumSpringGreen;
-            btnXuat.ForeColor = Color.Black;
-            btnXuat.Location = new Point(867, 145);
-            btnXuat.Name = "btnXuat";
-            btnXuat.Size = new Size(129, 46);
-            btnXuat.TabIndex = 22;
-            btnXuat.Text = "Xuất Excel";
-            btnXuat.UseVisualStyleBackColor = false;
-            btnXuat.Click += btnXuat_Click;
-            // 
-            // btnThoat
-            // 
-            btnThoat.BackColor = Color.Silver;
-            btnThoat.ForeColor = Color.Black;
-            btnThoat.Location = new Point(1035, 212);
-            btnThoat.Name = "btnThoat";
-            btnThoat.Size = new Size(129, 46);
-            btnThoat.TabIndex = 21;
-            btnThoat.Text = "Thoát";
-            btnThoat.UseVisualStyleBackColor = false;
-            btnThoat.Click += btnThoat_Click;
-            // 
             // btnTimKiem
             // 
-            btnTimKiem.BackColor = Color.Fuchsia;
+            btnTimKiem.BackColor = Color.Transparent;
+            btnTimKiem.FlatAppearance.BorderSize = 0;
+            btnTimKiem.FlatAppearance.MouseOverBackColor = Color.Cyan;
+            btnTimKiem.FlatStyle = FlatStyle.Flat;
             btnTimKiem.ForeColor = Color.Black;
-            btnTimKiem.Location = new Point(860, 212);
+            btnTimKiem.Image = (Image)resources.GetObject("btnTimKiem.Image");
+            btnTimKiem.ImageAlign = ContentAlignment.MiddleLeft;
+            btnTimKiem.Location = new Point(266, 243);
             btnTimKiem.Name = "btnTimKiem";
-            btnTimKiem.Size = new Size(140, 46);
-            btnTimKiem.TabIndex = 20;
+            btnTimKiem.Size = new Size(127, 34);
+            btnTimKiem.TabIndex = 49;
             btnTimKiem.Text = "Tìm Kiếm";
+            btnTimKiem.TextAlign = ContentAlignment.MiddleRight;
             btnTimKiem.UseVisualStyleBackColor = false;
             btnTimKiem.Click += btnTimKiem_Click;
-            // 
-            // btnHuyBo
-            // 
-            btnHuyBo.BackColor = Color.FromArgb(255, 128, 0);
-            btnHuyBo.ForeColor = Color.Black;
-            btnHuyBo.Location = new Point(695, 212);
-            btnHuyBo.Name = "btnHuyBo";
-            btnHuyBo.Size = new Size(129, 46);
-            btnHuyBo.TabIndex = 19;
-            btnHuyBo.Text = "Hủy Bỏ";
-            btnHuyBo.UseVisualStyleBackColor = false;
-            btnHuyBo.Click += btnHuyBo_Click;
-            // 
-            // btnLuu
-            // 
-            btnLuu.BackColor = Color.Cyan;
-            btnLuu.ForeColor = Color.Black;
-            btnLuu.Location = new Point(531, 212);
-            btnLuu.Name = "btnLuu";
-            btnLuu.Size = new Size(129, 46);
-            btnLuu.TabIndex = 18;
-            btnLuu.Text = "Lưu";
-            btnLuu.UseVisualStyleBackColor = false;
-            btnLuu.Click += btnLuu_Click;
-            // 
-            // btnXoa
-            // 
-            btnXoa.BackColor = Color.Red;
-            btnXoa.ForeColor = Color.Black;
-            btnXoa.Location = new Point(366, 212);
-            btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(129, 46);
-            btnXoa.TabIndex = 17;
-            btnXoa.Text = "Xóa";
-            btnXoa.UseVisualStyleBackColor = false;
-            btnXoa.Click += btnXoa_Click;
-            // 
-            // btnSua
-            // 
-            btnSua.BackColor = Color.Yellow;
-            btnSua.ForeColor = Color.Black;
-            btnSua.Location = new Point(206, 212);
-            btnSua.Name = "btnSua";
-            btnSua.Size = new Size(129, 46);
-            btnSua.TabIndex = 16;
-            btnSua.Text = "Sửa";
-            btnSua.UseVisualStyleBackColor = false;
-            btnSua.Click += btnSua_Click;
-            // 
-            // btnThem
-            // 
-            btnThem.BackColor = Color.Lime;
-            btnThem.ForeColor = Color.Black;
-            btnThem.Location = new Point(43, 212);
-            btnThem.Name = "btnThem";
-            btnThem.Size = new Size(129, 46);
-            btnThem.TabIndex = 1;
-            btnThem.Text = "Thêm";
-            btnThem.UseVisualStyleBackColor = false;
-            btnThem.Click += btnThem_Click;
             // 
             // txtDonViTinh
             // 
@@ -268,6 +239,42 @@
             txtDonViTinh.Name = "txtDonViTinh";
             txtDonViTinh.Size = new Size(356, 34);
             txtDonViTinh.TabIndex = 5;
+            // 
+            // btnHuyBo
+            // 
+            btnHuyBo.BackColor = Color.Transparent;
+            btnHuyBo.FlatAppearance.BorderSize = 0;
+            btnHuyBo.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 0, 0);
+            btnHuyBo.FlatStyle = FlatStyle.Flat;
+            btnHuyBo.ForeColor = Color.Black;
+            btnHuyBo.Image = (Image)resources.GetObject("btnHuyBo.Image");
+            btnHuyBo.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHuyBo.Location = new Point(266, 199);
+            btnHuyBo.Name = "btnHuyBo";
+            btnHuyBo.Size = new Size(115, 34);
+            btnHuyBo.TabIndex = 48;
+            btnHuyBo.Text = "Hủy Bỏ";
+            btnHuyBo.TextAlign = ContentAlignment.MiddleRight;
+            btnHuyBo.UseVisualStyleBackColor = false;
+            btnHuyBo.Click += btnHuyBo_Click;
+            // 
+            // btnLuu
+            // 
+            btnLuu.BackColor = Color.Transparent;
+            btnLuu.FlatAppearance.BorderSize = 0;
+            btnLuu.FlatAppearance.MouseOverBackColor = Color.DeepSkyBlue;
+            btnLuu.FlatStyle = FlatStyle.Flat;
+            btnLuu.ForeColor = Color.Black;
+            btnLuu.Image = (Image)resources.GetObject("btnLuu.Image");
+            btnLuu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLuu.Location = new Point(153, 243);
+            btnLuu.Name = "btnLuu";
+            btnLuu.Size = new Size(86, 34);
+            btnLuu.TabIndex = 47;
+            btnLuu.Text = "Lưu";
+            btnLuu.TextAlign = ContentAlignment.MiddleRight;
+            btnLuu.UseVisualStyleBackColor = false;
+            btnLuu.Click += btnLuu_Click;
             // 
             // label3
             // 
@@ -278,6 +285,24 @@
             label3.TabIndex = 4;
             label3.Text = "Đơn vị tính: ";
             // 
+            // btnXoa
+            // 
+            btnXoa.BackColor = Color.Transparent;
+            btnXoa.FlatAppearance.BorderSize = 0;
+            btnXoa.FlatAppearance.MouseOverBackColor = Color.Red;
+            btnXoa.FlatStyle = FlatStyle.Flat;
+            btnXoa.ForeColor = Color.Black;
+            btnXoa.Image = (Image)resources.GetObject("btnXoa.Image");
+            btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
+            btnXoa.Location = new Point(153, 199);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(86, 34);
+            btnXoa.TabIndex = 46;
+            btnXoa.Text = "Xóa";
+            btnXoa.TextAlign = ContentAlignment.MiddleRight;
+            btnXoa.UseVisualStyleBackColor = false;
+            btnXoa.Click += btnXoa_Click;
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -287,6 +312,24 @@
             label2.TabIndex = 2;
             label2.Text = "Đơn giá: ";
             // 
+            // btnSua
+            // 
+            btnSua.BackColor = Color.Transparent;
+            btnSua.FlatAppearance.BorderSize = 0;
+            btnSua.FlatAppearance.MouseOverBackColor = Color.DeepSkyBlue;
+            btnSua.FlatStyle = FlatStyle.Flat;
+            btnSua.ForeColor = Color.Black;
+            btnSua.Image = (Image)resources.GetObject("btnSua.Image");
+            btnSua.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSua.Location = new Point(26, 243);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(91, 34);
+            btnSua.TabIndex = 45;
+            btnSua.Text = "Sửa";
+            btnSua.TextAlign = ContentAlignment.MiddleRight;
+            btnSua.UseVisualStyleBackColor = false;
+            btnSua.Click += btnSua_Click;
+            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -295,6 +338,27 @@
             label1.Size = new Size(108, 28);
             label1.TabIndex = 0;
             label1.Text = "Tên Vật tư: ";
+            // 
+            // btnThem
+            // 
+            btnThem.BackColor = Color.Transparent;
+            btnThem.BackgroundImageLayout = ImageLayout.Zoom;
+            btnThem.FlatAppearance.BorderColor = Color.Lime;
+            btnThem.FlatAppearance.BorderSize = 0;
+            btnThem.FlatAppearance.MouseDownBackColor = Color.Lime;
+            btnThem.FlatAppearance.MouseOverBackColor = Color.Lime;
+            btnThem.FlatStyle = FlatStyle.Flat;
+            btnThem.ForeColor = Color.Black;
+            btnThem.Image = (Image)resources.GetObject("btnThem.Image");
+            btnThem.ImageAlign = ContentAlignment.MiddleLeft;
+            btnThem.Location = new Point(26, 199);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new Size(100, 34);
+            btnThem.TabIndex = 44;
+            btnThem.Text = "Thêm";
+            btnThem.TextAlign = ContentAlignment.MiddleRight;
+            btnThem.UseVisualStyleBackColor = false;
+            btnThem.Click += btnThem_Click;
             // 
             // pictureBox1
             // 
@@ -312,12 +376,12 @@
             groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox2.Controls.Add(dataGridView);
             groupBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(12, 293);
+            groupBox2.Location = new Point(12, 316);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1179, 421);
+            groupBox2.Size = new Size(1179, 398);
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Danh sách Lương";
+            groupBox2.Text = "Danh sách Vật tư";
             // 
             // dataGridView
             // 
@@ -336,19 +400,19 @@
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Columns.AddRange(new DataGridViewColumn[] { colID, colTenVatTu, colDonViTinh, colDonGia, HinhAnh });
             dataGridView.DataSource = danhSachVatTuBindingSource;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView.Location = new Point(6, 33);
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersWidth = 51;
             dataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
-            dataGridView.Size = new Size(1167, 382);
+            dataGridView.Size = new Size(1167, 359);
             dataGridView.TabIndex = 0;
             dataGridView.CellFormatting += dataGridView_CellFormatting;
             // 
@@ -378,6 +442,8 @@
             // colDonGia
             // 
             colDonGia.DataPropertyName = "DonGia";
+            dataGridViewCellStyle2.Format = "C0";
+            colDonGia.DefaultCellStyle = dataGridViewCellStyle2;
             colDonGia.HeaderText = "Đơn Giá";
             colDonGia.MinimumWidth = 6;
             colDonGia.Name = "colDonGia";
@@ -386,7 +452,7 @@
             // 
             HinhAnh.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             HinhAnh.DataPropertyName = "HinhAnh";
-            HinhAnh.HeaderText = "HinhAnh";
+            HinhAnh.HeaderText = "Hình Ảnh";
             HinhAnh.ImageLayout = DataGridViewImageCellLayout.Zoom;
             HinhAnh.MinimumWidth = 6;
             HinhAnh.Name = "HinhAnh";
@@ -448,21 +514,11 @@
         #endregion
 
         private GroupBox groupBox1;
-        private Button btnNhap;
-        private Button btnXuat;
-        private Button btnThoat;
-        private Button btnTimKiem;
-        private Button btnHuyBo;
-        private Button btnLuu;
-        private Button btnXoa;
-        private Button btnSua;
-        private Button btnThem;
         private TextBox txtDonViTinh;
         private Label label3;
         private Label label2;
         private Label label1;
         private TextBox txtTenVatTu;
-        private Button btnDoiAnh;
         private Label label4;
         private PictureBox ptbHinhAnh;
         private GroupBox groupBox2;
@@ -475,6 +531,16 @@
         private NumericUpDown numDonGia;
         private BindingSource danhSachVatTuBindingSource;
         private PictureBox pictureBox1;
+        private Button btnDoiAnh;
+        private Button btnNhap;
+        private Button btnXuat;
+        private Button btnThoat;
+        private Button btnTimKiem;
+        private Button btnHuyBo;
+        private Button btnLuu;
+        private Button btnXoa;
+        private Button btnSua;
+        private Button btnThem;
         private DataGridViewTextBoxColumn colID;
         private DataGridViewTextBoxColumn colTenVatTu;
         private DataGridViewTextBoxColumn colDonViTinh;

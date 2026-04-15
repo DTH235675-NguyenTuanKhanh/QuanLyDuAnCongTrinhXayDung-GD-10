@@ -397,5 +397,37 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                 frmDuAn_Load(sender, e);
             }
         }
+
+        private void btnThem_Click_1(object sender, EventArgs e)
+        {
+            xulyThem = true;
+            BatTatChucNang(true);
+            txtTenDuAn.DataBindings.Clear();
+            txtDiaDiem.DataBindings.Clear();
+            txtNganSach.DataBindings.Clear();
+            cboKhachHang.SelectedIndex = -1;
+            cboNhaDauTu.SelectedIndex = -1;
+            cboTenLoai.SelectedIndex = -1;
+            dtpNgayBatDau.Value = DateTime.Now;
+            dtpNgayKetThuc.Value = DateTime.Now;
+        }
+
+        private void btnThemLoai_Click(object sender, EventArgs e)
+        {
+            frmLoaiDuAn frmLoaiDuAn = new frmLoaiDuAn();
+            frmLoaiDuAn.ShowDialog();
+        }
+
+        private void btnXemNDT_Click(object sender, EventArgs e)
+        {
+            frmNhaDauTu frmNhaDauTu = new frmNhaDauTu();
+            frmNhaDauTu.ShowDialog();
+        }
+
+        private void btnNKCT_Click(object sender, EventArgs e)
+        {
+            frmNhatKyCongTrinh frmNhatKyCongTrinh = new frmNhatKyCongTrinh();
+            frmNhatKyCongTrinh.ShowDialog();
+        }
     }
 }

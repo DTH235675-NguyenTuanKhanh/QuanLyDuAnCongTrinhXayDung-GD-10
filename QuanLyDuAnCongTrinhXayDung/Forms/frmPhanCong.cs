@@ -404,5 +404,11 @@ namespace QuanLyDuAnCongTrinhXayDung.Forms
                 frmPhanCong_Load(sender, e);
             }
         }
+
+        private void btnCongViec_Click(object sender, EventArgs e)
+        {
+            frmCongViec frmCongViec = new frmCongViec();
+            frmCongViec.ShowDialog();
+        }
     }
 }

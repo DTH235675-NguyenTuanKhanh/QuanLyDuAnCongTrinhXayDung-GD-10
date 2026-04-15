@@ -811,7 +811,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Ten Du An</Value>
+                                  <Value>Tên Dự Án</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -841,7 +841,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Ten Vat Tu</Value>
+                                  <Value>Tên Vật Tư</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -871,7 +871,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>So Luong</Value>
+                                  <Value>Số Lượng</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -901,7 +901,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Don Gia</Value>
+                                  <Value>Đơn Giá</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -931,7 +931,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Tong Chi Phi</Value>
+                                  <Value>Tổng chi phí</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
